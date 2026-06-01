@@ -1,0 +1,22 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#07080D"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="86" y="86" width="130" height="130" rx="28" fill="#0B1018" stroke="#38BDF8" stroke-opacity=".4" stroke-width="2"/>
+  <path d="M112 186 194 104" stroke="url(#slash)" stroke-width="7" stroke-linecap="round"/>
+  <text x="120" y="169" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800">RF</text>
+  <text x="82" y="350" fill="#F8F7FF" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" letter-spacing="-4">RoleForge</text>
+  <text x="86" y="428" fill="#C8C5DA" font-family="Arial, Helvetica, sans-serif" font-size="34">Resume tailoring and cover letter drafting.</text>
+  <text x="86" y="496" fill="#9D98B8" font-family="Arial, Helvetica, sans-serif" font-size="28">Job post analysis · application answers · Chrome extension</text>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(890 176) rotate(146) scale(680 430)">
+      <stop stop-color="#8B5CF6" stop-opacity=".56"/>
+      <stop offset=".52" stop-color="#38BDF8" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#07080D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="slash" x1="112" y1="186" x2="194" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset=".58" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#5EEAD4"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#08080A"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="82" y="74" width="174" height="174" rx="44" fill="#24104D"/>
+  <text x="118" y="180" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800">DCP</text>
+  <text x="82" y="370" fill="#F5F1EA" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800" letter-spacing="-4">DCP Labs</text>
+  <text x="86" y="444" fill="#D6D0C7" font-family="Arial, Helvetica, sans-serif" font-size="34">Focused digital products for practical workflows.</text>
+  <text x="86" y="512" fill="#8B8498" font-family="Arial, Helvetica, sans-serif" font-size="28">CoinRelic · RoleForge</text>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 180) rotate(144) scale(650 390)">
+      <stop stop-color="#553C9A" stop-opacity=".72"/>
+      <stop offset=".52" stop-color="#ED64A6" stop-opacity=".20"/>
+      <stop offset="1" stop-color="#08080A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
