@@ -143,6 +143,25 @@ type ComparisonPageData = {
   features: ComparisonFeature[]
 }
 
+type RoleForgeGuideExample = {
+  requirement: string
+  generic: string
+  improved: string
+  why: string
+}
+
+type RoleForgeGuide = {
+  slug: string
+  title: string
+  metaDescription: string
+  h1: string
+  intro: string
+  takeaways: string[]
+  sections: Array<{ heading: string; body: string }>
+  example: RoleForgeGuideExample
+  closing: string
+}
+
 const comparisonPages: ComparisonPageData[] = [
   {
     slug: 'vs-jobright',
@@ -374,6 +393,213 @@ const comparisonBySlug = Object.fromEntries(
   comparisonPages.map((page) => [page.slug, page]),
 ) as Record<string, ComparisonPageData>
 
+const roleForgeGuides: RoleForgeGuide[] = [
+  {
+    slug: 'how-to-tailor-your-resume-to-a-job-description',
+    title: 'How to Tailor Your Resume to a Job Description | RoleForge Guide',
+    metaDescription:
+      'Learn how to tailor your resume to a job description with practical steps, examples, and a clear before-and-after rewrite.',
+    h1: 'How to tailor your resume to a job description',
+    intro:
+      'A tailored resume does not mean rewriting your entire work history. It means reading the job post carefully, choosing the most relevant experience, and making the connection easy for the recruiter to see.',
+    takeaways: [
+      'Start with the job requirements, not your full resume.',
+      'Move the most relevant experience higher on the page.',
+      'Rewrite bullets so they show the same kind of work the role asks for.',
+    ],
+    sections: [
+      {
+        heading: 'Pull out the real requirements',
+        body: 'Read the job post once for the role summary, then again for the repeated skills, tools, responsibilities, and outcomes. Repeated ideas usually matter more than one-off phrases.',
+      },
+      {
+        heading: 'Choose matching proof from your experience',
+        body: 'For each key requirement, find a project, task, metric, tool, or result from your background that proves you have done similar work.',
+      },
+      {
+        heading: 'Rewrite for relevance, not exaggeration',
+        body: 'Keep the facts true. Change the emphasis, order, and wording so the reader can quickly see why your experience fits this specific role.',
+      },
+    ],
+    example: {
+      requirement:
+        'The job description asks for experience testing mobile applications, documenting bugs, and working with developers to resolve defects.',
+      generic:
+        'Tested software and reported issues to the team.',
+      improved:
+        'Tested Android and iOS release builds, documented reproducible defects with screenshots and logs, and worked with developers to verify fixes before production release.',
+      why:
+        'The improved version names the platform, shows the testing process, includes collaboration, and mirrors the job requirement without copying it word for word.',
+    },
+    closing:
+      'Before you submit, compare the top third of your resume against the top requirements in the posting. If the strongest match is buried, move it up or rewrite it.',
+  },
+  {
+    slug: 'what-to-change-on-your-resume-for-each-application',
+    title: 'What to Change on Your Resume for Each Application | RoleForge Guide',
+    metaDescription:
+      'A practical checklist for what to change on your resume for each job application without rewriting everything from scratch.',
+    h1: 'What to change on your resume for each application',
+    intro:
+      'You do not need a brand-new resume for every application. You need a stable base resume and a few targeted adjustments that make the right experience easier to find.',
+    takeaways: [
+      'Adjust the summary, top skills, and most relevant bullets first.',
+      'Keep job titles and dates accurate.',
+      'Remove weak details when stronger role-specific proof is available.',
+    ],
+    sections: [
+      {
+        heading: 'Update the summary',
+        body: 'The summary should reflect the role you are applying for. If the job is about customer support operations, do not lead with unrelated project management language.',
+      },
+      {
+        heading: 'Reorder skills for the job',
+        body: 'Put the most relevant tools, methods, and domain experience first. This helps both recruiters and screening systems find the fit quickly.',
+      },
+      {
+        heading: 'Swap weak bullets for stronger matches',
+        body: 'Keep your work history honest, but choose the bullets that best support the role. A resume for a QA role should not lead with generic team participation when you have testing, bug triage, or release experience.',
+      },
+    ],
+    example: {
+      requirement:
+        'The posting emphasizes customer onboarding, CRM hygiene, and reducing manual follow-up work.',
+      generic:
+        'Helped customers and kept records updated.',
+      improved:
+        'Managed customer onboarding tasks in HubSpot, cleaned duplicate CRM records, and created follow-up checklists that reduced missed handoffs between sales and support.',
+      why:
+        'The improved version changes the emphasis from general support to the exact operational work the role is asking for.',
+    },
+    closing:
+      'If you only have ten minutes, tailor the summary, skills order, and three strongest bullets. Those changes usually do more than rewriting the whole document.',
+  },
+  {
+    slug: 'how-to-rewrite-resume-bullets-for-ats',
+    title: 'How to Rewrite Resume Bullets for ATS | RoleForge Guide',
+    metaDescription:
+      'Learn how to rewrite resume bullets for ATS-friendly applications while keeping the writing clear, specific, and honest.',
+    h1: 'How to rewrite resume bullets for ATS',
+    intro:
+      'ATS-friendly resume writing is not about stuffing keywords into every line. Strong bullets use clear job language, specific actions, and evidence that a recruiter can understand after the resume gets through screening.',
+    takeaways: [
+      'Use the role language naturally when it matches your real experience.',
+      'Lead with action, context, and outcome.',
+      'Avoid vague bullets that could describe almost any job.',
+    ],
+    sections: [
+      {
+        heading: 'Use recognizable wording',
+        body: 'If the job post says regression testing and you have done regression testing, use that phrase. Do not hide it behind vague wording like quality checks.',
+      },
+      {
+        heading: 'Add context and outcome',
+        body: 'A good bullet explains what you did, where you did it, and why it mattered. Numbers help when they are real, but process detail can also make a bullet stronger.',
+      },
+      {
+        heading: 'Keep one main idea per bullet',
+        body: 'ATS systems and recruiters both reward clarity. Do not cram five responsibilities into one line if two focused bullets would be easier to scan.',
+      },
+    ],
+    example: {
+      requirement:
+        'The job description asks for regression testing, API testing, bug tracking, and release validation.',
+      generic:
+        'Performed testing and helped improve application quality.',
+      improved:
+        'Ran regression and API test cases for weekly releases, logged defects in Jira, and verified fixes before release sign-off.',
+      why:
+        'The improved version includes the exact relevant testing terms, shows the tools and process, and stays clear enough for both ATS screening and human review.',
+    },
+    closing:
+      'The best ATS-friendly bullets read naturally. If a sentence sounds awkward out loud, it probably needs a cleaner rewrite.',
+  },
+  {
+    slug: 'resume-keywords-without-keyword-stuffing',
+    title: 'Resume Keywords Without Keyword Stuffing | RoleForge Guide',
+    metaDescription:
+      'Use resume keywords naturally by matching job requirements to real experience instead of stuffing terms into your resume.',
+    h1: 'Resume keywords without keyword stuffing',
+    intro:
+      'Resume keywords matter, but keyword stuffing makes a resume weaker. The goal is to use the right terms where they accurately describe your work.',
+    takeaways: [
+      'Group keywords by requirement, tool, responsibility, and outcome.',
+      'Use keywords only where they match real experience.',
+      'Prefer plain, specific sentences over dense keyword lists.',
+    ],
+    sections: [
+      {
+        heading: 'Separate must-have skills from nice-to-have words',
+        body: 'A keyword repeated in the job title, responsibilities, and requirements is more important than a tool mentioned once near the bottom of the post.',
+      },
+      {
+        heading: 'Place keywords where they belong',
+        body: 'Tools can go in skills. Responsibilities belong in bullets. Outcomes belong in accomplishments. This keeps the resume readable.',
+      },
+      {
+        heading: 'Do not claim what you cannot support',
+        body: 'If you only watched a tool in a demo, do not list it as hands-on experience. Use your strongest honest match instead.',
+      },
+    ],
+    example: {
+      requirement:
+        'The job post mentions SQL, dashboard reporting, stakeholder communication, and weekly operations reviews.',
+      generic:
+        'SQL, dashboards, reports, stakeholders, communication, operations, analytics, meetings.',
+      improved:
+        'Built weekly SQL-based operations reports, reviewed dashboard trends with support leads, and translated recurring issues into action items for the team.',
+      why:
+        'The improved version uses the keywords in a real work context instead of dropping them into a list with no evidence.',
+    },
+    closing:
+      'A recruiter should be able to understand the sentence even if they ignore the keywords. That is usually the sign that the wording is strong.',
+  },
+  {
+    slug: 'how-to-answer-why-are-you-interested-in-this-role',
+    title: 'How to Answer Why Are You Interested in This Role | RoleForge Guide',
+    metaDescription:
+      'Write a stronger answer to why you are interested in this role with a practical structure and tailored example.',
+    h1: 'How to answer why you are interested in this role',
+    intro:
+      'This question is not asking for flattery. A strong answer connects the role, the company, and your experience in a way that feels specific and believable.',
+    takeaways: [
+      'Mention something specific from the role.',
+      'Connect it to work you have done or want to do more of.',
+      'Keep the answer concise and grounded.',
+    ],
+    sections: [
+      {
+        heading: 'Start with the work, not the company slogan',
+        body: 'Use the responsibilities in the job post as your anchor. This keeps the answer relevant even when you do not know much about the company yet.',
+      },
+      {
+        heading: 'Add a personal fit point',
+        body: 'Explain why the role fits your strengths, interests, or direction. Avoid sounding like you would take any job with the same title.',
+      },
+      {
+        heading: 'Close with contribution',
+        body: 'End by naming the kind of value you hope to bring: better testing coverage, clearer customer onboarding, cleaner reporting, faster support, or stronger execution.',
+      },
+    ],
+    example: {
+      requirement:
+        'The application asks why you are interested in a QA role focused on mobile testing, release quality, and collaboration with product teams.',
+      generic:
+        'I am interested because I think this is a great opportunity and I want to grow my career.',
+      improved:
+        'I am interested in this role because it combines mobile testing, release quality, and close collaboration with product teams. My recent experience has focused on finding reproducible defects, documenting clear bug reports, and verifying fixes before release, so this role matches the kind of quality work I want to keep building on.',
+      why:
+        'The improved answer is specific to the job post, connects to real experience, and explains motivation without sounding generic.',
+    },
+    closing:
+      'If your answer could be pasted into any application, it is too generic. Add one role-specific detail and one honest connection to your experience.',
+  },
+]
+
+const roleForgeGuideBySlug = Object.fromEntries(
+  roleForgeGuides.map((guide) => [guide.slug, guide]),
+) as Record<string, RoleForgeGuide>
+
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#08080A] text-[#F5F1EA]">
@@ -385,6 +611,14 @@ function App() {
           <Route path="/apps" element={<AppsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/roleforge/guides"
+            element={<RoleForgeGuidesIndexPage />}
+          />
+          <Route
+            path="/roleforge/guides/:guideSlug"
+            element={<RoleForgeGuidePage />}
+          />
           <Route
             path="/roleforge/best-ai-resume-tools"
             element={<RoleForgeBestToolsPage />}
@@ -1027,6 +1261,7 @@ function RoleForgePage({ app }: { app: StudioApp }) {
         mutedClassName="text-[#BDB8D8]"
       />
 
+      <RoleForgeGuideLinks />
       <RoleForgeCompareLinks />
 
       <section className="border-t border-white/10 bg-[#05060A] py-20">
@@ -1381,6 +1616,409 @@ function RoleForgeBestToolsPage() {
 
       <RoleForgeCompareLinks currentSlug="best-ai-resume-tools" />
     </RoleForgeArticleShell>
+  )
+}
+
+function RoleForgeGuidesIndexPage() {
+  return (
+    <RoleForgeArticleShell>
+      <Meta
+        title="RoleForge Guides | Resume Tailoring and Job Application Help"
+        description="Practical RoleForge guides for tailoring resumes, rewriting resume bullets, writing cover letters, answering application questions, and preparing job applications."
+        path="/roleforge/guides"
+        image="/og-roleforge.svg"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'RoleForge Guides',
+            description:
+              'Practical guides for resume tailoring, cover letters, application answers, and ATS-friendly job application writing.',
+            url: absoluteUrl('/roleforge/guides'),
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: roleForgeGuides.map((guide, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                item: {
+                  '@type': 'Article',
+                  headline: guide.h1,
+                  url: absoluteUrl(`/roleforge/guides/${guide.slug}`),
+                  description: guide.metaDescription,
+                },
+              })),
+            },
+          },
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'RoleForge', path: '/roleforge' },
+            { name: 'Guides', path: '/roleforge/guides' },
+          ]),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-white/10 pt-24">
+        <RoleForgePageGlow />
+        <div className="site-container relative py-16 md:py-24">
+          <RoleForgeGuideBreadcrumb />
+          <Reveal>
+            <div className="max-w-5xl">
+              <p className="section-kicker border-[#8B5CF6]/30 bg-[#8B5CF6]/10 text-[#C4B5FD]">
+                RoleForge guides
+              </p>
+              <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.055em] text-white">
+                Practical guides for stronger job applications.
+              </h1>
+              <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
+                Clear, example-led advice for tailoring resumes, cover letters,
+                application answers, and interview prep around the role in
+                front of you.
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link
+                  to="/roleforge"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-white px-5 py-3 text-sm font-bold text-[#090B12] transition hover:-translate-y-px hover:border-[#8B5CF6]"
+                >
+                  View RoleForge
+                  <ArrowRight size={17} />
+                </Link>
+                <RoleForgeStoreCta />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="relative bg-[#080A12] py-16 md:py-24">
+        <div className="site-container">
+          <div className="divide-y divide-white/10 border-y border-white/10">
+            {roleForgeGuides.map((guide, index) => (
+              <Reveal key={guide.slug} delay={index * 0.04}>
+                <Link
+                  to={`/roleforge/guides/${guide.slug}`}
+                  className="group grid gap-6 py-8 transition md:grid-cols-[5rem_1fr_auto] md:items-center"
+                >
+                  <span className="font-mono text-sm text-[#60A5FA]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h2 className="text-3xl font-semibold tracking-[-0.035em] text-white transition group-hover:text-[#D8D4FF] md:text-5xl">
+                      {guide.h1}
+                    </h2>
+                    <p className="mt-4 max-w-3xl text-lg leading-8 text-[#BDB8D8]">
+                      {guide.intro}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-[#BAE6FD]">
+                    Read guide
+                    <ArrowRight
+                      size={17}
+                      className="transition group-hover:translate-x-1"
+                    />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <RoleForgeGuideCta />
+    </RoleForgeArticleShell>
+  )
+}
+
+function RoleForgeGuidePage() {
+  const { guideSlug = '' } = useParams()
+  const guide = roleForgeGuideBySlug[guideSlug]
+
+  if (!guide) return <NotFoundPage />
+
+  const relatedGuides = roleForgeGuides
+    .filter((item) => item.slug !== guide.slug)
+    .slice(0, 3)
+
+  return (
+    <RoleForgeArticleShell>
+      <Meta
+        title={guide.title}
+        description={guide.metaDescription}
+        path={`/roleforge/guides/${guide.slug}`}
+        image="/og-roleforge.svg"
+        type="article"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: guide.h1,
+            description: guide.metaDescription,
+            mainEntityOfPage: absoluteUrl(`/roleforge/guides/${guide.slug}`),
+            publisher: {
+              '@type': 'Organization',
+              name: 'DCP Labs',
+              url: absoluteUrl('/'),
+            },
+          },
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'RoleForge', path: '/roleforge' },
+            { name: 'Guides', path: '/roleforge/guides' },
+            { name: guide.h1, path: `/roleforge/guides/${guide.slug}` },
+          ]),
+        ]}
+      />
+
+      <article>
+        <section className="relative overflow-hidden border-b border-white/10 pt-24">
+          <RoleForgePageGlow />
+          <div className="site-container relative py-16 md:py-24">
+            <RoleForgeGuideBreadcrumb label={guide.h1} />
+            <Reveal>
+              <div className="max-w-5xl">
+                <p className="section-kicker border-[#8B5CF6]/30 bg-[#8B5CF6]/10 text-[#C4B5FD]">
+                  Practical guide
+                </p>
+                <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.055em] text-white">
+                  {guide.h1}
+                </h1>
+                <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
+                  {guide.intro}
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="relative bg-[#080A12] py-16 md:py-24">
+          <div className="site-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <Reveal>
+                <div className="border-y border-white/10 py-6">
+                  <h2 className="text-2xl font-semibold tracking-[-0.02em] text-white">
+                    Quick takeaways
+                  </h2>
+                  <div className="mt-6 grid gap-4">
+                    {guide.takeaways.map((takeaway) => (
+                      <div key={takeaway} className="flex gap-3 text-[#D8D4FF]">
+                        <Check
+                          className="mt-1 shrink-0 text-[#38BDF8]"
+                          size={18}
+                        />
+                        <span className="leading-7">{takeaway}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    to="/roleforge/guides"
+                    className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#BAE6FD] transition hover:text-white"
+                  >
+                    All RoleForge guides
+                    <ArrowRight size={17} />
+                  </Link>
+                </div>
+              </Reveal>
+            </aside>
+
+            <div className="grid gap-12">
+              <Reveal>
+                <div className="grid gap-9">
+                  {guide.sections.map((section, index) => (
+                    <section key={section.heading}>
+                      <span className="font-mono text-sm text-[#60A5FA]">
+                        0{index + 1}
+                      </span>
+                      <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
+                        {section.heading}
+                      </h2>
+                      <p className="mt-5 text-lg leading-8 text-[#C8C5DA]">
+                        {section.body}
+                      </p>
+                    </section>
+                  ))}
+                </div>
+              </Reveal>
+
+              <GuideExampleBlock example={guide.example} />
+
+              <Reveal>
+                <section className="border-y border-white/10 py-8">
+                  <h2 className="text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
+                    Final check
+                  </h2>
+                  <p className="mt-5 text-lg leading-8 text-[#C8C5DA]">
+                    {guide.closing}
+                  </p>
+                </section>
+              </Reveal>
+
+              <RoleForgeGuideCta compact />
+
+              <Reveal>
+                <section className="border-t border-white/10 pt-8">
+                  <h2 className="text-3xl font-semibold tracking-[-0.035em] text-white">
+                    Related guides
+                  </h2>
+                  <div className="mt-6 grid gap-3">
+                    {relatedGuides.map((item) => (
+                      <Link
+                        key={item.slug}
+                        to={`/roleforge/guides/${item.slug}`}
+                        className="group flex items-center justify-between gap-4 border-b border-white/10 py-4 text-[#D8D4FF] transition hover:text-white"
+                      >
+                        <span className="font-semibold">{item.h1}</span>
+                        <ArrowRight
+                          size={17}
+                          className="shrink-0 transition group-hover:translate-x-1"
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+      </article>
+    </RoleForgeArticleShell>
+  )
+}
+
+function GuideExampleBlock({ example }: { example: RoleForgeGuideExample }) {
+  const rows = [
+    ['Job description requirement', example.requirement],
+    ['Generic version', example.generic],
+    ['Improved tailored version', example.improved],
+    ['Why it works', example.why],
+  ]
+
+  return (
+    <Reveal>
+      <section className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0D101A]/92 shadow-[0_30px_120px_rgba(0,0,0,0.35)]">
+        <div className="border-b border-white/10 bg-[linear-gradient(135deg,rgba(139,92,246,0.18),rgba(56,189,248,0.08))] p-6 md:p-8">
+          <p className="section-kicker border-[#38BDF8]/30 bg-[#38BDF8]/10 text-[#BAE6FD]">
+            Live example
+          </p>
+          <h2 className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
+            Before and after
+          </h2>
+        </div>
+        <div className="divide-y divide-white/10">
+          {rows.map(([label, value]) => (
+            <div
+              key={label}
+              className="grid gap-4 p-6 md:grid-cols-[0.32fr_0.68fr] md:p-8"
+            >
+              <h3 className="text-sm font-bold tracking-[0.08em] text-[#60A5FA]">
+                {label}
+              </h3>
+              <p className="text-lg leading-8 text-[#D8D4FF]">{value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </Reveal>
+  )
+}
+
+function RoleForgeGuideCta({ compact = false }: { compact?: boolean }) {
+  return (
+    <section
+      className={`${compact ? '' : 'border-t border-white/10'} bg-[#05060A] py-12 md:py-16`}
+    >
+      <div className={compact ? '' : 'site-container'}>
+        <Reveal>
+          <div className="rounded-[32px] border border-white/10 bg-[linear-gradient(135deg,rgba(139,92,246,0.16),rgba(56,189,248,0.08))] p-7 md:p-10">
+            <h2 className="text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
+              Tailor your next application with RoleForge.
+            </h2>
+            <p className="mt-5 max-w-4xl text-lg leading-8 text-[#D8D4FF]">
+              RoleForge reads the job post you are viewing and helps you create
+              a tailored CV, cover letter, application answers, and interview
+              prep without giving up control to an auto-apply bot.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <RoleForgeStoreCta />
+              <Link
+                to="/roleforge"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-white px-5 py-3 text-sm font-bold text-[#090B12] transition hover:-translate-y-px hover:border-[#8B5CF6]"
+              >
+                View RoleForge
+                <ArrowRight size={17} />
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+function RoleForgeGuideLinks() {
+  return (
+    <section className="border-t border-white/10 bg-[#07080D] py-16">
+      <div className="site-container">
+        <Reveal>
+          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+            <div>
+              <p className="section-kicker border-[#8B5CF6]/30 bg-[#8B5CF6]/10 text-[#C4B5FD]">
+                RoleForge guides
+              </p>
+              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">
+                Practical help before you apply.
+              </h2>
+              <Link
+                to="/roleforge/guides"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#BAE6FD] transition hover:text-white"
+              >
+                View all guides
+                <ArrowRight size={17} />
+              </Link>
+            </div>
+            <div className="divide-y divide-white/10 border-y border-white/10">
+              {roleForgeGuides.slice(0, 4).map((guide) => (
+                <Link
+                  key={guide.slug}
+                  to={`/roleforge/guides/${guide.slug}`}
+                  className="group flex items-center justify-between gap-4 py-4 text-[#D8D4FF] transition hover:text-white"
+                >
+                  <span className="font-semibold">{guide.h1}</span>
+                  <ArrowRight
+                    size={17}
+                    className="shrink-0 transition group-hover:translate-x-1"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+function RoleForgeGuideBreadcrumb({ label }: { label?: string }) {
+  return (
+    <div className="relative mb-10 flex flex-wrap items-center gap-3 text-sm font-bold text-[#B8B7FF]">
+      <Link to="/apps" className="transition hover:text-white">
+        DCP Labs
+      </Link>
+      <ChevronRight size={15} />
+      <Link to="/roleforge" className="transition hover:text-white">
+        RoleForge
+      </Link>
+      <ChevronRight size={15} />
+      <Link to="/roleforge/guides" className="transition hover:text-white">
+        Guides
+      </Link>
+      {label ? (
+        <>
+          <ChevronRight size={15} />
+          <span className="text-[#9D98B8]">{label}</span>
+        </>
+      ) : null}
+    </div>
   )
 }
 
