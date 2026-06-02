@@ -130,6 +130,59 @@ footer {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.coin-tool-input {
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid rgba(214, 169, 75, 0.18);
+  border-radius: 1rem;
+  background: rgba(2, 6, 9, 0.78);
+  padding: 0.85rem 1rem;
+  color: #fff8df;
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.coin-tool-input::placeholder {
+  color: rgba(189, 175, 141, 0.62);
+}
+
+.coin-tool-input:focus {
+  border-color: rgba(214, 169, 75, 0.62);
+  background: rgba(2, 6, 9, 0.95);
+  box-shadow: 0 0 0 4px rgba(214, 169, 75, 0.12);
+}
+
+.coin-tool-input option {
+  color: #07111a;
+}
+
+.prose-coin {
+  color: #bdaf8d;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.prose-coin h2 {
+  margin-top: 3rem;
+  color: #fff8df;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.prose-coin h2:first-child {
+  margin-top: 0;
+}
+
+.prose-coin p {
+  margin-top: 1.2rem;
+}
+
 @media (max-width: 640px) {
   .site-container {
     width: min(100% - 32px, 1240px);
@@ -150,4 +203,3 @@ footer {
     transition-duration: 0.001ms !important;
   }
 }
-

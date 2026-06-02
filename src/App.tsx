@@ -645,6 +645,10 @@ function App() {
               />
             }
           />
+          <Route
+            path="/coinrelic/is-my-coin-rare"
+            element={<CoinRelicRarityToolPage />}
+          />
           <Route path="/:slug" element={<AppDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -881,6 +885,13 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
                   Explore apps
                   <ArrowRight size={17} />
                 </Link>
+                <Link
+                  to="/coinrelic/is-my-coin-rare"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#D6A94B]/40 bg-[#D6A94B]/10 px-4 py-3 text-sm font-bold text-[#F7E8B5] transition hover:-translate-y-px hover:border-[#D6A94B]/70 hover:bg-[#D6A94B]/16"
+                >
+                  Check rarity signals
+                  <ArrowRight size={17} />
+                </Link>
               </div>
               <ProductFacts
                 facts={app.storeFacts}
@@ -994,6 +1005,35 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
         mutedClassName="text-[#BDAF8D]"
       />
 
+      <section className="border-t border-[#D6A94B]/20 bg-[#03070B] py-16">
+        <div className="site-container">
+          <Reveal>
+            <div className="grid gap-6 rounded-[30px] border border-[#D6A94B]/16 bg-[linear-gradient(135deg,#08131B,#03070B)] p-7 md:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <p className="section-kicker border-[#D6A94B]/30 bg-[#D6A94B]/10 text-[#D6A94B]">
+                  Free collector checklist
+                </p>
+                <h2 className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-5xl">
+                  Is your coin worth a closer look?
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-[#BDAF8D]">
+                  Use the CoinRelic checklist to review date, mint mark,
+                  condition, and error signals before scanning and saving the
+                  coin.
+                </p>
+              </div>
+              <Link
+                to="/coinrelic/is-my-coin-rare"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#D6A94B] bg-[#D6A94B] px-5 py-3 text-sm font-bold text-[#07111A] transition hover:-translate-y-px"
+              >
+                Try the checklist
+                <ArrowRight size={17} />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="border-t border-[#D6A94B]/20 bg-[#020609] py-20">
         <div className="site-container flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -1045,6 +1085,595 @@ function CoinRelicPromoPanel({
         />
       </div>
     </div>
+  )
+}
+
+type CoinRarityForm = {
+  country: string
+  year: string
+  denomination: string
+  mintMark: string
+  condition: string
+  unusual: string
+}
+
+function CoinRelicRarityToolPage() {
+  const coinRelic = appBySlug.coinrelic
+  const [form, setForm] = useState<CoinRarityForm>({
+    country: '',
+    year: '',
+    denomination: '',
+    mintMark: 'Unknown',
+    condition: 'Average',
+    unusual: 'Not sure',
+  })
+  const [result, setResult] = useState<{
+    score: number
+    level: string
+    explanation: string
+  } | null>(null)
+
+  const updateField = (field: keyof CoinRarityForm, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }))
+  }
+
+  const checkCoin = () => {
+    const year = Number(form.year)
+    let score = 0
+    const reasons: string[] = []
+
+    if (Number.isFinite(year) && year > 0) {
+      if (year < 1900) {
+        score += 3
+        reasons.push('the date is before 1900')
+      } else if (year <= 1949) {
+        score += 2
+        reasons.push('the date falls between 1900 and 1949')
+      } else if (year <= 1979) {
+        score += 1
+        reasons.push('the date falls between 1950 and 1979')
+      }
+    }
+
+    if (form.condition === 'Excellent / Uncirculated') {
+      score += 2
+      reasons.push('the condition appears especially strong')
+    } else if (form.condition === 'Very Good') {
+      score += 1
+      reasons.push('the condition appears above average')
+    }
+
+    if (form.mintMark === 'Unknown' || form.mintMark === 'Other') {
+      score += 1
+      reasons.push(
+        form.mintMark === 'Unknown'
+          ? 'the mint mark still needs to be confirmed'
+          : 'the mint mark may need closer research',
+      )
+    }
+
+    if (form.unusual === 'Yes') {
+      score += 3
+      reasons.push('you noticed a possible error or unusual design detail')
+    } else if (form.unusual === 'Not sure') {
+      score += 1
+      reasons.push('there may be unusual details worth checking')
+    }
+
+    const level =
+      score >= 6
+        ? 'Strong candidate for a closer look'
+        : score >= 3
+          ? 'Worth checking further'
+          : 'Low rarity signals'
+
+    const coinLabel = [
+      form.country || 'this coin',
+      form.year ? form.year : '',
+      form.denomination || '',
+    ]
+      .filter(Boolean)
+      .join(' ')
+
+    const explanation = reasons.length
+      ? `${coinLabel} may deserve more research because ${reasons.join(', ')}. This is not an appraisal, but these are reasonable collector signals to inspect.`
+      : `${coinLabel} does not show many rarity signals from this checklist. It can still be useful to scan, identify, and save the coin so you have a clean record.`
+
+    setResult({ score, level, explanation })
+  }
+
+  return (
+    <div className="min-h-screen bg-[#03070B] text-[#F7E8B5]">
+      <Meta
+        title="Is My Coin Rare? Free Coin Value Checklist | CoinRelic"
+        description="Enter your coin's country, year, denomination, mint mark, and condition to see if it may be worth checking further. Use CoinRelic to scan, identify, and track your coin collection."
+        path="/coinrelic/is-my-coin-rare"
+        image="/og-coinrelic.svg"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: 'Is My Coin Rare? Free Coin Value Checklist',
+            description:
+              'A free checklist for reviewing coin rarity signals such as date, mint mark, condition, and possible errors.',
+            url: absoluteUrl('/coinrelic/is-my-coin-rare'),
+            applicationCategory: 'UtilityApplication',
+            publisher: {
+              '@type': 'Organization',
+              name: 'DCP Labs',
+              url: absoluteUrl('/'),
+            },
+          },
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'CoinRelic', path: '/coinrelic' },
+            {
+              name: 'Is My Coin Rare?',
+              path: '/coinrelic/is-my-coin-rare',
+            },
+          ]),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-[#D6A94B]/20 pt-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_24%,rgba(214,169,75,0.18),transparent_30%),radial-gradient(circle_at_16%_76%,rgba(40,90,120,0.22),transparent_34%),linear-gradient(180deg,#03070B,#07111A_58%,#03070B)]" />
+        <div className="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_center,rgba(214,169,75,0.45)_1px,transparent_1px)] [background-size:34px_34px]" />
+        <div className="site-container relative grid gap-12 py-16 md:py-24 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <Reveal>
+            <div>
+              <Link
+                to="/coinrelic"
+                className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-[#C8B178] transition hover:text-[#F7E8B5]"
+              >
+                <ChevronRight className="rotate-180" size={16} />
+                Back to CoinRelic
+              </Link>
+              <p className="section-kicker border-[#D6A94B]/30 bg-[#D6A94B]/10 text-[#D6A94B]">
+                Free coin value checklist
+              </p>
+              <h1 className="mt-6 max-w-4xl text-[clamp(3.6rem,8vw,8rem)] font-semibold leading-[0.9] tracking-[-0.055em] text-[#FFF8DF]">
+                Is My Coin Rare?
+              </h1>
+              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#D8CDAA]">
+                Use this free checklist to see if your coin may be worth
+                checking further.
+              </p>
+              <p className="mt-6 max-w-2xl border-l border-[#D6A94B]/40 pl-5 text-base leading-7 text-[#BDAF8D]">
+                This tool does not provide an official appraisal. It helps you
+                identify signs that a coin may deserve a closer look.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="relative">
+              <div className="absolute inset-8 rounded-full bg-[#D6A94B]/14 blur-3xl" />
+              <div className="relative rounded-[34px] border border-[#D6A94B]/18 bg-[#06111A]/92 p-7 shadow-[0_32px_100px_rgba(0,0,0,0.5)] md:p-9">
+                <img
+                  src={coinRelic.iconImage}
+                  alt="CoinRelic app icon"
+                  className="h-16 w-16 rounded-[22px] object-cover shadow-[0_0_44px_rgba(214,169,75,0.28)]"
+                />
+                <h2 className="mt-8 text-3xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-5xl">
+                  Look for signals, then save the coin properly.
+                </h2>
+                <div className="mt-8 grid gap-4">
+                  {[
+                    'Date and mint mark',
+                    'Visible errors',
+                    'Condition and wear',
+                    'Similar sold examples',
+                  ].map((item) => (
+                    <div key={item} className="flex gap-3 text-[#E9D8A6]">
+                      <Check
+                        className="mt-1 shrink-0 text-[#D6A94B]"
+                        size={18}
+                      />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#050B10] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <Reveal>
+            <CoinRarityFormPanel
+              form={form}
+              updateField={updateField}
+              onSubmit={checkCoin}
+            />
+          </Reveal>
+          <Reveal delay={0.05}>
+            <CoinRarityResultPanel result={result} app={coinRelic} />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="border-y border-[#D6A94B]/20 bg-[#020609] py-16 md:py-20">
+        <div className="site-container grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <Reveal>
+            <div>
+              <h2 className="text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
+                Want to identify and track your coins properly?
+              </h2>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-[#BDAF8D]">
+                CoinRelic helps collectors scan coins, save them to a personal
+                collection, keep scan history, and organize discoveries over
+                time.
+              </p>
+            </div>
+          </Reveal>
+          <StoreButton href={coinRelic.storeUrl}>Download CoinRelic</StoreButton>
+        </div>
+      </section>
+
+      <CoinRaritySeoContent />
+      <CoinRarityFaq app={coinRelic} />
+    </div>
+  )
+}
+
+function CoinRarityFormPanel({
+  form,
+  updateField,
+  onSubmit,
+}: {
+  form: CoinRarityForm
+  updateField: (field: keyof CoinRarityForm, value: string) => void
+  onSubmit: () => void
+}) {
+  return (
+    <form
+      className="rounded-[32px] border border-[#D6A94B]/16 bg-[#06111A] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.42)] md:p-8"
+      onSubmit={(event) => {
+        event.preventDefault()
+        onSubmit()
+      }}
+    >
+      <h2 className="text-3xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-5xl">
+        Check your coin
+      </h2>
+      <div className="mt-8 grid gap-5">
+        <CoinToolField label="Country or region" id="coin-country">
+          <input
+            id="coin-country"
+            value={form.country}
+            onChange={(event) => updateField('country', event.target.value)}
+            placeholder="United States, Canada, Romania..."
+            className="coin-tool-input"
+          />
+        </CoinToolField>
+        <CoinToolField label="Year" id="coin-year">
+          <input
+            id="coin-year"
+            value={form.year}
+            onChange={(event) => updateField('year', event.target.value)}
+            placeholder="1916"
+            min="1"
+            max="2100"
+            type="number"
+            className="coin-tool-input"
+          />
+        </CoinToolField>
+        <CoinToolField label="Denomination" id="coin-denomination">
+          <input
+            id="coin-denomination"
+            value={form.denomination}
+            onChange={(event) =>
+              updateField('denomination', event.target.value)
+            }
+            placeholder="Dime, penny, quarter, 1 leu..."
+            className="coin-tool-input"
+          />
+        </CoinToolField>
+        <CoinToolField label="Mint mark" id="coin-mint-mark">
+          <select
+            id="coin-mint-mark"
+            value={form.mintMark}
+            onChange={(event) => updateField('mintMark', event.target.value)}
+            className="coin-tool-input"
+          >
+            {['Unknown', 'None visible', 'P', 'D', 'S', 'W', 'Other'].map(
+              (option) => (
+                <option key={option}>{option}</option>
+              ),
+            )}
+          </select>
+        </CoinToolField>
+        <CoinToolField label="Condition" id="coin-condition">
+          <select
+            id="coin-condition"
+            value={form.condition}
+            onChange={(event) => updateField('condition', event.target.value)}
+            className="coin-tool-input"
+          >
+            {[
+              'Poor',
+              'Average',
+              'Good',
+              'Very Good',
+              'Excellent / Uncirculated',
+            ].map((option) => (
+              <option key={option}>{option}</option>
+            ))}
+          </select>
+        </CoinToolField>
+        <CoinToolField
+          label="Does it look unusual or like it has an error?"
+          id="coin-unusual"
+        >
+          <select
+            id="coin-unusual"
+            value={form.unusual}
+            onChange={(event) => updateField('unusual', event.target.value)}
+            className="coin-tool-input"
+          >
+            {['Not sure', 'No', 'Yes'].map((option) => (
+              <option key={option}>{option}</option>
+            ))}
+          </select>
+        </CoinToolField>
+        <div className="rounded-[24px] border border-[#D6A94B]/16 bg-[#020609] p-5">
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#D6A94B]">
+            Photo identification
+          </p>
+          <p className="mt-3 text-base leading-7 text-[#BDAF8D]">
+            For photo-based identification, scan your coin in the CoinRelic app.
+          </p>
+        </div>
+        <button
+          type="submit"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#D6A94B] bg-[#D6A94B] px-5 py-3 text-sm font-bold text-[#07111A] transition hover:-translate-y-px"
+        >
+          Check my coin
+          <ArrowRight size={17} />
+        </button>
+      </div>
+    </form>
+  )
+}
+
+function CoinToolField({
+  label,
+  id,
+  children,
+}: {
+  label: string
+  id: string
+  children: ReactNode
+}) {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="mb-2 block text-sm font-bold text-[#E9D8A6]"
+      >
+        {label}
+      </label>
+      {children}
+    </div>
+  )
+}
+
+function CoinRarityResultPanel({
+  result,
+  app,
+}: {
+  result: { score: number; level: string; explanation: string } | null
+  app: StudioApp
+}) {
+  return (
+    <div className="min-h-full rounded-[32px] border border-[#D6A94B]/16 bg-[linear-gradient(135deg,#08131B,#03070B)] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.42)] md:p-8">
+      <p className="section-kicker border-[#D6A94B]/30 bg-[#D6A94B]/10 text-[#D6A94B]">
+        Checklist result
+      </p>
+      {result ? (
+        <>
+          <h2 className="mt-6 text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
+            {result.level}
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-[#BDAF8D]">
+            {result.explanation}
+          </p>
+          <div className="mt-8 rounded-[24px] border border-[#D6A94B]/16 bg-[#020609] p-5">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#D6A94B]">
+              Score
+            </p>
+            <p className="mt-2 text-3xl font-semibold text-[#FFF8DF]">
+              {result.score} points
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <h2 className="mt-6 text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
+            Your checklist result will appear here.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-[#BDAF8D]">
+            Enter the details you can see on the coin. If you are not sure,
+            choose the closest option and use the result as a starting point for
+            further research.
+          </p>
+        </>
+      )}
+      <div className="mt-8">
+        <h3 className="text-2xl font-semibold text-[#FFF8DF]">
+          Things to inspect next
+        </h3>
+        <div className="mt-5 grid gap-4">
+          {[
+            'Date and mint mark',
+            'Visible errors or unusual design',
+            'Condition and wear',
+            'Metal composition',
+            'Similar sold examples',
+          ].map((item) => (
+            <div key={item} className="flex gap-3 text-[#E9D8A6]">
+              <Check className="mt-1 shrink-0 text-[#D6A94B]" size={18} />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-9 flex flex-wrap gap-3">
+        <a
+          href={app.storeUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#D6A94B] bg-[#D6A94B] px-5 py-3 text-sm font-bold text-[#07111A] transition hover:-translate-y-px"
+        >
+          Scan and save this coin with CoinRelic
+          <ArrowRight size={17} />
+        </a>
+        <StoreButton href={app.storeUrl}>Download CoinRelic on Google Play</StoreButton>
+      </div>
+    </div>
+  )
+}
+
+function CoinRaritySeoContent() {
+  return (
+    <section className="bg-[#050B10] py-16 md:py-24">
+      <div className="site-container max-w-4xl">
+        <Reveal>
+          <div className="prose-coin">
+            <h2>How to tell if a coin might be rare</h2>
+            <p>
+              A coin can be interesting for several reasons: age, low mintage,
+              unusual design details, visible errors, metal content, demand from
+              collectors, or a combination of those factors. Age alone is not
+              enough. Some old coins are common, while some modern coins become
+              collectible because of mint errors, limited releases, or unusual
+              varieties. A practical first pass is to record the country, date,
+              denomination, mint mark, and condition, then compare those details
+              with trusted references and similar sold examples.
+            </p>
+            <p>
+              The goal is not to guess an exact value from a quick glance. A
+              better goal is to decide whether the coin deserves more research.
+              If the date is older, the mint mark is unclear, the design looks
+              unusual, or the coin appears to be in strong condition, it is worth
+              slowing down and documenting it properly.
+            </p>
+
+            <h2>Why mint marks matter</h2>
+            <p>
+              A mint mark can show where a coin was produced. Two coins with the
+              same year and denomination may have different collector interest
+              because they came from different mints. Some mint marks are common
+              for a given year, while others may be scarcer. In other cases, the
+              absence of a visible mint mark can also be meaningful, depending on
+              the coin type and country.
+            </p>
+            <p>
+              Mint marks are often small and easy to miss. They may sit near the
+              date, below a portrait, beside a building, or on the reverse side
+              of the coin. Good lighting and a clear photo can make a major
+              difference when checking this detail.
+            </p>
+
+            <h2>Why condition changes collector interest</h2>
+            <p>
+              Condition affects how collectors evaluate a coin. Heavy wear,
+              scratches, cleaning marks, corrosion, and edge damage can reduce
+              interest, even when the coin is old. On the other hand, a common
+              coin in excellent or uncirculated condition may still be worth
+              saving and researching because high-grade examples can stand out.
+            </p>
+            <p>
+              When reviewing condition, look at the high points of the design,
+              the sharpness of lettering, the rims, and the surface. Avoid
+              cleaning a coin before researching it. Cleaning can damage the
+              surface and may reduce collector appeal.
+            </p>
+
+            <h2>Why coin photos help with identification</h2>
+            <p>
+              Coin identification depends on visible details. A clear photo can
+              capture the date, mint mark, denomination, design variety, wear
+              pattern, and possible error features. Photos also help you keep a
+              record of a find before it gets mixed into a larger collection.
+            </p>
+            <p>
+              Take photos in natural light when possible. Capture both sides,
+              keep the coin flat, and avoid harsh glare. If the coin has a
+              suspected error, take an extra close-up of that area.
+            </p>
+
+            <h2>What to do after finding an interesting coin</h2>
+            <p>
+              If a coin looks promising, save the details before you move on.
+              Record the country, year, denomination, mint mark, condition,
+              photos, and any notes about unusual features. Then compare it
+              against reputable references and similar sold examples. For higher
+              confidence, especially with rare or expensive coins, consider a
+              professional opinion from a reputable dealer or grading service.
+            </p>
+            <p>
+              CoinRelic is designed for this research habit: scan the coin, save
+              it to a personal collection, keep scan history, and organize notes
+              over time. The better your records are, the easier it becomes to
+              revisit interesting finds later.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+function CoinRarityFaq({ app }: { app: StudioApp }) {
+  const faqs = [
+    [
+      'Can this tool tell me the exact value of my coin?',
+      'No. This checklist does not provide an official appraisal or exact value. It highlights signals that may make a coin worth researching further.',
+    ],
+    [
+      'What makes a coin rare?',
+      'Rarity can depend on mintage, age, mint mark, errors, variety, condition, metal composition, collector demand, and how many examples are available in the market.',
+    ],
+    [
+      'What is a mint mark?',
+      'A mint mark is a small letter or symbol that can identify where a coin was produced. Mint marks can affect collector interest for certain years and denominations.',
+    ],
+    [
+      'Does condition matter?',
+      'Yes. Wear, scratches, cleaning, corrosion, and surface quality can all affect collector interest. Strong condition can make a coin more worth documenting and researching.',
+    ],
+    [
+      'Why should I use CoinRelic after this checklist?',
+      'CoinRelic helps you scan coins, save them to a personal collection, keep scan history, and organize notes so interesting finds do not get lost.',
+    ],
+  ]
+
+  return (
+    <section className="border-t border-[#D6A94B]/20 bg-[#020609] py-20 md:py-28">
+      <div className="site-container max-w-5xl">
+        <Reveal>
+          <h2 className="text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
+            Coin value checklist FAQ
+          </h2>
+        </Reveal>
+        <div className="mt-8 divide-y divide-[#D6A94B]/14 border-y border-[#D6A94B]/14">
+          {faqs.map(([question, answer]) => (
+            <div key={question} className="py-7">
+              <h3 className="text-2xl font-semibold text-[#FFF8DF]">
+                {question}
+              </h3>
+              <p className="mt-4 text-lg leading-8 text-[#BDAF8D]">{answer}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          <StoreButton href={app.storeUrl}>Download CoinRelic</StoreButton>
+        </div>
+      </div>
+    </section>
   )
 }
 
