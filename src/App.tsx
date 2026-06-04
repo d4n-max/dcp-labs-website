@@ -18,6 +18,7 @@ import {
   useLocation,
   useParams,
 } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import dcpLogo from './assets/dcp-labs-logo.svg'
 import type { AppCategory, StudioApp } from './data/apps'
 import { appBySlug, apps, trustSignals } from './data/apps'
@@ -655,6 +656,7 @@ function App() {
       </main>
       <Footer />
       <ScrollToTop />
+      <Analytics />
     </div>
   )
 }
