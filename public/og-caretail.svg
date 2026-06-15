@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F5FFFB"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="76" y="80" width="150" height="150" rx="42" fill="#56C7BE"/>
+  <path d="M142 160C114 130 126 101 153 101C172 101 184 113 194 130C204 113 218 101 238 101C265 101 277 130 249 160L194 218L142 160Z" fill="white"/>
+  <path d="M226 164L245 183L283 143" stroke="#FF6868" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="345" fill="#15212A" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" letter-spacing="-4">CareTail</text>
+  <text x="80" y="422" fill="#236A66" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Pet care tracker for reminders, notes, and records.</text>
+  <text x="82" y="506" fill="#53666B" font-family="Arial, Helvetica, sans-serif" font-size="29">Pet profiles, care reminders, diary notes, documents, and care history.</text>
+  <rect x="838" y="72" width="250" height="486" rx="54" fill="#15212A" opacity=".12"/>
+  <rect x="866" y="100" width="194" height="430" rx="36" fill="#FFFFFF" stroke="#50BFB7" stroke-width="4"/>
+  <rect x="890" y="144" width="146" height="60" rx="22" fill="#E6FAF7"/>
+  <rect x="890" y="232" width="146" height="56" rx="18" fill="#FFF4EA"/>
+  <rect x="890" y="308" width="146" height="56" rx="18" fill="#E6FAF7"/>
+  <rect x="890" y="384" width="146" height="56" rx="18" fill="#FFF4EA"/>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 110) rotate(40) scale(640 430)">
+      <stop stop-color="#BDF4EF"/>
+      <stop offset=".54" stop-color="#FFF8EB" stop-opacity=".84"/>
+      <stop offset="1" stop-color="#F5FFFB" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

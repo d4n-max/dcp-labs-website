@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   ClipboardCheck,
   Coins,
+  HeartPulse,
   ShieldCheck,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
@@ -11,6 +12,14 @@ import coinrelicCollection from '../assets/products/coinrelic-collection.png'
 import coinrelicIcon from '../assets/products/coinrelic-icon.png'
 import coinrelicScan from '../assets/products/coinrelic-scan.png'
 import coinrelicValue from '../assets/products/coinrelic-value.png'
+import caretailAllCare from '../assets/products/caretail-all-care.png'
+import caretailDashboard from '../assets/products/caretail-dashboard.png'
+import caretailDiary from '../assets/products/caretail-diary.png'
+import caretailDocuments from '../assets/products/caretail-documents.png'
+import caretailFeature from '../assets/products/caretail-feature.png'
+import caretailIcon from '../assets/products/caretail-icon.png'
+import caretailProfile from '../assets/products/caretail-profile.png'
+import caretailReminders from '../assets/products/caretail-reminders.png'
 import roleforgeAnalyze from '../assets/products/roleforge-analyze-any-job-post.png'
 import roleforgeBundle from '../assets/products/roleforge-download-application-bundle.png'
 import roleforgeCoverLetters from '../assets/products/roleforge-draft-cover-letters.png'
@@ -23,6 +32,7 @@ export type AppCategory =
   | 'Android'
   | 'Chrome Extension'
   | 'Collectors'
+  | 'Pets'
   | 'Career'
   | 'Productivity'
 
@@ -48,13 +58,92 @@ export type StudioApp = {
   accent: string
   secondaryAccent: string
   code: string
-  visualStyle: 'collector' | 'career'
+  visualStyle: 'collector' | 'career' | 'petcare'
   iconImage?: string
   screenshots: string[]
   storeFacts: string[]
 }
 
 export const apps: StudioApp[] = [
+  {
+    slug: 'caretail',
+    name: 'CareTail',
+    category: 'Pet care tracker',
+    filters: ['Android', 'Pets', 'Productivity'],
+    status: 'Live',
+    platform: 'Android app',
+    storeLabel: 'Get it on Google Play',
+    storeUrl:
+      'https://play.google.com/store/apps/details?id=com.caretail.app',
+    shortDescription:
+      'Organize pet profiles, care reminders, diary notes, documents, and records in one calm place.',
+    description:
+      'CareTail helps pet owners organize pet profiles, reminders, diary notes, documents, care history, and reports without keeping every detail in their head.',
+    heroLine:
+      'A calm pet care tracker for profiles, reminders, diary notes, documents, and care history.',
+    problem:
+      'Pet care details often end up scattered across notes, calendars, photos, and memory. CareTail brings routines, records, reminders, and observations into one organized place.',
+    benefits: [
+      "Keep each pet's profile, routines, reminders, notes, and records separate.",
+      'Create reminders for care tasks like medication, grooming, food, vaccines, and vet visits.',
+      'Use CareTail locally without creating an account. Google Sign-In is optional.',
+    ],
+    features: [
+      'Pet profiles',
+      'Care reminders',
+      'Diary notes',
+      'Documents and vet records',
+      'Care reports and export',
+      'Multi-pet organization',
+      'Local-first use',
+      'Optional Google Sign-In',
+    ],
+    audience: [
+      'Pet owners managing daily care routines',
+      'Multi-pet households keeping records separate',
+      'Owners preparing notes and documents for appointments',
+      'People who want care history without a complicated system',
+    ],
+    faq: [
+      {
+        question: 'Is CareTail a medical app?',
+        answer:
+          'No. CareTail is for organizing reminders, notes, and records. Veterinary decisions should stay with the pet owner and their vet.',
+      },
+      {
+        question: 'Can I use CareTail without an account?',
+        answer:
+          'Yes. CareTail can be used locally without creating an account. Google Sign-In is optional.',
+      },
+      {
+        question: 'Can I track more than one pet?',
+        answer:
+          'Yes. CareTail supports separate profiles so each pet can have its own routines, notes, reminders, and records.',
+      },
+      {
+        question: 'What is Premium for?',
+        answer:
+          'Premium gives more room for more pets, routines, documents, and care history.',
+      },
+    ],
+    cta: 'Get it on Google Play',
+    icon: HeartPulse,
+    accent: '#56C7BE',
+    secondaryAccent: '#FF6868',
+    code: 'CT',
+    visualStyle: 'petcare',
+    iconImage: caretailIcon,
+    screenshots: [
+      caretailFeature,
+      caretailAllCare,
+      caretailProfile,
+      caretailReminders,
+      caretailDiary,
+      caretailDocuments,
+      caretailDashboard,
+    ],
+    storeFacts: ['Live on Google Play', 'Android app', 'Pet care tracker'],
+  },
   {
     slug: 'coinrelic',
     name: 'CoinRelic',
@@ -206,7 +295,7 @@ export const appBySlug: Record<string, StudioApp> = Object.fromEntries(
 )
 
 export const trustSignals: Array<{ label: string; icon: LucideIcon }> = [
-  { label: 'Two live products', icon: BadgeCheck },
+  { label: 'Three live products', icon: BadgeCheck },
   { label: 'Built for practical use cases', icon: ClipboardCheck },
   { label: 'Direct links to official stores', icon: ShieldCheck },
 ]

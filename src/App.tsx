@@ -117,6 +117,7 @@ const categoryFilters: AppCategory[] = [
   'All',
   'Android',
   'Chrome Extension',
+  'Pets',
   'Productivity',
   'Career',
   'Collectors',
@@ -161,6 +162,21 @@ type RoleForgeGuide = {
   sections: Array<{ heading: string; body: string }>
   example: RoleForgeGuideExample
   closing: string
+}
+
+type CareTailSeoPage = {
+  slug: string
+  title: string
+  metaDescription: string
+  h1: string
+  keyword: string
+  problem: string
+  explanation: string
+  features: string[]
+  safetyLine: string
+  imageIndex: number
+  imageAlt: string
+  related: string[]
 }
 
 const comparisonPages: ComparisonPageData[] = [
@@ -601,6 +617,193 @@ const roleForgeGuideBySlug = Object.fromEntries(
   roleForgeGuides.map((guide) => [guide.slug, guide]),
 ) as Record<string, RoleForgeGuide>
 
+const careTailSeoPages: CareTailSeoPage[] = [
+  {
+    slug: 'pet-care-tracker',
+    title: 'Pet Care Tracker App for Routines, Notes, and Records | CareTail',
+    metaDescription:
+      'CareTail is a pet care tracker app for organizing pet profiles, reminders, diary notes, documents, and care reports in one place.',
+    h1: 'Pet care tracker app for routines, notes, and records',
+    keyword: 'pet care tracker app',
+    problem:
+      'Pet care details can spread across notes, calendars, photos, and memory. That makes everyday routines harder to review when you need the details later.',
+    explanation:
+      'CareTail gives pet owners a calmer workspace for profiles, reminders, diary notes, documents, and care reports, with each detail organized around the right pet.',
+    features: [
+      'Create a separate profile for each pet.',
+      'Track reminders, notes, documents, and care history together.',
+      'Keep diary observations easier to review over time.',
+      'Prepare records and notes before appointments.',
+      'Use one organized place instead of scattered tools.',
+    ],
+    safetyLine:
+      'CareTail is an organization tool for pet owners. Veterinary decisions should stay with the pet owner and their vet.',
+    imageIndex: 1,
+    imageAlt:
+      'CareTail promo showing pet profiles reminders notes and records in one place',
+    related: [
+      'pet-reminder-app',
+      'pet-health-diary',
+      'vet-records-organizer',
+      'multi-pet-care',
+    ],
+  },
+  {
+    slug: 'pet-reminder-app',
+    title: 'Pet Reminder App for Everyday Care Routines | CareTail',
+    metaDescription:
+      'Use CareTail as a pet reminder app for grooming, medication, food, vaccines, vet visits, appointments, and custom care routines.',
+    h1: 'Pet reminder app for everyday care routines',
+    keyword: 'pet reminder app',
+    problem:
+      'Pet care routines often include small recurring tasks that are easy to scatter across calendars, notes, and memory.',
+    explanation:
+      'CareTail helps you create user-controlled reminders for grooming, medication, food, vaccines, appointments, vet visits, and custom care routines.',
+    features: [
+      'Create reminders for common care tasks.',
+      'Assign reminders to the right pet profile.',
+      'Keep upcoming care tasks visible in one place.',
+      'Add notes for context when a reminder needs detail.',
+      'Organize routine care without turning it into a complicated system.',
+    ],
+    safetyLine:
+      'CareTail reminders are user-created organizational tools and are not medical advice.',
+    imageIndex: 3,
+    imageAlt:
+      'CareTail promo showing pet reminders for vaccines medication grooming and vet visits',
+    related: [
+      'pet-care-tracker',
+      'pet-health-diary',
+      'multi-pet-care',
+      'local-first-pet-care-app',
+    ],
+  },
+  {
+    slug: 'pet-health-diary',
+    title: 'Pet Health Diary for Notes and Care Observations | CareTail',
+    metaDescription:
+      'CareTail helps pet owners keep a pet health diary for appetite, mood, energy, symptoms, behavior, routines, and care observations.',
+    h1: 'Pet health diary for notes and care observations',
+    keyword: 'pet health diary app',
+    problem:
+      'Small care observations can be hard to remember clearly once days or weeks have passed.',
+    explanation:
+      'CareTail helps you keep appetite, mood, energy, symptoms, behavior, routines, and care observations organized so they are easier to review later.',
+    features: [
+      'Log diary notes for each pet.',
+      'Record appetite, mood, energy, symptoms, and observations.',
+      'Keep notes connected to the right profile.',
+      'Review care history without searching through scattered notes.',
+      'Use plain organization for notes you want to review later.',
+    ],
+    safetyLine:
+      'CareTail keeps observations organized for later review and is not medical advice.',
+    imageIndex: 4,
+    imageAlt:
+      'CareTail promo showing diary notes for mood appetite energy symptoms and observations',
+    related: [
+      'pet-care-tracker',
+      'pet-reminder-app',
+      'vet-records-organizer',
+      'multi-pet-care',
+    ],
+  },
+  {
+    slug: 'vet-records-organizer',
+    title: 'Organize Pet Vet Records and Care Documents | CareTail',
+    metaDescription:
+      'CareTail helps pet owners organize pet vet records, vaccination documents, medication notes, appointment prep, documents, and care history.',
+    h1: 'Organize pet vet records and care documents',
+    keyword: 'organize pet vet records',
+    problem:
+      'Vet records, vaccination documents, medication notes, and appointment details are often stored in different places.',
+    explanation:
+      'CareTail gives pet owners a practical place to keep documents, notes, records, and care history easier to find when appointment prep or review time comes around.',
+    features: [
+      'Save vaccination documents and care records.',
+      'Keep medication notes and appointment details together.',
+      'Connect documents to the correct pet profile.',
+      'Use reports and exports when you need a cleaner care history.',
+      'Keep records easier to find without replacing professional advice.',
+    ],
+    safetyLine:
+      'CareTail helps organize records and notes for the pet owner and their vet to review when needed.',
+    imageIndex: 5,
+    imageAlt:
+      'CareTail promo showing organized vet records documents prescriptions and insurance files',
+    related: [
+      'pet-care-tracker',
+      'pet-health-diary',
+      'multi-pet-care',
+      'local-first-pet-care-app',
+    ],
+  },
+  {
+    slug: 'multi-pet-care',
+    title: 'Multi-Pet Care App for Separate Routines and Records | CareTail',
+    metaDescription:
+      'CareTail is a multi-pet care app for separate pet profiles, reminders, notes, documents, routines, and care history.',
+    h1: 'Multi-pet care app for separate routines and records',
+    keyword: 'multi-pet care app',
+    problem:
+      'Households with more than one pet need a clear way to keep routines, notes, documents, and care history separated.',
+    explanation:
+      'CareTail supports separate profiles so each pet can have its own reminders, diary notes, documents, routines, and history.',
+    features: [
+      'Create separate profiles for different pets.',
+      'Keep routines and reminders attached to the right pet.',
+      'Store notes and documents without mixing histories.',
+      'Review today\'s care across the household.',
+      'Use Premium for more room for pets, routines, documents, and history.',
+    ],
+    safetyLine:
+      'Premium is framed as additional capacity and organization, not better care or medical support.',
+    imageIndex: 6,
+    imageAlt:
+      'CareTail promo showing a daily care dashboard for multiple pet care tasks',
+    related: [
+      'pet-care-tracker',
+      'pet-reminder-app',
+      'pet-health-diary',
+      'vet-records-organizer',
+    ],
+  },
+  {
+    slug: 'local-first-pet-care-app',
+    title: 'Local-First Pet Care App with Optional Sign-In | CareTail',
+    metaDescription:
+      'CareTail is a local-first pet care app that can be used without creating an account, with optional Google Sign-In for supported account features.',
+    h1: 'Local-first pet care app with optional sign-in',
+    keyword: 'local-first pet care app',
+    problem:
+      'Some pet owners want a simple way to organize care details without being forced into an account before they can start.',
+    explanation:
+      'CareTail can be used locally without creating an account. Google Sign-In is optional for supported account features, while the core experience stays focused on simple organization.',
+    features: [
+      'Start organizing pet care details locally.',
+      'Use Google Sign-In only if you choose to.',
+      'Keep profiles, reminders, notes, and documents in a simple workspace.',
+      'Stay in control of what you add and review.',
+      'Use CareTail as a practical organizer for details you add yourself.',
+    ],
+    safetyLine:
+      'CareTail is presented as local-first organization with optional sign-in.',
+    imageIndex: 0,
+    imageAlt:
+      'CareTail feature graphic showing the pet care tracker identity and app workspace',
+    related: [
+      'pet-care-tracker',
+      'pet-reminder-app',
+      'vet-records-organizer',
+      'multi-pet-care',
+    ],
+  },
+]
+
+const careTailSeoPageBySlug = Object.fromEntries(
+  careTailSeoPages.map((page) => [page.slug, page]),
+) as Record<string, CareTailSeoPage>
+
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#08080A] text-[#F5F1EA]">
@@ -612,6 +815,10 @@ function App() {
           <Route path="/apps" element={<AppsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/caretail/:careTailPageSlug"
+            element={<CareTailSupportPage />}
+          />
           <Route
             path="/roleforge/guides"
             element={<RoleForgeGuidesIndexPage />}
@@ -633,7 +840,7 @@ function App() {
             element={
               <LegalPage
                 title="Privacy"
-                description="Privacy information for the DCP Labs website and its live products, including CoinRelic and RoleForge."
+                description="Privacy information for the DCP Labs website and its live products, including CareTail, CoinRelic, and RoleForge."
               />
             }
           />
@@ -666,7 +873,7 @@ function HomePage() {
     <>
       <Meta
         title="DCP Labs | Software Lab for Focused Digital Products"
-        description="DCP Labs builds focused digital products for practical everyday and professional use, including CoinRelic and RoleForge."
+        description="DCP Labs builds focused digital products for practical everyday and professional use, including CareTail, CoinRelic, and RoleForge."
         path="/"
         jsonLd={[
           organizationJsonLd(),
@@ -681,7 +888,7 @@ function HomePage() {
       <EcosystemMap />
       <FinalCta
         title="Explore the live DCP Labs products."
-        body="Install CoinRelic from Google Play or add RoleForge from the Chrome Web Store."
+        body="Install CareTail or CoinRelic from Google Play, or add RoleForge from the Chrome Web Store."
       />
     </>
   )
@@ -700,8 +907,8 @@ function AppsPage() {
   return (
     <PageShell>
       <Meta
-        title="Apps | CoinRelic and RoleForge by DCP Labs"
-        description="Explore CoinRelic for coin collectors and RoleForge for job seekers preparing tailored applications."
+        title="Apps | CareTail, CoinRelic, and RoleForge by DCP Labs"
+        description="Explore CareTail for pet owners, CoinRelic for coin collectors, and RoleForge for job seekers preparing tailored applications."
         path="/apps"
         jsonLd={[
           {
@@ -709,7 +916,7 @@ function AppsPage() {
             '@type': 'CollectionPage',
             name: 'DCP Labs Apps',
             description:
-              'Live DCP Labs products for coin collectors and job seekers.',
+              'Live DCP Labs products for pet owners, coin collectors, and job seekers.',
             url: absoluteUrl('/apps'),
             mainEntity: {
               '@type': 'ItemList',
@@ -738,9 +945,10 @@ function AppsPage() {
             <div className="max-w-5xl">
               <p className="section-kicker">Apps</p>
               <h1 className="mt-5 max-w-5xl text-[clamp(3rem,8vw,7.7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
-                Two live products, each built for a specific job.
+                Three live products, each built for a specific job.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[#B8B2A8]">
+                CareTail helps pet owners keep care details organized.
                 CoinRelic helps collectors identify and catalog coins.
                 RoleForge helps job seekers tailor application materials from
                 the job post in front of them.
@@ -787,10 +995,596 @@ function AppDetailPage() {
 
   if (!app) return <NotFoundPage />
 
+  if (app.slug === 'caretail') return <CareTailPage app={app} />
   if (app.slug === 'coinrelic') return <CoinRelicPage app={app} />
   if (app.slug === 'roleforge') return <RoleForgePage app={app} />
 
   return <NotFoundPage />
+}
+
+function CareTailPage({ app }: { app: StudioApp }) {
+  const panels = [
+    {
+      title: 'One profile for every pet',
+      body: "Keep each pet's routines, reminders, notes, and records separate so the details stay easy to review.",
+      image: app.screenshots[2],
+      alt: 'CareTail promo showing a pet profile with reminders, documents, and care history',
+    },
+    {
+      title: 'Care reminders',
+      body: 'Create reminders for medication, grooming, food, vaccines, vet visits, and custom care tasks.',
+      image: app.screenshots[3],
+      alt: 'CareTail promo showing pet care reminders for vaccines medication and vet visits',
+    },
+    {
+      title: 'Diary notes over time',
+      body: 'Log appetite, mood, energy, symptoms, observations, and notes without turning everyday care into complicated recordkeeping.',
+      image: app.screenshots[4],
+      alt: 'CareTail promo showing diary notes for mood appetite energy symptoms and notes',
+    },
+    {
+      title: 'Documents and records',
+      body: 'Save vaccine records, prescriptions, insurance files, and documents so appointment prep feels less scattered.',
+      image: app.screenshots[5],
+      alt: 'CareTail promo showing organized vet records documents prescriptions and insurance files',
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-[#F5FFFB] text-[#15212A]">
+      <Meta
+        title="CareTail | Pet Care Tracker App for Reminders, Notes, and Records"
+        description="CareTail is a pet care tracker app for organizing pet profiles, reminders, diary notes, documents, reports, and multi-pet care history."
+        path="/caretail"
+        image="/og-caretail.svg"
+        jsonLd={[
+          softwareApplicationJsonLd({
+            app,
+            path: '/caretail',
+            applicationCategory: 'LifestyleApplication',
+            operatingSystem: 'Android',
+          }),
+          faqJsonLd(app),
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'CareTail', path: '/caretail' },
+          ]),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-[#50BFB7]/20 pt-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(80,191,183,0.30),transparent_34%),radial-gradient(circle_at_86%_20%,rgba(255,104,104,0.14),transparent_28%),linear-gradient(135deg,#E4FFFB,#FFF8EB_76%)]" />
+        <div className="site-container relative grid min-h-[calc(100dvh-6rem)] gap-12 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <Reveal>
+            <div>
+              <Link
+                to="/apps"
+                className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#2B817C] transition hover:text-[#125A56]"
+              >
+                <ChevronRight className="rotate-180" size={16} />
+                Back to DCP Labs
+              </Link>
+              <div className="flex items-center gap-4">
+                {app.iconImage ? (
+                  <img
+                    src={app.iconImage}
+                    alt="CareTail app icon"
+                    className="h-16 w-16 rounded-[20px] object-cover shadow-[0_22px_50px_rgba(80,191,183,0.24)]"
+                  />
+                ) : (
+                  <AppSymbol app={app} />
+                )}
+                <span className="rounded-full border border-[#50BFB7]/25 bg-white/62 px-3 py-1 text-sm font-bold text-[#236A66] shadow-[0_14px_36px_rgba(80,191,183,0.14)]">
+                  Live on Google Play
+                </span>
+              </div>
+              <h1 className="mt-8 max-w-4xl text-[clamp(3.2rem,7.4vw,7.4rem)] font-semibold leading-[0.92] tracking-[-0.055em] text-[#15212A]">
+                Care routines, notes, and records in one calm place.
+              </h1>
+              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#41545B]">
+                CareTail helps pet owners organize profiles, reminders, diary
+                notes, documents, and care history without keeping everything in
+                their head.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <CareTailStoreButton href={app.storeUrl}>
+                  {app.storeLabel}
+                </CareTailStoreButton>
+                <Link
+                  to="/apps"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2B817C]/20 bg-white px-5 py-3 text-sm font-bold text-[#174F4B] shadow-[0_14px_34px_rgba(21,33,42,0.08)] transition hover:-translate-y-px hover:border-[#2B817C]/36"
+                >
+                  View DCP apps
+                  <ArrowRight size={17} />
+                </Link>
+              </div>
+              <ProductFacts
+                facts={app.storeFacts}
+                className="mt-6"
+                itemClassName="border-[#50BFB7]/24 bg-white/62 text-[#2B817C]"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="relative">
+              <div className="absolute inset-8 rounded-full bg-[#50BFB7]/20 blur-3xl" />
+              <CareTailPromoPanel
+                src={app.screenshots[0]}
+                alt="CareTail feature graphic showing pet profiles care reminders health diary and vet records"
+                wide
+                priority
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#F8FFFC] py-16 md:py-24">
+        <div className="site-container max-w-5xl">
+          <Reveal>
+            <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
+              Pet care details get scattered fast.
+            </h2>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#53666B]">
+              Notes, calendars, documents, photos, and memory all end up
+              carrying part of the routine. CareTail brings reminders, records,
+              and observations into one organized pet care tracker.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#ECFBF7] py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <div className="max-w-4xl">
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
+                Built for everyday care, not clinical overwhelm.
+              </h2>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              ['Pet profiles', "Keep each pet's routines, notes, and records separate."],
+              ['Care reminders', 'Track grooming, food, medication, vaccines, and visits.'],
+              ['Diary notes', 'Log appetite, mood, energy, symptoms, and observations.'],
+              ['Vet records', 'Keep documents and reports easier to find when needed.'],
+            ].map(([title, body]) => (
+              <Reveal key={title}>
+                <div className="h-full rounded-[28px] border border-[#50BFB7]/18 bg-white/76 p-6 shadow-[0_24px_70px_rgba(43,129,124,0.10)]">
+                  <h3 className="text-2xl font-semibold tracking-[-0.03em] text-[#15212A]">
+                    {title}
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#53666B]">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F8FFFC] py-16 md:py-24">
+        <div className="site-container grid gap-8">
+          {panels.map((panel, index) => (
+            <Reveal key={panel.title} delay={index * 0.04}>
+              <div className="grid gap-8 rounded-[34px] border border-[#50BFB7]/16 bg-white/80 p-5 shadow-[0_28px_80px_rgba(43,129,124,0.10)] lg:grid-cols-[0.42fr_0.58fr] lg:items-center lg:p-8">
+                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                  <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
+                    {panel.title}
+                  </h2>
+                  <p className="mt-5 text-lg leading-8 text-[#53666B]">
+                    {panel.body}
+                  </p>
+                  {panel.title === 'Care reminders' ? (
+                    <p className="mt-5 rounded-[22px] border border-[#50BFB7]/18 bg-[#ECFBF7] p-4 text-sm leading-6 text-[#2B817C]">
+                      CareTail reminders are user-created organizational tools
+                      and are not medical advice.
+                    </p>
+                  ) : null}
+                </div>
+                <CareTailPromoPanel
+                  src={panel.image}
+                  alt={panel.alt}
+                  portrait
+                />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#E6FAF7] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <Reveal>
+            <div>
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
+                Calm organization for more than one pet.
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-[#53666B]">
+                CareTail supports separate profiles so each pet can have its
+                own routines, notes, reminders, and documents. Premium gives
+                more room for more pets, routines, documents, and care history.
+              </p>
+              <div className="mt-8 grid gap-4">
+                {app.benefits.map((benefit) => (
+                  <div key={benefit} className="flex gap-3 text-[#236A66]">
+                    <Check className="mt-1 shrink-0 text-[#FF6868]" size={18} />
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <CareTailPromoPanel
+              src={app.screenshots[6]}
+              alt="CareTail promo showing today's care dashboard with pets reminders and quick actions"
+              portrait
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#F8FFFC] py-16 md:py-24">
+        <div className="site-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <Reveal>
+            <CareTailPromoPanel
+              src={app.screenshots[1]}
+              alt="CareTail promo showing all pet care profiles reminders notes and records in one place"
+              portrait
+            />
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div>
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
+                Local-first, with optional sign-in.
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-[#53666B]">
+                CareTail can be used locally without creating an account.
+                Google Sign-In is optional, while the core experience stays
+                focused on local-first organization.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <span className="rounded-full border border-[#50BFB7]/20 bg-[#ECFBF7] px-4 py-2 text-sm font-bold text-[#236A66]">
+                  Local-first organization
+                </span>
+                <span className="rounded-full border border-[#50BFB7]/20 bg-[#ECFBF7] px-4 py-2 text-sm font-bold text-[#236A66]">
+                  Optional Google Sign-In
+                </span>
+                <span className="rounded-full border border-[#50BFB7]/20 bg-[#ECFBF7] px-4 py-2 text-sm font-bold text-[#236A66]">
+                  User-created reminders
+                </span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <CareTailFaq app={app} />
+
+      <CareTailUseCaseLinks />
+
+      <section className="border-t border-[#50BFB7]/20 bg-[linear-gradient(135deg,#E4FFFB,#FFF8EB)] py-16 md:py-24">
+        <div className="site-container flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
+              Put pet care details in one calm place.
+            </h2>
+            <p className="mt-5 text-lg text-[#53666B]">
+              Download CareTail from Google Play.
+            </p>
+          </div>
+          <CareTailStoreButton href={app.storeUrl}>
+            Get it on Google Play
+          </CareTailStoreButton>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function CareTailSupportPage() {
+  const { careTailPageSlug = '' } = useParams()
+  const page = careTailSeoPageBySlug[careTailPageSlug]
+  const app = appBySlug.caretail
+
+  if (!page || !app) return <NotFoundPage />
+
+  const path = `/caretail/${page.slug}`
+  const relatedPages = page.related
+    .map((slug) => careTailSeoPageBySlug[slug])
+    .filter((item): item is CareTailSeoPage => Boolean(item))
+
+  return (
+    <div className="min-h-screen bg-[#F5FFFB] text-[#15212A]">
+      <Meta
+        title={page.title}
+        description={page.metaDescription}
+        path={path}
+        image="/og-caretail.svg"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: page.h1,
+            description: page.metaDescription,
+            url: absoluteUrl(path),
+            isPartOf: {
+              '@type': 'WebSite',
+              name: 'DCP Labs',
+              url: absoluteUrl('/'),
+            },
+            about: {
+              '@type': 'SoftwareApplication',
+              name: 'CareTail',
+              applicationCategory: 'LifestyleApplication',
+              operatingSystem: 'Android',
+              url: absoluteUrl('/caretail'),
+            },
+          },
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'CareTail', path: '/caretail' },
+            { name: page.h1, path },
+          ]),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-[#50BFB7]/20 pt-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(80,191,183,0.28),transparent_34%),radial-gradient(circle_at_90%_20%,rgba(255,104,104,0.12),transparent_28%),linear-gradient(135deg,#E4FFFB,#FFF8EB_80%)]" />
+        <div className="site-container relative grid gap-12 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <Reveal>
+            <div>
+              <Link
+                to="/caretail"
+                className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#2B817C] transition hover:text-[#125A56]"
+              >
+                <ChevronRight className="rotate-180" size={16} />
+                Back to CareTail
+              </Link>
+              <div className="flex flex-wrap items-center gap-4">
+                {app.iconImage ? (
+                  <img
+                    src={app.iconImage}
+                    alt="CareTail app icon"
+                    className="h-14 w-14 rounded-[18px] object-cover shadow-[0_18px_44px_rgba(80,191,183,0.22)]"
+                  />
+                ) : (
+                  <AppSymbol app={app} small />
+                )}
+                <span className="rounded-full border border-[#50BFB7]/25 bg-white/62 px-3 py-1 text-sm font-bold text-[#236A66] shadow-[0_14px_36px_rgba(80,191,183,0.14)]">
+                  {page.keyword}
+                </span>
+              </div>
+              <h1 className="mt-8 max-w-4xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.94] tracking-[-0.055em] text-[#15212A]">
+                {page.h1}
+              </h1>
+              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#41545B]">
+                {page.problem}
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <CareTailStoreButton href={app.storeUrl}>
+                  Get CareTail on Google Play
+                </CareTailStoreButton>
+                <Link
+                  to="/apps"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2B817C]/20 bg-white px-5 py-3 text-sm font-bold text-[#174F4B] shadow-[0_14px_34px_rgba(21,33,42,0.08)] transition hover:-translate-y-px hover:border-[#2B817C]/36"
+                >
+                  View DCP apps
+                  <ArrowRight size={17} />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <CareTailPromoPanel
+              src={app.screenshots[page.imageIndex]}
+              alt={page.imageAlt}
+              wide={page.imageIndex === 0}
+              portrait={page.imageIndex !== 0}
+              priority
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#F8FFFC] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+          <Reveal>
+            <div>
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
+                How CareTail helps
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-[#53666B]">
+                {page.explanation}
+              </p>
+              <p className="mt-6 rounded-[24px] border border-[#50BFB7]/18 bg-[#ECFBF7] p-5 text-sm leading-6 text-[#2B817C]">
+                {page.safetyLine}
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="grid gap-4 md:grid-cols-2">
+              {page.features.map((feature) => (
+                <div
+                  key={feature}
+                  className="flex gap-3 rounded-[26px] border border-[#50BFB7]/18 bg-white/82 p-5 shadow-[0_20px_60px_rgba(43,129,124,0.09)]"
+                >
+                  <Check className="mt-1 shrink-0 text-[#FF6868]" size={18} />
+                  <span className="leading-7 text-[#236A66]">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#ECFBF7] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <Reveal>
+            <div>
+              <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
+                Keep pet care details organized with CareTail.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#53666B]">
+                Explore the main CareTail page for the full product overview,
+                screenshots, FAQ, and official Google Play link.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="flex flex-wrap gap-3">
+              <CareTailStoreButton href={app.storeUrl}>
+                Get CareTail on Google Play
+              </CareTailStoreButton>
+              <Link
+                to="/caretail"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2B817C]/20 bg-white px-5 py-3 text-sm font-bold text-[#174F4B] shadow-[0_14px_34px_rgba(21,33,42,0.08)] transition hover:-translate-y-px hover:border-[#2B817C]/36"
+              >
+                View CareTail
+                <ArrowRight size={17} />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <CareTailUseCaseLinks currentSlug={page.slug} relatedPages={relatedPages} />
+    </div>
+  )
+}
+
+function CareTailUseCaseLinks({
+  currentSlug,
+  relatedPages,
+}: {
+  currentSlug?: string
+  relatedPages?: CareTailSeoPage[]
+}) {
+  const pages =
+    relatedPages ??
+    careTailSeoPages.filter((page) => page.slug !== currentSlug)
+
+  return (
+    <section className="border-t border-[#50BFB7]/20 bg-[#F8FFFC] py-16 md:py-24">
+      <div className="site-container">
+        <Reveal>
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
+              Explore CareTail use cases
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-[#53666B]">
+              Practical guides for organizing routines, reminders, notes,
+              records, and multi-pet care with CareTail.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {pages.map((item) => (
+            <Reveal key={item.slug}>
+              <Link
+                to={`/caretail/${item.slug}`}
+                className="group flex h-full flex-col justify-between rounded-[28px] border border-[#50BFB7]/18 bg-white/82 p-6 shadow-[0_20px_60px_rgba(43,129,124,0.09)] transition hover:-translate-y-1 hover:border-[#50BFB7]/34"
+              >
+                <span className="text-sm font-bold text-[#2B817C]">
+                  {item.keyword}
+                </span>
+                <span className="mt-5 block text-2xl font-semibold tracking-[-0.03em] text-[#15212A]">
+                  {item.h1}
+                </span>
+                <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#FF6868]">
+                  Read guide
+                  <ArrowRight
+                    size={17}
+                    className="transition group-hover:translate-x-1"
+                  />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CareTailPromoPanel({
+  src,
+  alt,
+  wide = false,
+  portrait = false,
+  priority = false,
+}: {
+  src: string
+  alt: string
+  wide?: boolean
+  portrait?: boolean
+  priority?: boolean
+}) {
+  const maxWidth = wide ? 'max-w-[920px]' : portrait ? 'max-w-[430px]' : 'max-w-[620px]'
+
+  return (
+    <div className={`relative mx-auto w-full ${maxWidth}`}>
+      <div className="absolute -inset-5 rounded-[2.25rem] bg-[radial-gradient(circle_at_48%_30%,rgba(80,191,183,0.22),transparent_52%),radial-gradient(circle_at_82%_76%,rgba(255,104,104,0.12),transparent_42%)] blur-2xl" />
+      <div className="relative rounded-[30px] border border-[#50BFB7]/18 bg-white/72 p-2 shadow-[0_28px_80px_rgba(43,129,124,0.16),inset_0_1px_0_rgba(255,255,255,0.70)]">
+        <img
+          src={src}
+          alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          className="h-auto w-full rounded-[24px] object-contain"
+        />
+      </div>
+    </div>
+  )
+}
+
+function CareTailStoreButton({
+  href,
+  children,
+}: {
+  href: string
+  children: ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#FF6868] bg-[#FF6868] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_42px_rgba(255,104,104,0.24)] transition hover:-translate-y-px hover:bg-[#F85E5E]"
+    >
+      {children}
+      <ArrowRight size={17} />
+    </a>
+  )
+}
+
+function CareTailFaq({ app }: { app: StudioApp }) {
+  return (
+    <section className="bg-[#ECFBF7] py-16 md:py-24">
+      <div className="site-container max-w-5xl">
+        <Reveal>
+          <h2 className="text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
+            CareTail FAQ
+          </h2>
+        </Reveal>
+        <div className="mt-8 divide-y divide-[#50BFB7]/18 border-y border-[#50BFB7]/18">
+          {app.faq.map((item) => (
+            <div key={item.question} className="py-7">
+              <h3 className="text-2xl font-semibold text-[#15212A]">
+                {item.question}
+              </h3>
+              <p className="mt-4 text-lg leading-8 text-[#53666B]">
+                {item.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
 
 function CoinRelicPage({ app }: { app: StudioApp }) {
@@ -2162,7 +2956,7 @@ function RoleForgeBestToolsPage() {
                 Best AI resume tools for tailored job applications.
               </h1>
               <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
-                The best tool depends on the job seeker’s goal. Some tools
+                The best tool depends on the job seeker's goal. Some tools
                 help build resumes, some organize applications, and others focus
                 on tailoring materials to the job post in front of you.
               </p>
@@ -2901,8 +3695,8 @@ function AboutPage() {
               <p className="mt-8 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
                 DCP Labs designs and publishes practical software products for
                 everyday and professional use. The current catalog is
-                intentionally focused on two live products: CoinRelic and
-                RoleForge.
+                intentionally focused on three live products: CareTail,
+                CoinRelic, and RoleForge.
               </p>
             </div>
           </Reveal>
@@ -2925,7 +3719,7 @@ function AboutPage() {
                 ],
                 [
                   'Practical categories',
-                  'The current catalog focuses on coin collecting and job application preparation.',
+                  'The current catalog focuses on pet care organization, coin collecting, and job application preparation.',
                 ],
                 [
                   'Trustworthy presentation',
@@ -2946,7 +3740,7 @@ function AboutPage() {
 
       <FinalCta
         title="Explore the live product catalog."
-        body="Choose CoinRelic for coin collecting or RoleForge for job application preparation."
+        body="Choose CareTail for pet care organization, CoinRelic for coin collecting, or RoleForge for job application preparation."
       />
     </PageShell>
   )
@@ -3116,13 +3910,13 @@ function HeroSection() {
               </h1>
               <p className="mt-8 max-w-2xl text-xl leading-9 text-[#D6D0C7]">
                 DCP Labs builds practical apps with clear jobs to do. The live
-                catalog currently includes CoinRelic for coin collectors and
-                RoleForge for job seekers.
+                catalog currently includes CareTail for pet owners, CoinRelic
+                for coin collectors, and RoleForge for job seekers.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <ButtonLink to="/apps">Explore apps</ButtonLink>
-                <ButtonLink to="/coinrelic" variant="secondary">
-                  View CoinRelic
+                <ButtonLink to="/caretail" variant="secondary">
+                  View CareTail
                 </ButtonLink>
               </div>
             </div>
@@ -3193,7 +3987,7 @@ function ProductLedger() {
         <Reveal>
           <div className="grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.8fr_1.2fr]">
             <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white md:text-6xl">
-              Two products, clear next steps.
+              Three products, clear next steps.
             </h2>
             <p className="max-w-2xl text-lg leading-8 text-[#B8B2A8]">
               Each product explains what it does, who it is for, and where to
@@ -3322,6 +4116,7 @@ function StudioPrinciples() {
 
 function EcosystemMap() {
   const groups = [
+    ['Pet care', 'CareTail'],
     ['Collectors', 'CoinRelic'],
     ['Career preparation', 'RoleForge'],
   ]
@@ -3334,11 +4129,11 @@ function EcosystemMap() {
             <div>
               <p className="section-kicker">Ecosystem</p>
               <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.03em] text-white md:text-6xl">
-                One studio, two focused product paths.
+                One studio, three focused product paths.
               </h2>
               <p className="mt-5 max-w-md text-lg leading-8 text-[#B8B2A8]">
-                Choose the collector app or the job application extension, then
-                continue to the official store page.
+                Choose the pet care tracker, collector app, or job application
+                extension, then continue to the official store page.
               </p>
             </div>
             <div className="border-y border-white/10">
@@ -3492,7 +4287,7 @@ function Footer() {
                   rel="noreferrer"
                   className="text-xs text-[#81796F] transition hover:text-white"
                 >
-                  {app.name === 'CoinRelic'
+                  {app.platform === 'Android app'
                     ? 'Google Play'
                     : 'Chrome Web Store'}
                 </a>
