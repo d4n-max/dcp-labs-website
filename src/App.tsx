@@ -1,10 +1,16 @@
 import {
   ArrowRight,
+  BarChart3,
+  BookOpenCheck,
+  Brain,
   Check,
   ChevronRight,
   Filter,
+  Languages,
+  ListChecks,
   Mail,
   Menu,
+  Target,
   X,
 } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
@@ -118,6 +124,7 @@ const categoryFilters: AppCategory[] = [
   'Android',
   'Chrome Extension',
   'Pets',
+  'Education',
   'Productivity',
   'Career',
   'Collectors',
@@ -840,7 +847,7 @@ function App() {
             element={
               <LegalPage
                 title="Privacy"
-                description="Privacy information for the DCP Labs website and its live products, including CareTail, CoinRelic, and RoleForge."
+                description="Privacy information for the DCP Labs website and its live products, including LearnLift AI, CareTail, CoinRelic, and RoleForge."
               />
             }
           />
@@ -873,7 +880,7 @@ function HomePage() {
     <>
       <Meta
         title="DCP Labs | Software Lab for Focused Digital Products"
-        description="DCP Labs builds focused digital products for practical everyday and professional use, including CareTail, CoinRelic, and RoleForge."
+        description="DCP Labs builds focused digital products for practical everyday and professional use, including LearnLift AI, CareTail, CoinRelic, and RoleForge."
         path="/"
         jsonLd={[
           organizationJsonLd(),
@@ -888,7 +895,7 @@ function HomePage() {
       <EcosystemMap />
       <FinalCta
         title="Explore the live DCP Labs products."
-        body="Install CareTail or CoinRelic from Google Play, or add RoleForge from the Chrome Web Store."
+        body="Install LearnLift AI, CareTail, or CoinRelic from Google Play, or add RoleForge from the Chrome Web Store."
       />
     </>
   )
@@ -907,8 +914,8 @@ function AppsPage() {
   return (
     <PageShell>
       <Meta
-        title="Apps | CareTail, CoinRelic, and RoleForge by DCP Labs"
-        description="Explore CareTail for pet owners, CoinRelic for coin collectors, and RoleForge for job seekers preparing tailored applications."
+        title="Apps | LearnLift AI, CareTail, CoinRelic, and RoleForge by DCP Labs"
+        description="Explore LearnLift AI for focused study, CareTail for pet owners, CoinRelic for coin collectors, and RoleForge for job seekers preparing tailored applications."
         path="/apps"
         jsonLd={[
           {
@@ -945,13 +952,14 @@ function AppsPage() {
             <div className="max-w-5xl">
               <p className="section-kicker">Apps</p>
               <h1 className="mt-5 max-w-5xl text-[clamp(3rem,8vw,7.7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
-                Three live products, each built for a specific job.
+                Four live products, each built for a specific job.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[#B8B2A8]">
-                CareTail helps pet owners keep care details organized.
-                CoinRelic helps collectors identify and catalog coins.
-                RoleForge helps job seekers tailor application materials from
-                the job post in front of them.
+                LearnLift AI supports short study sessions for English,
+                interviews, and QA learning. CareTail helps pet owners keep
+                care details organized. CoinRelic helps collectors identify and
+                catalog coins. RoleForge helps job seekers tailor application
+                materials from the job post in front of them.
               </p>
             </div>
           </Reveal>
@@ -998,8 +1006,431 @@ function AppDetailPage() {
   if (app.slug === 'caretail') return <CareTailPage app={app} />
   if (app.slug === 'coinrelic') return <CoinRelicPage app={app} />
   if (app.slug === 'roleforge') return <RoleForgePage app={app} />
+  if (app.slug === 'learnlift-ai') return <LearnLiftPage app={app} />
 
   return <NotFoundPage />
+}
+
+function LearnLiftPage({ app }: { app: StudioApp }) {
+  const trustPoints = [
+    'English practice',
+    'Interview preparation',
+    'IT & QA learning',
+    'Short daily sessions',
+  ]
+  const features = [
+    {
+      title: 'Guided study sessions',
+      body: 'Start from a chosen path and move through focused practice without rebuilding a study plan every day.',
+      icon: ListChecks,
+    },
+    {
+      title: 'English practice',
+      body: 'Use vocabulary and speaking prep paths for practical workplace English practice.',
+      icon: Languages,
+    },
+    {
+      title: 'Job interview preparation',
+      body: 'Review common interview themes, behavioral questions, and answer structure in small steps.',
+      icon: Target,
+    },
+    {
+      title: 'IT and QA learning topics',
+      body: 'Practice QA, SQL, automation, and technical interview topics through available study packs.',
+      icon: BookOpenCheck,
+    },
+    {
+      title: 'Progress-friendly structure',
+      body: 'Track weak topics and review signals so it is easier to decide what to practice next.',
+      icon: BarChart3,
+    },
+    {
+      title: 'Smart Review flashcards',
+      body: 'Return to due cards and mark what is known or needs review during short flashcard sessions.',
+      icon: Brain,
+    },
+  ]
+  const gallery = [
+    {
+      src: app.screenshots[1],
+      title: 'Choose a focused path',
+      body: 'Start with English vocabulary, job interview prep, or a technical study path so practice has a clear next step.',
+      alt: 'LearnLift AI screenshot showing selectable study paths for English vocabulary and job interview prep',
+    },
+    {
+      src: app.screenshots[2],
+      title: 'Review with flashcards',
+      body: 'Flashcard practice keeps questions, answer reveal, and session review in a focused flow.',
+      alt: 'LearnLift AI screenshot showing flashcard preview practice with answer reveal and session review',
+    },
+    {
+      src: app.screenshots[3],
+      title: 'Track weak topics',
+      body: 'Progress review highlights topics that need more practice without turning learning into a complicated dashboard.',
+      alt: 'LearnLift AI screenshot showing daily progress and weak topics to review',
+    },
+    {
+      src: app.screenshots[4],
+      title: 'Go deeper with Premium',
+      body: 'Premium packs add focused practice areas such as SQL, QA, and automation basics.',
+      alt: 'LearnLift AI screenshot showing premium study packs for SQL QA and automation practice',
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-[#090614] text-white">
+      <Meta
+        title="LearnLift AI — Study Coach for English, Interviews and QA"
+        description="LearnLift AI helps learners practice English, job interview preparation, and IT/QA topics through short guided study sessions."
+        path="/learnlift-ai"
+        image="/og-learnlift-ai.png"
+        jsonLd={[
+          softwareApplicationJsonLd({
+            app,
+            path: '/learnlift-ai',
+            applicationCategory: 'EducationalApplication',
+            operatingSystem: 'Android',
+          }),
+          faqJsonLd(app),
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'LearnLift AI', path: '/learnlift-ai' },
+          ]),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-[#ED64A6]/20 pt-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(85,60,154,0.72),transparent_34%),radial-gradient(circle_at_82%_30%,rgba(237,100,166,0.34),transparent_30%),linear-gradient(145deg,#090614,#1B1230_54%,#10091E)]" />
+        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.85)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.85)_1px,transparent_1px)] [background-size:88px_88px]" />
+        <div className="site-container relative grid gap-12 py-8 md:py-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <Reveal>
+            <div>
+              <Link
+                to="/apps"
+                className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#F0C5DD] transition hover:text-white"
+              >
+                <ChevronRight className="rotate-180" size={16} />
+                Back to DCP Labs apps
+              </Link>
+              <div className="flex flex-wrap items-center gap-4">
+                {app.iconImage ? (
+                  <img
+                    src={app.iconImage}
+                    alt="LearnLift AI app icon"
+                    className="h-16 w-16 rounded-[20px] object-cover shadow-[0_22px_56px_rgba(237,100,166,0.28)]"
+                  />
+                ) : (
+                  <AppSymbol app={app} />
+                )}
+                <span className="rounded-full border border-[#ED64A6]/30 bg-[#ED64A6]/12 px-3 py-1 text-sm font-bold text-[#FFD4E8]">
+                  Elevate Your Skills, Effortlessly.
+                </span>
+              </div>
+              <h1 className="mt-7 max-w-4xl text-[clamp(2.75rem,5.2vw,5.1rem)] font-semibold leading-[0.93] tracking-[-0.045em] text-white">
+                A study coach for focused daily practice.
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#DCCFEF]">
+                LearnLift AI helps learners practice English, job interview
+                preparation, and IT/QA topics through short guided study
+                sessions, flashcards, quizzes, and progress review.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <LearnLiftStoreButton href={app.storeUrl}>
+                  Get it on Google Play
+                </LearnLiftStoreButton>
+                <Link
+                  to="/apps"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/16 bg-white/[0.05] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-px hover:border-white/32 hover:bg-white/[0.08]"
+                >
+                  Explore DCP Labs apps
+                  <ArrowRight size={17} />
+                </Link>
+              </div>
+              <ProductFacts
+                facts={app.storeFacts}
+                className="mt-6"
+                itemClassName="border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#F0C5DD]"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="absolute inset-y-10 right-10 w-72 rounded-full bg-[#ED64A6]/24 blur-3xl" />
+              <div className="absolute bottom-10 left-2 hidden h-52 w-52 rounded-full border border-[#ED64A6]/18 bg-[#553C9A]/22 lg:block" />
+              <LearnLiftImagePanel
+                src={app.screenshots[0]}
+                alt="LearnLift AI app screenshot showing the home study coach dashboard with flashcards quizzes smart review and study plans"
+                featured
+                priority
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="border-b border-[#ED64A6]/16 bg-[#0C0818]">
+        <div className="site-container grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
+          {trustPoints.map((point) => (
+            <div
+              key={point}
+              className="border-b border-[#ED64A6]/14 py-5 sm:border-r sm:last:border-r-0 lg:border-b-0"
+            >
+              <span className="text-sm font-bold text-[#F0C5DD]">{point}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-b border-[#ED64A6]/14 bg-[#0B0715] py-16 md:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(85,60,154,0.34),transparent_34%),linear-gradient(180deg,#0B0715,#130B24)]" />
+        <div className="site-container grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+          <Reveal>
+            <div className="relative">
+              <p className="section-kicker border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#FFD4E8]">
+                Why it exists
+              </p>
+              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white md:text-6xl">
+                Learning for interviews and QA can get scattered.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="relative max-w-3xl rounded-[30px] border border-white/10 bg-white/[0.055] p-6 text-lg leading-8 text-[#E9DDF6] shadow-[0_24px_80px_rgba(0,0,0,0.24)] md:p-8">
+              <p>
+                A learner might have English notes in one place, interview
+                questions somewhere else, and QA practice split across saved
+                links. LearnLift AI gives that practice a simple structure:
+                choose a path, complete a short session, review weak topics,
+                and come back tomorrow.
+              </p>
+              <p className="mt-5">
+                The page focuses on visible app features: study paths,
+                flashcards, quizzes, Smart Review, progress review, and Premium
+                Study Packs.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#120B22] py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <div className="max-w-4xl">
+              <p className="section-kicker border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#FFD4E8]">
+                Study coach app
+              </p>
+              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white md:text-6xl">
+                Built for short sessions that are easy to repeat.
+              </h2>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
+
+              return (
+                <Reveal key={feature.title} delay={index * 0.035}>
+                  <div className="h-full rounded-[28px] border border-white/10 bg-white/[0.055] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.22)]">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#ED64A6]/24 bg-[#ED64A6]/12 text-[#FFD4E8]">
+                      <Icon size={20} strokeWidth={1.8} />
+                    </span>
+                    <h3 className="mt-6 text-2xl font-semibold tracking-[-0.03em] text-white">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-4 leading-7 text-[#C9BCD8]">
+                      {feature.body}
+                    </p>
+                  </div>
+                </Reveal>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-y border-[#ED64A6]/14 bg-[#0A0613] py-16 md:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(237,100,166,0.16),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(85,60,154,0.28),transparent_32%),linear-gradient(180deg,#0A0613,#150C26_55%,#0B0715)]" />
+        <div className="site-container">
+          <Reveal>
+            <div className="relative grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+              <div>
+                <p className="section-kicker border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#FFD4E8]">
+                  Real app screens
+                </p>
+                <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white md:text-6xl">
+                  Study paths, review, and progress in one flow.
+                </h2>
+              </div>
+              <p className="max-w-2xl text-lg leading-8 text-[#DCCFEF]">
+                Screenshots show the current Android experience, including
+                path selection, Smart Review flashcards, progress signals, and
+                premium practice packs.
+              </p>
+            </div>
+          </Reveal>
+          <div className="relative mt-12 grid gap-8">
+            {gallery.map((item, index) => (
+              <Reveal key={item.src} delay={index * 0.045}>
+                <article className="grid gap-8 rounded-[34px] border border-white/10 bg-white/[0.055] p-5 shadow-[0_32px_100px_rgba(0,0,0,0.28)] md:p-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+                  <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                    <span className="text-sm font-bold text-[#ED64A6]">
+                      0{index + 1}
+                    </span>
+                    <h3 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-5 text-lg leading-8 text-[#DCCFEF]">
+                      {item.body}
+                    </p>
+                  </div>
+                  <LearnLiftImagePanel
+                    src={item.src}
+                    alt={item.alt}
+                    featured
+                  />
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#0C0818] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.74fr_1.26fr] lg:items-start">
+          <Reveal>
+            <div>
+              <p className="section-kicker border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#FFD4E8]">
+                Who it is for
+              </p>
+              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white md:text-6xl">
+                For learners who want a clearer next step.
+              </h2>
+            </div>
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {app.audience.map((item, index) => (
+              <Reveal key={item} delay={index * 0.04}>
+                <div className="flex h-full gap-3 rounded-[26px] border border-white/10 bg-white/[0.045] p-5">
+                  <Check className="mt-1 shrink-0 text-[#ED64A6]" size={18} />
+                  <span className="leading-7 text-[#DCCFEF]">{item}</span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <LearnLiftFaq app={app} />
+
+      <section className="border-t border-[#ED64A6]/20 bg-[linear-gradient(135deg,#130B24,#2A1747_56%,#10091E)] py-16 md:py-24">
+        <div className="site-container flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-white md:text-6xl">
+              Start with one focused study session.
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#DCCFEF]">
+              Download LearnLift AI from Google Play and practice English,
+              interview preparation, or QA topics in small steps.
+            </p>
+          </div>
+          <LearnLiftStoreButton href={app.storeUrl}>
+            Get it on Google Play
+          </LearnLiftStoreButton>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function LearnLiftFaq({ app }: { app: StudioApp }) {
+  return (
+    <section className="relative overflow-hidden border-t border-[#ED64A6]/14 bg-[#0B0715] py-16 md:py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(85,60,154,0.26),transparent_32%),linear-gradient(180deg,#0B0715,#120A21)]" />
+      <div className="site-container relative max-w-5xl">
+        <Reveal>
+          <div>
+            <p className="section-kicker border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#FFD4E8]">
+              LearnLift AI FAQ
+            </p>
+            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] text-white md:text-6xl">
+              Questions before you start
+            </h2>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-4">
+          {app.faq.map((item, index) => (
+            <Reveal key={item.question} delay={index * 0.04}>
+              <article className="rounded-[26px] border border-white/10 bg-white/[0.05] p-5 shadow-[0_20px_70px_rgba(0,0,0,0.20)] md:p-6">
+                <h3 className="text-xl font-semibold tracking-[-0.025em] text-white md:text-2xl">
+                  {item.question}
+                </h3>
+                <p className="mt-3 text-base leading-7 text-[#DCCFEF] md:text-lg md:leading-8">
+                  {item.answer}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LearnLiftImagePanel({
+  src,
+  alt,
+  featured = false,
+  priority = false,
+}: {
+  src: string
+  alt: string
+  featured?: boolean
+  priority?: boolean
+}) {
+  const maxWidth = featured ? 'max-w-[640px]' : 'max-w-[420px]'
+
+  return (
+    <div className={`relative mx-auto w-full ${maxWidth}`}>
+      <div className="absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_35%_15%,rgba(237,100,166,0.20),transparent_45%),radial-gradient(circle_at_75%_75%,rgba(85,60,154,0.18),transparent_42%)] blur-2xl" />
+      <div
+        className={`relative border border-white/14 bg-white/[0.07] shadow-[0_28px_88px_rgba(24,9,42,0.30)] ${
+          featured ? 'rounded-[32px] p-2.5' : 'rounded-[26px] p-1.5'
+        }`}
+      >
+        <img
+          src={src}
+          alt={alt}
+          loading={priority ? 'eager' : undefined}
+          decoding="async"
+          className={`h-auto w-full object-contain ${
+            featured ? 'rounded-[25px]' : 'rounded-[20px]'
+          }`}
+        />
+      </div>
+    </div>
+  )
+}
+
+function LearnLiftStoreButton({
+  href,
+  children,
+}: {
+  href: string
+  children: ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#ED64A6] bg-[#ED64A6] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_46px_rgba(237,100,166,0.28)] transition hover:-translate-y-px hover:bg-[#F174B3]"
+    >
+      {children}
+      <ArrowRight size={17} />
+    </a>
+  )
 }
 
 function CareTailPage({ app }: { app: StudioApp }) {
@@ -3695,8 +4126,8 @@ function AboutPage() {
               <p className="mt-8 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
                 DCP Labs designs and publishes practical software products for
                 everyday and professional use. The current catalog is
-                intentionally focused on three live products: CareTail,
-                CoinRelic, and RoleForge.
+                intentionally focused on four live products: LearnLift AI,
+                CareTail, CoinRelic, and RoleForge.
               </p>
             </div>
           </Reveal>
@@ -3740,7 +4171,7 @@ function AboutPage() {
 
       <FinalCta
         title="Explore the live product catalog."
-        body="Choose CareTail for pet care organization, CoinRelic for coin collecting, or RoleForge for job application preparation."
+        body="Choose LearnLift AI for study practice, CareTail for pet care organization, CoinRelic for coin collecting, or RoleForge for job application preparation."
       />
     </PageShell>
   )
@@ -3987,7 +4418,7 @@ function ProductLedger() {
         <Reveal>
           <div className="grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.8fr_1.2fr]">
             <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white md:text-6xl">
-              Three products, clear next steps.
+              Four products, clear next steps.
             </h2>
             <p className="max-w-2xl text-lg leading-8 text-[#B8B2A8]">
               Each product explains what it does, who it is for, and where to
@@ -4116,6 +4547,7 @@ function StudioPrinciples() {
 
 function EcosystemMap() {
   const groups = [
+    ['Study practice', 'LearnLift AI'],
     ['Pet care', 'CareTail'],
     ['Collectors', 'CoinRelic'],
     ['Career preparation', 'RoleForge'],
@@ -4129,11 +4561,12 @@ function EcosystemMap() {
             <div>
               <p className="section-kicker">Ecosystem</p>
               <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.03em] text-white md:text-6xl">
-                One studio, three focused product paths.
+                One studio, four focused product paths.
               </h2>
               <p className="mt-5 max-w-md text-lg leading-8 text-[#B8B2A8]">
-                Choose the pet care tracker, collector app, or job application
-                extension, then continue to the official store page.
+                Choose the study coach, pet care tracker, collector app, or
+                job application extension, then continue to the official store
+                page.
               </p>
             </div>
             <div className="border-y border-white/10">

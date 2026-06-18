@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   ClipboardCheck,
   Coins,
+  GraduationCap,
   HeartPulse,
   ShieldCheck,
 } from 'lucide-react'
@@ -20,6 +21,12 @@ import caretailFeature from '../assets/products/caretail-feature.png'
 import caretailIcon from '../assets/products/caretail-icon.png'
 import caretailProfile from '../assets/products/caretail-profile.png'
 import caretailReminders from '../assets/products/caretail-reminders.png'
+import learnliftHome from '../assets/products/learnlift-home.png'
+import learnliftIcon from '../assets/products/learnlift-icon.png'
+import learnliftRawFlashcards from '../assets/products/learnlift-raw-flashcards.png'
+import learnliftRawPremium from '../assets/products/learnlift-raw-premium.png'
+import learnliftRawProgress from '../assets/products/learnlift-raw-progress.png'
+import learnliftRawStudyPaths from '../assets/products/learnlift-raw-study-paths.png'
 import roleforgeAnalyze from '../assets/products/roleforge-analyze-any-job-post.png'
 import roleforgeBundle from '../assets/products/roleforge-download-application-bundle.png'
 import roleforgeCoverLetters from '../assets/products/roleforge-draft-cover-letters.png'
@@ -34,6 +41,7 @@ export type AppCategory =
   | 'Collectors'
   | 'Pets'
   | 'Career'
+  | 'Education'
   | 'Productivity'
 
 export type StudioApp = {
@@ -58,13 +66,90 @@ export type StudioApp = {
   accent: string
   secondaryAccent: string
   code: string
-  visualStyle: 'collector' | 'career' | 'petcare'
+  visualStyle: 'collector' | 'career' | 'petcare' | 'learning'
   iconImage?: string
   screenshots: string[]
   storeFacts: string[]
 }
 
 export const apps: StudioApp[] = [
+  {
+    slug: 'learnlift-ai',
+    name: 'LearnLift AI',
+    category: 'Study coach app',
+    filters: ['Android', 'Education', 'Career', 'Productivity'],
+    status: 'Live',
+    platform: 'Android app',
+    storeLabel: 'Get it on Google Play',
+    storeUrl:
+      'https://play.google.com/store/apps/details?id=com.learnliftai.app',
+    shortDescription:
+      'Practice English, job interview prep, and IT/QA topics through short guided study sessions.',
+    description:
+      'LearnLift AI helps learners build consistent practice around English, interview preparation, and IT/QA learning topics with flashcards, quizzes, progress review, and bite-sized study paths.',
+    heroLine:
+      'A focused Android study coach for English practice, interview preparation, and IT/QA learning in small daily steps.',
+    problem:
+      'Interview prep, English practice, and technical QA learning can feel scattered across notes, videos, and saved questions. LearnLift AI gives learners one calm place to choose a path, practice, review, and track progress.',
+    benefits: [
+      'Choose focused study paths for English, job interview preparation, and technical learning.',
+      'Practice with flashcards, quizzes, and short sessions designed for consistency.',
+      'Review weak topics and progress signals so the next study step is easier to choose.',
+    ],
+    features: [
+      'Guided study sessions',
+      'English vocabulary and speaking prep',
+      'Job interview preparation',
+      'IT and QA learning topics',
+      'Smart Review flashcards',
+      'Progress and weak-topic review',
+      'Bite-sized daily practice',
+      'Premium study packs',
+    ],
+    audience: [
+      'QA testers preparing for web or software QA interviews',
+      'People improving English for work',
+      'Beginners who want structured learning paths',
+      'Job seekers building consistent interview practice',
+    ],
+    faq: [
+      {
+        question: 'What is LearnLift AI for?',
+        answer:
+          'LearnLift AI is a study coach app for short guided practice around English, interview preparation, and IT/QA learning topics.',
+      },
+      {
+        question: 'Does LearnLift AI guarantee interview results?',
+        answer:
+          'No. LearnLift AI supports practice and preparation, but interview outcomes depend on the role, the candidate, and the full hiring process.',
+      },
+      {
+        question: 'What study modes are visible in the app?',
+        answer:
+          'The current app experience shows study paths, flashcards, quizzes, Smart Review, weak-topic progress review, and premium study packs.',
+      },
+      {
+        question: 'Is LearnLift AI available on Android?',
+        answer:
+          'Yes. LearnLift AI is linked from DCP Labs to its official Google Play listing.',
+      },
+    ],
+    cta: 'Get it on Google Play',
+    icon: GraduationCap,
+    accent: '#553C9A',
+    secondaryAccent: '#ED64A6',
+    code: 'LL',
+    visualStyle: 'learning',
+    iconImage: learnliftIcon,
+    screenshots: [
+      learnliftHome,
+      learnliftRawStudyPaths,
+      learnliftRawFlashcards,
+      learnliftRawProgress,
+      learnliftRawPremium,
+    ],
+    storeFacts: ['Live on Google Play', 'Android app', 'Study coach app'],
+  },
   {
     slug: 'caretail',
     name: 'CareTail',
@@ -295,7 +380,7 @@ export const appBySlug: Record<string, StudioApp> = Object.fromEntries(
 )
 
 export const trustSignals: Array<{ label: string; icon: LucideIcon }> = [
-  { label: 'Three live products', icon: BadgeCheck },
+  { label: 'Four live products', icon: BadgeCheck },
   { label: 'Built for practical use cases', icon: ClipboardCheck },
   { label: 'Direct links to official stores', icon: ShieldCheck },
 ]
