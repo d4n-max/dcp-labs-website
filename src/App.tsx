@@ -4123,6 +4123,11 @@ function blogPostJsonLd(post: BlogPost) {
   }
 }
 
+function blogPostCtaText(post: BlogPost) {
+  if (post.app === 'RoleForge') return 'Try RoleForge'
+  return `Explore ${post.app}`
+}
+
 function BlogPage() {
   const [activeCategory, setActiveCategory] =
     useState<(typeof blogCategories)[number]>('All')
@@ -4313,24 +4318,7 @@ function BlogPostPage() {
         <section className="py-16 md:py-24">
           <div className="site-container grid gap-12 lg:grid-cols-[minmax(0,44rem)_minmax(18rem,1fr)] lg:items-start">
             <Reveal>
-              <div className="prose-blog">
-                <p className="lead">{post.intro}</p>
-                {post.sections.map((section) => (
-                  <section key={section.heading}>
-                    <h2>{section.heading}</h2>
-                    {section.body.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                    {section.bullets ? (
-                      <ul>
-                        {section.bullets.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </section>
-                ))}
-              </div>
+              <MarkdownContent content={post.content} />
             </Reveal>
 
             <Reveal delay={0.07}>
@@ -4345,7 +4333,7 @@ function BlogPostPage() {
                   Continue from the guide to the related DCP Labs product page.
                 </p>
                 <Link to={post.relatedAppUrl} className="button button-primary mt-6">
-                  {post.ctaText}
+                  {blogPostCtaText(post)}
                   <ArrowRight size={17} />
                 </Link>
               </aside>
@@ -4378,6 +4366,139 @@ function BlogPostPage() {
       </section>
     </PageShell>
   )
+}
+
+type MarkdownBlock =
+  | { type: 'heading'; level: 2 | 3; text: string }
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: string[] }
+
+function MarkdownContent({ content }: { content: string }) {
+  const blocks = parseMarkdownBlocks(content)
+  const leadIndex = blocks.findIndex((block) => block.type === 'paragraph')
+
+  return (
+    <div className="prose-blog">
+      {blocks.map((block, index) => {
+        if (block.type === 'heading') {
+          const Heading = block.level === 2 ? 'h2' : 'h3'
+          return <Heading key={index}>{renderInlineMarkdown(block.text)}</Heading>
+        }
+
+        if (block.type === 'list') {
+          return (
+            <ul key={index}>
+              {block.items.map((item) => (
+                <li key={item}>{renderInlineMarkdown(item)}</li>
+              ))}
+            </ul>
+          )
+        }
+
+        return (
+          <p key={index} className={index === leadIndex ? 'lead' : undefined}>
+            {renderInlineMarkdown(block.text)}
+          </p>
+        )
+      })}
+    </div>
+  )
+}
+
+function parseMarkdownBlocks(content: string): MarkdownBlock[] {
+  const blocks: MarkdownBlock[] = []
+  const lines = content.split(/\r?\n/)
+  let paragraph: string[] = []
+  let listItems: string[] = []
+
+  const flushParagraph = () => {
+    if (!paragraph.length) return
+    blocks.push({ type: 'paragraph', text: paragraph.join(' ') })
+    paragraph = []
+  }
+
+  const flushList = () => {
+    if (!listItems.length) return
+    blocks.push({ type: 'list', items: listItems })
+    listItems = []
+  }
+
+  lines.forEach((line) => {
+    const trimmed = line.trim()
+
+    if (!trimmed) {
+      flushParagraph()
+      flushList()
+      return
+    }
+
+    const heading = trimmed.match(/^(#{2,3})\s+(.+)$/)
+    if (heading) {
+      flushParagraph()
+      flushList()
+      blocks.push({
+        type: 'heading',
+        level: heading[1].length as 2 | 3,
+        text: heading[2],
+      })
+      return
+    }
+
+    if (trimmed.startsWith('- ')) {
+      flushParagraph()
+      listItems.push(trimmed.slice(2))
+      return
+    }
+
+    flushList()
+    paragraph.push(trimmed)
+  })
+
+  flushParagraph()
+  flushList()
+
+  return blocks
+}
+
+function renderInlineMarkdown(text: string): ReactNode[] {
+  const nodes: ReactNode[] = []
+  const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g
+  let lastIndex = 0
+
+  text.replace(pattern, (match, _token, offset: number) => {
+    if (offset > lastIndex) {
+      nodes.push(text.slice(lastIndex, offset))
+    }
+
+    if (match.startsWith('**')) {
+      nodes.push(<strong key={`${offset}-strong`}>{match.slice(2, -2)}</strong>)
+    } else {
+      const link = match.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+      if (link) {
+        const [, label, href] = link
+        nodes.push(
+          href.startsWith('/') ? (
+            <Link key={`${offset}-link`} to={href}>
+              {label}
+            </Link>
+          ) : (
+            <a key={`${offset}-link`} href={href} target="_blank" rel="noreferrer">
+              {label}
+            </a>
+          ),
+        )
+      }
+    }
+
+    lastIndex = offset + match.length
+    return match
+  })
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex))
+  }
+
+  return nodes
 }
 
 function ServiceSpherePage() {
