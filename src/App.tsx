@@ -4104,8 +4104,10 @@ function blogPostJsonLd(post: BlogPost) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.seoDescription,
+    image: absoluteUrl(DEFAULT_SOCIAL_IMAGE),
     datePublished: post.date,
     dateModified: post.date,
+    inLanguage: 'en',
     author: {
       '@type': 'Organization',
       name: 'DCP Labs',
@@ -4115,6 +4117,15 @@ function blogPostJsonLd(post: BlogPost) {
       '@type': 'Organization',
       name: 'DCP Labs',
       url: absoluteUrl('/'),
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/favicon-192x192.png'),
+      },
+    },
+    isPartOf: {
+      '@type': 'Blog',
+      name: 'DCP Labs Blog',
+      url: absoluteUrl('/blog'),
     },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
     url: absoluteUrl(`/blog/${post.slug}`),
