@@ -28,9 +28,12 @@ import { Analytics } from '@vercel/analytics/react'
 import dcpLogo from './assets/dcp-labs-logo.svg'
 import type { AppCategory, StudioApp } from './data/apps'
 import { appBySlug, apps, trustSignals } from './data/apps'
+import type { BlogPost } from './data/blogPosts'
+import { blogCategories, blogPostBySlug, blogPosts } from './data/blogPosts'
 
 const navItems = [
   { label: 'Apps', href: '/apps' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -820,8 +823,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/apps" element={<AppsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:blogSlug" element={<BlogPostPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/servicesphere" element={<ServiceSpherePage />} />
           <Route
             path="/caretail/:careTailPageSlug"
             element={<CareTailSupportPage />}
@@ -4084,6 +4090,344 @@ function ProductFaq({
   )
 }
 
+function formatBlogDate(date: string) {
+  return new Intl.DateTimeFormat('en', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date(`${date}T00:00:00Z`))
+}
+
+function blogPostJsonLd(post: BlogPost) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.seoDescription,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'DCP Labs',
+      url: absoluteUrl('/'),
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'DCP Labs',
+      url: absoluteUrl('/'),
+    },
+    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    url: absoluteUrl(`/blog/${post.slug}`),
+    articleSection: post.category,
+    keywords: post.tags.join(', '),
+  }
+}
+
+function BlogPage() {
+  const [activeCategory, setActiveCategory] =
+    useState<(typeof blogCategories)[number]>('All')
+  const filteredPosts = useMemo(
+    () =>
+      activeCategory === 'All'
+        ? blogPosts
+        : blogPosts.filter((post) => post.category === activeCategory),
+    [activeCategory],
+  )
+
+  return (
+    <PageShell>
+      <Meta
+        title="DCP Labs Blog | Practical App Guides and Product Resources"
+        description="Practical guides, product updates, and app-focused resources from the DCP Labs product studio."
+        path="/blog"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: 'DCP Labs Blog',
+            description:
+              'Practical guides, product updates, and app-focused resources from the DCP Labs product studio.',
+            url: absoluteUrl('/blog'),
+            publisher: {
+              '@type': 'Organization',
+              name: 'DCP Labs',
+              url: absoluteUrl('/'),
+            },
+          },
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Blog', path: '/blog' },
+          ]),
+        ]}
+      />
+      <section className="section-pad border-b border-white/10">
+        <div className="site-container">
+          <Reveal>
+            <div className="max-w-5xl">
+              <p className="section-kicker">Blog</p>
+              <h1 className="mt-5 max-w-5xl text-[clamp(3.2rem,8vw,7.7rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-white">
+                DCP Labs Blog
+              </h1>
+              <p className="mt-7 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
+                Practical guides, product updates, and app-focused resources
+                from the DCP Labs product studio.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.06}>
+            <div className="mt-11 flex flex-wrap gap-2">
+              {blogCategories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                  className={`inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                    activeCategory === category
+                      ? 'border-[#F2ECE2] bg-[#F2ECE2] text-[#111114]'
+                      : 'border-white/12 bg-white/[0.03] text-[#B8B2A8] hover:border-white/25 hover:text-white'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {filteredPosts.map((post, index) => (
+                <BlogCard key={post.slug} post={post} index={index} />
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  )
+}
+
+function BlogCard({ post, index }: { post: BlogPost; index: number }) {
+  return (
+    <Reveal delay={index * 0.04}>
+      <motion.article
+        layout
+        className="group flex h-full flex-col rounded-[26px] border border-white/10 bg-[#101014]/86 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.25)] transition hover:-translate-y-1 hover:border-[#F2ECE2]/35 hover:bg-[#121217]"
+      >
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="rounded-full border border-[#D6A94B]/25 bg-[#D6A94B]/10 px-3 py-1 text-xs font-bold text-[#F7D377]">
+            {post.category}
+          </span>
+          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-[#D6D0C7]">
+            {post.app}
+          </span>
+        </div>
+        <h2 className="mt-6 text-2xl font-semibold leading-tight tracking-[-0.025em] text-white">
+          <Link to={`/blog/${post.slug}`} className="outline-none">
+            {post.title}
+          </Link>
+        </h2>
+        <p className="mt-4 flex-1 leading-7 text-[#B8B2A8]">
+          {post.description}
+        </p>
+        <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/10 pt-5 text-sm font-semibold text-[#81796F]">
+          <span>{formatBlogDate(post.date)}</span>
+          <span>{post.readingTime}</span>
+        </div>
+        <Link
+          to={`/blog/${post.slug}`}
+          className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#F5F1EA] transition group-hover:text-[#F7D377]"
+        >
+          Read guide
+          <ArrowRight size={17} />
+        </Link>
+      </motion.article>
+    </Reveal>
+  )
+}
+
+function BlogPostPage() {
+  const { blogSlug = '' } = useParams()
+  const post = blogPostBySlug[blogSlug]
+
+  if (!post) return <NotFoundPage />
+
+  const relatedPosts = blogPosts
+    .filter(
+      (candidate) =>
+        candidate.slug !== post.slug && candidate.category === post.category,
+    )
+    .concat(blogPosts.filter((candidate) => candidate.slug !== post.slug))
+    .filter(
+      (candidate, index, list) =>
+        list.findIndex((item) => item.slug === candidate.slug) === index,
+    )
+    .slice(0, 3)
+
+  return (
+    <PageShell>
+      <Meta
+        title={post.seoTitle}
+        description={post.seoDescription}
+        path={`/blog/${post.slug}`}
+        type="article"
+        jsonLd={[
+          blogPostJsonLd(post),
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Blog', path: '/blog' },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
+      <article>
+        <section className="section-pad border-b border-white/10">
+          <div className="site-container">
+            <Reveal>
+              <div className="max-w-5xl">
+                <Link
+                  to="/blog"
+                  className="section-kicker transition hover:border-white/30 hover:text-white"
+                >
+                  Blog
+                </Link>
+                <div className="mt-7 flex flex-wrap items-center gap-2 text-sm font-semibold text-[#B8B2A8]">
+                  <span className="rounded-full border border-[#D6A94B]/25 bg-[#D6A94B]/10 px-3 py-1 text-[#F7D377]">
+                    {post.category}
+                  </span>
+                  <span>{post.app}</span>
+                  <span>{formatBlogDate(post.date)}</span>
+                  <span>{post.readingTime}</span>
+                </div>
+                <h1 className="mt-6 max-w-5xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.94] tracking-[-0.05em] text-white">
+                  {post.title}
+                </h1>
+                <p className="mt-7 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
+                  {post.description}
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="py-16 md:py-24">
+          <div className="site-container grid gap-12 lg:grid-cols-[minmax(0,44rem)_minmax(18rem,1fr)] lg:items-start">
+            <Reveal>
+              <div className="prose-blog">
+                <p className="lead">{post.intro}</p>
+                {post.sections.map((section) => (
+                  <section key={section.heading}>
+                    <h2>{section.heading}</h2>
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    {section.bullets ? (
+                      <ul>
+                        {section.bullets.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </section>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.07}>
+              <aside className="sticky top-28 rounded-[26px] border border-white/10 bg-[#101014]/86 p-6">
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#81796F]">
+                  Related app
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-white">
+                  {post.app}
+                </h2>
+                <p className="mt-4 leading-7 text-[#B8B2A8]">
+                  Continue from the guide to the related DCP Labs product page.
+                </p>
+                <Link to={post.relatedAppUrl} className="button button-primary mt-6">
+                  {post.ctaText}
+                  <ArrowRight size={17} />
+                </Link>
+              </aside>
+            </Reveal>
+          </div>
+        </section>
+      </article>
+
+      <section className="border-t border-white/10 py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-5">
+              <div>
+                <p className="section-kicker">Related posts</p>
+                <h2 className="mt-5 text-4xl font-semibold tracking-[-0.035em] text-white md:text-6xl">
+                  Keep reading.
+                </h2>
+              </div>
+              <ButtonLink to="/blog" variant="secondary">
+                All posts
+              </ButtonLink>
+            </div>
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {relatedPosts.map((relatedPost, index) => (
+              <BlogCard key={relatedPost.slug} post={relatedPost} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  )
+}
+
+function ServiceSpherePage() {
+  return (
+    <PageShell>
+      <Meta
+        title="ServiceSphere | Field Service Business Tools by DCP Labs"
+        description="ServiceSphere is the DCP Labs direction for field service business organization, job tracking, customer context, scheduling, and follow-up workflows."
+        path="/servicesphere"
+        jsonLd={breadcrumbJsonLd([
+          { name: 'DCP Labs', path: '/' },
+          { name: 'ServiceSphere', path: '/servicesphere' },
+        ])}
+      />
+      <section className="section-pad">
+        <div className="site-container max-w-5xl">
+          <Reveal>
+            <p className="section-kicker">Field service</p>
+            <h1 className="mt-5 text-[clamp(3.4rem,8vw,7.4rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-white">
+              ServiceSphere
+            </h1>
+            <p className="mt-7 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
+              Field service business organization for job tracking, customer
+              context, scheduling, and follow-up workflows.
+            </p>
+            <div className="mt-10 grid gap-4 border-y border-white/10 py-8 md:grid-cols-3">
+              {['Job tracking', 'Customer context', 'Follow-up workflows'].map(
+                (item) => (
+                  <div
+                    key={item}
+                    className="rounded-[22px] border border-white/10 bg-white/[0.03] p-5"
+                  >
+                    <h2 className="text-xl font-semibold text-white">{item}</h2>
+                  </div>
+                ),
+              )}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink to="/blog" variant="secondary">
+                Read the blog
+              </ButtonLink>
+              <ButtonLink to="/contact">Contact DCP Labs</ButtonLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </PageShell>
+  )
+}
+
 function AboutPage() {
   return (
     <PageShell>
@@ -4733,6 +5077,7 @@ function Footer() {
           <div className="mt-4 grid gap-2">
             {[
               ['Apps', '/apps'],
+              ['Blog', '/blog'],
               ['About', '/about'],
               ['Contact', '/contact'],
               ['Privacy', '/privacy'],

@@ -183,6 +183,49 @@ footer {
   margin-top: 1.2rem;
 }
 
+.prose-blog {
+  color: #d6d0c7;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.prose-blog .lead {
+  margin-top: 0;
+  color: #f5f1ea;
+  font-size: clamp(1.25rem, 2vw, 1.45rem);
+  line-height: 1.7;
+}
+
+.prose-blog section {
+  margin-top: 3.5rem;
+}
+
+.prose-blog h2 {
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.prose-blog p {
+  margin-top: 1.2rem;
+}
+
+.prose-blog ul {
+  margin-top: 1.4rem;
+  padding-left: 1.2rem;
+}
+
+.prose-blog li {
+  margin-top: 0.8rem;
+  padding-left: 0.25rem;
+}
+
+.prose-blog li::marker {
+  color: #f7d377;
+}
+
 @media (max-width: 640px) {
   .site-container {
     width: min(100% - 32px, 1240px);
