@@ -1,6 +1,7 @@
 import {
   BadgeCheck,
   BriefcaseBusiness,
+  CalendarCheck,
   ClipboardCheck,
   Coins,
   GraduationCap,
@@ -33,6 +34,14 @@ import roleforgeCoverLetters from '../assets/products/roleforge-draft-cover-lett
 import roleforgeIcon from '../assets/products/roleforge-icon.svg'
 import roleforgeMatchedSkills from '../assets/products/roleforge-review-matched-skills.png'
 import roleforgeResumeBullets from '../assets/products/roleforge-rewrite-resume-bullets.png'
+import servicesphereClientRecords from '../assets/products/servicesphere-client-records.jpg'
+import servicesphereIcon from '../assets/products/servicesphere-icon.png'
+import servicesphereManageJobs from '../assets/products/servicesphere-manage-jobs.jpg'
+import servicesphereMobileOffice from '../assets/products/servicesphere-mobile-office.jpg'
+import servicespherePhotosSignatures from '../assets/products/servicesphere-photos-signatures.jpg'
+import servicesphereQuotesInvoices from '../assets/products/servicesphere-quotes-invoices.jpg'
+import servicesphereSmallBusinesses from '../assets/products/servicesphere-small-businesses.jpg'
+import servicesphereTrackWork from '../assets/products/servicesphere-track-work.jpg'
 
 export type AppCategory =
   | 'All'
@@ -66,13 +75,112 @@ export type StudioApp = {
   accent: string
   secondaryAccent: string
   code: string
-  visualStyle: 'collector' | 'career' | 'petcare' | 'learning'
+  visualStyle: 'collector' | 'career' | 'petcare' | 'learning' | 'fieldservice'
   iconImage?: string
   screenshots: string[]
   storeFacts: string[]
 }
 
 export const apps: StudioApp[] = [
+  {
+    slug: 'servicesphere-field-service-app',
+    name: 'ServiceSphere',
+    category: 'Field service app',
+    filters: ['Android', 'Productivity'],
+    status: 'Live',
+    platform: 'Android app',
+    storeLabel: 'Get it on Google Play',
+    storeUrl:
+      'https://play.google.com/store/apps/details?id=com.servicesphere.app',
+    shortDescription:
+      'Run clients, quotes, jobs, invoices, photos, notes, routes, and signatures from one Android app.',
+    description:
+      'ServiceSphere helps solo tradespeople and small service businesses manage clients, quotes, jobs, invoices, photos, notes, routes, and signatures without enterprise complexity.',
+    heroLine:
+      'Your Complete Field Service Ecosystem for running service work from your phone.',
+    problem:
+      'Service jobs often get split across paper notes, message threads, spreadsheets, photos, and memory. ServiceSphere keeps the core workflow together on Android.',
+    benefits: [
+      'Keep client records, job context, quotes, invoices, photos, notes, and signatures in one mobile workspace.',
+      'Track each job from request to quote, service visit, invoice, and follow-up.',
+      'Use a practical field service app built for solo tradespeople and small service businesses.',
+    ],
+    features: [
+      'Client records',
+      'Job tracking',
+      'Quotes and invoices',
+      'Photos and notes',
+      'Client signatures',
+      'Routes and scheduling context',
+      'Business profile settings',
+      'Small service business workflow',
+    ],
+    audience: [
+      'Handymen and repair technicians',
+      'Cleaners and small cleaning crews',
+      'Landscapers and mobile service providers',
+      'Plumbers, electricians, HVAC techs, and appliance repair businesses',
+    ],
+    faq: [
+      {
+        question: 'What is ServiceSphere?',
+        answer:
+          'ServiceSphere is an Android field service app for managing clients, quotes, jobs, invoices, photos, notes, routes, and signatures from a phone.',
+      },
+      {
+        question: 'Who is ServiceSphere for?',
+        answer:
+          'ServiceSphere is built for solo tradespeople and small service businesses such as handymen, cleaners, landscapers, plumbers, electricians, HVAC techs, mobile mechanics, and appliance repair providers.',
+      },
+      {
+        question: 'Is ServiceSphere only for large field service companies?',
+        answer:
+          'No. ServiceSphere is intentionally positioned for solo contractors and small service teams that want practical job organization without enterprise CRM complexity.',
+      },
+      {
+        question: 'Can I use ServiceSphere as a solo tradesperson?',
+        answer:
+          'Yes. The app is designed around phone-first workflows for people managing service work directly in the field.',
+      },
+      {
+        question: 'What can I track in ServiceSphere?',
+        answer:
+          'You can organize client details, service jobs, quotes, invoices, job notes, photos, signatures, reminders, and route context visible in the app experience.',
+      },
+      {
+        question: 'Does ServiceSphere help with quotes and invoices?',
+        answer:
+          'Yes. ServiceSphere includes quote and invoice workflows for creating estimates, managing work, and billing clients from Android.',
+      },
+      {
+        question: 'Can I keep job photos and notes organized?',
+        answer:
+          'Yes. ServiceSphere includes job details, photo proof, job notes, and client signature workflows so work context stays attached to the job.',
+      },
+      {
+        question: 'Is ServiceSphere available on Android?',
+        answer:
+          'Yes. ServiceSphere is available through its official Google Play listing.',
+      },
+    ],
+    cta: 'Get it on Google Play',
+    icon: CalendarCheck,
+    accent: '#7C3AED',
+    secondaryAccent: '#4338CA',
+    code: 'SS',
+    visualStyle: 'fieldservice',
+    iconImage: servicesphereIcon,
+    screenshots: [
+      servicesphereMobileOffice,
+      servicesphereManageJobs,
+      servicesphereClientRecords,
+      servicesphereQuotesInvoices,
+      servicespherePhotosSignatures,
+      servicesphereTrackWork,
+      servicesphereSmallBusinesses,
+    ],
+    storeFacts: ['Live on Google Play', 'Android app', 'Field service app'],
+  },
   {
     slug: 'learnlift-ai',
     name: 'LearnLift AI',
@@ -380,7 +488,7 @@ export const appBySlug: Record<string, StudioApp> = Object.fromEntries(
 )
 
 export const trustSignals: Array<{ label: string; icon: LucideIcon }> = [
-  { label: 'Four live products', icon: BadgeCheck },
+  { label: 'Five live products', icon: BadgeCheck },
   { label: 'Built for practical use cases', icon: ClipboardCheck },
   { label: 'Direct links to official stores', icon: ShieldCheck },
 ]

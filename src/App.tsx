@@ -3,13 +3,20 @@ import {
   BarChart3,
   BookOpenCheck,
   Brain,
+  Camera,
+  CalendarDays,
   Check,
   ChevronRight,
   Filter,
+  FileSignature,
+  FileText,
   Languages,
   ListChecks,
   Mail,
+  MapPinned,
   Menu,
+  NotebookTabs,
+  ReceiptText,
   Target,
   X,
 } from 'lucide-react'
@@ -18,6 +25,7 @@ import { useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import {
   Link,
+  Navigate,
   NavLink,
   Route,
   Routes,
@@ -827,7 +835,14 @@ function App() {
           <Route path="/blog/:blogSlug" element={<BlogPostPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/servicesphere" element={<ServiceSpherePage />} />
+          <Route
+            path="/servicesphere"
+            element={<Navigate to="/servicesphere-field-service-app" replace />}
+          />
+          <Route
+            path="/servicesphere-field-service-app"
+            element={<ServiceSpherePage />}
+          />
           <Route
             path="/caretail/:careTailPageSlug"
             element={<CareTailSupportPage />}
@@ -853,7 +868,7 @@ function App() {
             element={
               <LegalPage
                 title="Privacy"
-                description="Privacy information for the DCP Labs website and its live products, including LearnLift AI, CareTail, CoinRelic, and RoleForge."
+                description="Privacy information for the DCP Labs website and its live products, including ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge."
               />
             }
           />
@@ -886,7 +901,7 @@ function HomePage() {
     <>
       <Meta
         title="DCP Labs | Software Lab for Focused Digital Products"
-        description="DCP Labs builds focused digital products for practical everyday and professional use, including LearnLift AI, CareTail, CoinRelic, and RoleForge."
+        description="DCP Labs builds focused digital products for practical everyday and professional use, including ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge."
         path="/"
         jsonLd={[
           organizationJsonLd(),
@@ -920,7 +935,7 @@ function AppsPage() {
   return (
     <PageShell>
       <Meta
-        title="Apps | LearnLift AI, CareTail, CoinRelic, and RoleForge by DCP Labs"
+        title="Apps | ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge by DCP Labs"
         description="Explore LearnLift AI for focused study, CareTail for pet owners, CoinRelic for coin collectors, and RoleForge for job seekers preparing tailored applications."
         path="/apps"
         jsonLd={[
@@ -958,7 +973,7 @@ function AppsPage() {
             <div className="max-w-5xl">
               <p className="section-kicker">Apps</p>
               <h1 className="mt-5 max-w-5xl text-[clamp(3rem,8vw,7.7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
-                Four live products, each built for a specific job.
+                Five live products, each built for a specific job.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[#B8B2A8]">
                 LearnLift AI supports short study sessions for English,
@@ -1013,6 +1028,9 @@ function AppDetailPage() {
   if (app.slug === 'coinrelic') return <CoinRelicPage app={app} />
   if (app.slug === 'roleforge') return <RoleForgePage app={app} />
   if (app.slug === 'learnlift-ai') return <LearnLiftPage app={app} />
+  if (app.slug === 'servicesphere-field-service-app') {
+    return <ServiceSpherePage />
+  }
 
   return <NotFoundPage />
 }
@@ -4519,50 +4537,457 @@ function renderInlineMarkdown(text: string): ReactNode[] {
 }
 
 function ServiceSpherePage() {
+  const app = appBySlug['servicesphere-field-service-app']
+
+  if (!app) return <NotFoundPage />
+
+  const audiences = [
+    'Handymen',
+    'Cleaners',
+    'Landscapers',
+    'Electricians',
+    'Plumbers',
+    'HVAC techs',
+    'Mobile mechanics',
+    'Appliance repair',
+    'Small field service teams',
+  ]
+
+  const workflow = [
+    {
+      title: 'Save client details',
+      body: 'Keep customer contact info, addresses, notes, and job history close to the work.',
+      icon: NotebookTabs,
+    },
+    {
+      title: 'Create quotes',
+      body: 'Build estimates with line items, discounts, tax, totals, and client context.',
+      icon: FileText,
+    },
+    {
+      title: 'Turn work into jobs',
+      body: 'Track each service request as a job with status, schedule, address, and price context.',
+      icon: CalendarDays,
+    },
+    {
+      title: 'Add photos and notes',
+      body: 'Attach job proof and practical details so the work record is easier to revisit.',
+      icon: Camera,
+    },
+    {
+      title: 'Plan routes',
+      body: 'Keep location context available when moving between mobile service visits.',
+      icon: MapPinned,
+    },
+    {
+      title: 'Capture signatures',
+      body: 'Document approval from the same job detail flow used for field notes and proof.',
+      icon: FileSignature,
+    },
+    {
+      title: 'Create invoices',
+      body: 'Move from completed work to billing without rebuilding the job from scratch.',
+      icon: ReceiptText,
+    },
+    {
+      title: 'Keep records organized',
+      body: 'Bring clients, jobs, quotes, invoices, photos, notes, and settings into one mobile workspace.',
+      icon: ListChecks,
+    },
+  ]
+
+  const pains = [
+    'Photos lost in the camera roll',
+    'Quotes buried in messages',
+    'Job notes scattered across paper and apps',
+    'Invoices sent late',
+    'Client records hard to find later',
+    'Follow-ups forgotten',
+  ]
+
+  const screenshots = [
+    {
+      src: app.screenshots[2],
+      title: 'Manage clients and job records',
+      alt: 'ServiceSphere screenshot showing organized client records in the Android app',
+    },
+    {
+      src: app.screenshots[3],
+      title: 'Track quotes and invoices',
+      alt: 'ServiceSphere screenshot showing quote, job, and invoice workflows',
+    },
+    {
+      src: app.screenshots[4],
+      title: 'Add photos, notes, and signatures',
+      alt: 'ServiceSphere screenshot showing job details with photo proof, notes, and client signature actions',
+    },
+    {
+      src: app.screenshots[5],
+      title: 'Keep every service job organized',
+      alt: 'ServiceSphere screenshot showing job tracking from scheduled to invoiced',
+    },
+  ]
+
+  const relatedPages = [
+    {
+      title: 'Field service business app',
+      body: 'A practical guide for organizing small service work from a phone.',
+      href: '/blog/field-service-business-app',
+      active: true,
+    },
+    {
+      title: 'Service business without spreadsheets',
+      body: 'How scattered notes and spreadsheets slow down service workflows.',
+      href: '/blog/organize-service-business-without-spreadsheets',
+      active: true,
+    },
+    {
+      title: 'Contractor invoice app',
+      body: 'Coming soon',
+      href: '',
+      active: false,
+    },
+    {
+      title: 'Job photo organizer',
+      body: 'Coming soon',
+      href: '',
+      active: false,
+    },
+  ]
+
   return (
-    <PageShell>
+    <div className="min-h-screen bg-[#F7F5FF] text-[#130F24]">
       <Meta
-        title="ServiceSphere | Field Service Business Tools by DCP Labs"
-        description="ServiceSphere is the DCP Labs direction for field service business organization, job tracking, customer context, scheduling, and follow-up workflows."
-        path="/servicesphere"
-        jsonLd={breadcrumbJsonLd([
-          { name: 'DCP Labs', path: '/' },
-          { name: 'ServiceSphere', path: '/servicesphere' },
-        ])}
+        title="ServiceSphere Field Service App for Solo Contractors | DCP Labs"
+        description="ServiceSphere helps solo tradespeople and small service businesses manage clients, quotes, jobs, invoices, photos, notes, and routes from Android."
+        path="/servicesphere-field-service-app"
+        image={app.screenshots[0]}
+        jsonLd={[
+          softwareApplicationJsonLd({
+            app,
+            path: '/servicesphere-field-service-app',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Android',
+          }),
+          faqJsonLd(app),
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            {
+              name: 'ServiceSphere',
+              path: '/servicesphere-field-service-app',
+            },
+          ]),
+        ]}
       />
-      <section className="section-pad">
-        <div className="site-container max-w-5xl">
+
+      <section className="relative overflow-hidden border-b border-[#7C3AED]/14 pt-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(124,58,237,0.18),transparent_32%),linear-gradient(135deg,#F7F5FF,#FFFFFF_48%,#EEE9FF)]" />
+        <div className="site-container relative grid gap-12 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
           <Reveal>
-            <p className="section-kicker">Field service</p>
-            <h1 className="mt-5 text-[clamp(3.4rem,8vw,7.4rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-white">
-              ServiceSphere
-            </h1>
-            <p className="mt-7 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
-              Field service business organization for job tracking, customer
-              context, scheduling, and follow-up workflows.
-            </p>
-            <div className="mt-10 grid gap-4 border-y border-white/10 py-8 md:grid-cols-3">
-              {['Job tracking', 'Customer context', 'Follow-up workflows'].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="rounded-[22px] border border-white/10 bg-white/[0.03] p-5"
-                  >
-                    <h2 className="text-xl font-semibold text-white">{item}</h2>
-                  </div>
-                ),
-              )}
+            <Link
+              to="/apps"
+              className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#4338CA] transition hover:text-[#1E1B4B]"
+            >
+              <ChevronRight className="rotate-180" size={16} />
+              Back to DCP Labs apps
+            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <img
+                src={app.iconImage}
+                alt="ServiceSphere app icon"
+                className="h-16 w-16 rounded-[18px] object-cover shadow-[0_22px_60px_rgba(67,56,202,0.25)]"
+              />
+              <span className="rounded-full border border-[#7C3AED]/18 bg-white/72 px-4 py-2 text-sm font-extrabold text-[#4338CA] shadow-[0_16px_44px_rgba(67,56,202,0.08)]">
+                Your Complete Field Service Ecosystem
+              </span>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink to="/blog" variant="secondary">
-                Read the blog
-              </ButtonLink>
-              <ButtonLink to="/contact">Contact DCP Labs</ButtonLink>
+            <h1 className="mt-8 max-w-4xl text-[clamp(3rem,6.5vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-[#100D1E]">
+              Run your service business from your phone.
+            </h1>
+            <p className="mt-7 max-w-2xl text-xl leading-9 text-[#4B435F]">
+              ServiceSphere helps solo tradespeople and small service
+              businesses manage clients, quotes, jobs, routes, signatures,
+              invoices, photos, and notes without enterprise complexity.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a
+                href={app.storeUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#4C1D95] bg-[#4C1D95] px-5 py-3 text-sm font-extrabold text-white shadow-[0_22px_52px_rgba(76,29,149,0.28)] transition hover:-translate-y-px hover:bg-[#3B1776]"
+              >
+                Get it on Google Play
+                <ArrowRight size={17} />
+              </a>
+              <a
+                href="#how-it-works"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#7C3AED]/24 bg-white/70 px-5 py-3 text-sm font-extrabold text-[#312E81] transition hover:-translate-y-px hover:border-[#7C3AED]/42 hover:bg-white"
+              >
+                See how it works
+                <ChevronRight size={17} />
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="mx-auto w-full max-w-[500px] rounded-[36px] border border-white bg-white/76 p-3 shadow-[0_36px_110px_rgba(67,56,202,0.22)] lg:max-w-[560px]">
+              <img
+                src={app.screenshots[0]}
+                alt="ServiceSphere Android app showing clients, jobs, quotes, invoices, and photo proof"
+                className="aspect-[9/16] w-full rounded-[28px] object-cover object-top"
+              />
             </div>
           </Reveal>
         </div>
       </section>
-    </PageShell>
+
+      <section className="py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <div className="max-w-3xl">
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
+                Built for people doing real work in the field.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-[#5C536F]">
+                ServiceSphere is for hands-on service businesses, not office
+                teams managing enterprise software.
+              </p>
+            </div>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-9">
+            {audiences.map((audience, index) => (
+              <Reveal key={audience} delay={index * 0.025}>
+                <div className="flex min-h-24 items-end rounded-[22px] border border-[#7C3AED]/14 bg-white/74 p-4 text-base font-extrabold text-[#211A34] shadow-[0_18px_48px_rgba(67,56,202,0.07)] lg:min-h-36">
+                  {audience}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" className="bg-white/58 py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.78fr_1.22fr]">
+          <Reveal>
+            <div className="lg:sticky lg:top-28">
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
+                From quote to finished job, keep the whole workflow together.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-[#5C536F]">
+                Clients, quotes, jobs, routes, signatures, invoices, photos,
+                and notes stay connected so the next action is easier to find.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid gap-3 md:grid-cols-2">
+            {workflow.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <Reveal key={item.title} delay={index * 0.025}>
+                  <article className="h-full rounded-[24px] border border-[#7C3AED]/14 bg-[#F9F7FF] p-6 shadow-[0_18px_48px_rgba(67,56,202,0.07)]">
+                    <Icon size={24} className="text-[#7C3AED]" />
+                    <h3 className="mt-6 text-2xl font-semibold tracking-[-0.025em] text-[#100D1E]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 leading-7 text-[#5C536F]">
+                      {item.body}
+                    </p>
+                  </article>
+                </Reveal>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <div className="max-w-4xl">
+              <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
+                Stop running your business from scattered notes.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#5C536F]">
+                A small service business can lose time in tiny places. The
+                problem is usually not effort. It is where the work details
+                end up.
+              </p>
+            </div>
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+            <Reveal>
+              <div className="overflow-hidden rounded-[28px] border border-[#7C3AED]/14 bg-white p-3 shadow-[0_24px_70px_rgba(67,56,202,0.12)]">
+                <img
+                  src={app.screenshots[1]}
+                  alt="ServiceSphere dashboard screenshot for managing service jobs"
+                  className="aspect-[9/14] w-full rounded-[22px] object-cover object-top md:aspect-[4/3]"
+                />
+              </div>
+            </Reveal>
+            <div className="grid gap-3">
+              {pains.map((pain, index) => (
+                <Reveal key={pain} delay={index * 0.035}>
+                  <div className="rounded-[20px] border border-[#7C3AED]/14 bg-white/76 px-5 py-4 text-lg font-bold text-[#211A34] shadow-[0_16px_42px_rgba(67,56,202,0.06)]">
+                    {pain}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#EEE9FF] py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
+              Real app screens, large enough to read.
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {screenshots.map((screenshot, index) => (
+              <Reveal key={screenshot.title} delay={index * 0.04}>
+                <figure className="overflow-hidden rounded-[28px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(67,56,202,0.14)]">
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    className="aspect-[9/12] w-full rounded-[22px] object-cover object-top md:aspect-[9/13]"
+                  />
+                  <figcaption className="px-2 py-5 text-xl font-extrabold tracking-[-0.02em] text-[#211A34]">
+                    {screenshot.title}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="site-container grid gap-8 rounded-[32px] border border-[#7C3AED]/14 bg-[#140F2A] p-6 text-white shadow-[0_28px_86px_rgba(20,15,42,0.2)] md:p-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <Reveal>
+            <div>
+              <img
+                src={app.iconImage}
+                alt=""
+                aria-hidden="true"
+                className="h-20 w-20 rounded-[22px]"
+              />
+              <h2 className="mt-8 text-4xl font-semibold leading-tight tracking-[-0.035em] md:text-6xl">
+                Built and actively maintained by DCP Labs.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div className="grid gap-4 md:grid-cols-3 lg:pt-28">
+              {[
+                'Focused on simple tools for small businesses.',
+                'Product pages link to official store destinations.',
+                'Support is available through the DCP Labs contact email.',
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-[22px] border border-white/12 bg-white/[0.06] p-5 text-lg font-bold leading-7 text-[#EEE9FF]"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-white/58 py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+          <Reveal>
+            <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
+              ServiceSphere FAQ.
+            </h2>
+          </Reveal>
+          <div className="grid gap-3">
+            {app.faq.map((item, index) => (
+              <Reveal key={item.question} delay={index * 0.025}>
+                <details className="group rounded-[22px] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_16px_42px_rgba(67,56,202,0.06)]">
+                  <summary className="cursor-pointer list-none text-xl font-extrabold tracking-[-0.02em] text-[#211A34]">
+                    {item.question}
+                  </summary>
+                  <p className="mt-4 leading-7 text-[#5C536F]">{item.answer}</p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <h2 className="max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
+              More field service resources.
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-4 md:grid-cols-4">
+            {relatedPages.map((page, index) =>
+              page.active ? (
+                <Reveal key={page.title} delay={index * 0.03}>
+                  <Link
+                    to={page.href}
+                    className="group flex min-h-52 flex-col justify-between rounded-[24px] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_18px_48px_rgba(67,56,202,0.07)] transition hover:-translate-y-1 hover:border-[#7C3AED]/35"
+                  >
+                    <span className="text-xl font-extrabold tracking-[-0.02em] text-[#211A34]">
+                      {page.title}
+                    </span>
+                    <span className="mt-6 leading-7 text-[#5C536F]">
+                      {page.body}
+                    </span>
+                    <ArrowRight
+                      size={19}
+                      className="mt-6 text-[#7C3AED] transition group-hover:translate-x-1"
+                    />
+                  </Link>
+                </Reveal>
+              ) : (
+                <Reveal key={page.title} delay={index * 0.03}>
+                  <div className="flex min-h-52 flex-col justify-between rounded-[24px] border border-[#7C3AED]/10 bg-white/48 p-5 text-[#5C536F]">
+                    <span className="text-xl font-extrabold tracking-[-0.02em] text-[#7A728C]">
+                      {page.title}
+                    </span>
+                    <span>{page.body}</span>
+                  </div>
+                </Reveal>
+              ),
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[#7C3AED]/14 bg-[#140F2A] py-16 text-white md:py-24">
+        <div className="site-container grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <Reveal>
+            <div>
+              <h2 className="max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.035em] md:text-6xl">
+                Ready to organize your service jobs?
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#CFC7F8]">
+                Bring clients, work, proof, billing, and field notes into one
+                Android app built for small service businesses.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <a
+              href={app.storeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white bg-white px-5 py-3 text-sm font-extrabold text-[#140F2A] transition hover:-translate-y-px"
+            >
+              Get ServiceSphere on Google Play
+              <ArrowRight size={17} />
+            </a>
+          </Reveal>
+        </div>
+      </section>
+    </div>
   )
 }
 
@@ -4608,8 +5033,8 @@ function AboutPage() {
               <p className="mt-8 max-w-3xl text-xl leading-9 text-[#D6D0C7]">
                 DCP Labs designs and publishes practical software products for
                 everyday and professional use. The current catalog is
-                intentionally focused on four live products: LearnLift AI,
-                CareTail, CoinRelic, and RoleForge.
+                intentionally focused on five live products: ServiceSphere,
+                LearnLift AI, CareTail, CoinRelic, and RoleForge.
               </p>
             </div>
           </Reveal>
@@ -4632,7 +5057,7 @@ function AboutPage() {
                 ],
                 [
                   'Practical categories',
-                  'The current catalog focuses on pet care organization, coin collecting, and job application preparation.',
+                  'The current catalog focuses on field service work, pet care organization, coin collecting, study practice, and job application preparation.',
                 ],
                 [
                   'Trustworthy presentation',
@@ -4900,7 +5325,7 @@ function ProductLedger() {
         <Reveal>
           <div className="grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.8fr_1.2fr]">
             <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white md:text-6xl">
-              Four products, clear next steps.
+              Five products, clear next steps.
             </h2>
             <p className="max-w-2xl text-lg leading-8 text-[#B8B2A8]">
               Each product explains what it does, who it is for, and where to
@@ -5029,6 +5454,7 @@ function StudioPrinciples() {
 
 function EcosystemMap() {
   const groups = [
+    ['Field service', 'ServiceSphere'],
     ['Study practice', 'LearnLift AI'],
     ['Pet care', 'CareTail'],
     ['Collectors', 'CoinRelic'],
@@ -5043,12 +5469,12 @@ function EcosystemMap() {
             <div>
               <p className="section-kicker">Ecosystem</p>
               <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.03em] text-white md:text-6xl">
-                One studio, four focused product paths.
+                One studio, five focused product paths.
               </h2>
               <p className="mt-5 max-w-md text-lg leading-8 text-[#B8B2A8]">
-                Choose the study coach, pet care tracker, collector app, or
-                job application extension, then continue to the official store
-                page.
+                Choose the field service app, study coach, pet care tracker,
+                collector app, or job application extension, then continue to
+                the official store page.
               </p>
             </div>
             <div className="border-y border-white/10">
