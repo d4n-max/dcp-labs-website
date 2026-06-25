@@ -4099,6 +4099,8 @@ function formatBlogDate(date: string) {
 }
 
 function blogPostJsonLd(post: BlogPost) {
+  const wordCount = post.content.match(/\b[\w'-]+\b/g)?.length ?? 0
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -4127,7 +4129,11 @@ function blogPostJsonLd(post: BlogPost) {
       name: 'DCP Labs Blog',
       url: absoluteUrl('/blog'),
     },
-    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    wordCount,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': absoluteUrl(`/blog/${post.slug}`),
+    },
     url: absoluteUrl(`/blog/${post.slug}`),
     articleSection: post.category,
     keywords: post.tags.join(', '),
