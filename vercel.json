@@ -1,0 +1,20 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/textsense/privacy",
+      "destination": "/textsense-privacy-policy",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/textsense-privacy-policy",
+      "destination": "/textsense-privacy-policy.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

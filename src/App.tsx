@@ -48,6 +48,8 @@ const navItems = [
 
 const SITE_URL = 'https://dcplabs.app'
 const DEFAULT_SOCIAL_IMAGE = '/og-dcp-labs.svg'
+const TEXTSENSE_PRIVACY_PATH = '/textsense-privacy-policy'
+const TEXTSENSE_TERMS_PATH = '/textsense/terms'
 
 type JsonLd = Record<string, unknown> | Array<Record<string, unknown>>
 
@@ -1076,7 +1078,7 @@ const textsenseTermsSections: TextSenseLegalSection[] = [
     body: (
       <>
         Your use of TextSense is also governed by the{' '}
-        <Link to="/textsense/privacy">TextSense Privacy Policy</Link>, which
+        <Link to={TEXTSENSE_PRIVACY_PATH}>TextSense Privacy Policy</Link>, which
         explains how chat text, screenshots, AI processing, subscriptions, and
         analytics are handled.
       </>
@@ -1165,6 +1167,10 @@ function App() {
           />
           <Route
             path="/textsense/privacy"
+            element={<Navigate to={TEXTSENSE_PRIVACY_PATH} replace />}
+          />
+          <Route
+            path={TEXTSENSE_PRIVACY_PATH}
             element={<TextSenseLegalPage content={textsenseLegalPages.privacy} />}
           />
           <Route
@@ -5513,21 +5519,23 @@ function LegalPage({
 }
 
 function TextSenseLegalPage({ content }: { content: TextSenseLegalContent }) {
+  const currentPath =
+    content.kind === 'privacy' ? TEXTSENSE_PRIVACY_PATH : TEXTSENSE_TERMS_PATH
   const alternateLink =
     content.kind === 'privacy'
-      ? { label: 'TextSense Terms of Use', to: '/textsense/terms' }
-      : { label: 'TextSense Privacy Policy', to: '/textsense/privacy' }
+      ? { label: 'TextSense Terms of Use', to: TEXTSENSE_TERMS_PATH }
+      : { label: 'TextSense Privacy Policy', to: TEXTSENSE_PRIVACY_PATH }
 
   return (
     <PageShell>
       <Meta
         title={`${content.title} | DCP Labs`}
         description={content.description}
-        path={`/textsense/${content.kind}`}
+        path={currentPath}
         jsonLd={breadcrumbJsonLd([
           { name: 'DCP Labs', path: '/' },
-          { name: 'TextSense', path: '/textsense/privacy' },
-          { name: content.title, path: `/textsense/${content.kind}` },
+          { name: 'TextSense', path: TEXTSENSE_PRIVACY_PATH },
+          { name: content.title, path: currentPath },
         ])}
       />
       <section className="section-pad">
@@ -6018,8 +6026,8 @@ function Footer() {
               ['Contact', '/contact'],
               ['Privacy', '/privacy'],
               ['Terms', '/terms'],
-              ['TextSense Privacy', '/textsense/privacy'],
-              ['TextSense Terms', '/textsense/terms'],
+              ['TextSense Privacy', TEXTSENSE_PRIVACY_PATH],
+              ['TextSense Terms', TEXTSENSE_TERMS_PATH],
             ].map(([label, href]) => (
               <Link
                 key={href}
