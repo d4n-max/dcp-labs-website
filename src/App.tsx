@@ -822,6 +822,306 @@ const careTailSeoPageBySlug = Object.fromEntries(
   careTailSeoPages.map((page) => [page.slug, page]),
 ) as Record<string, CareTailSeoPage>
 
+type TextSenseLegalSection = {
+  heading: string
+  body: ReactNode
+}
+
+type TextSenseLegalContent = {
+  kind: 'privacy' | 'terms'
+  title: string
+  description: string
+  lastUpdated: string
+  sections: TextSenseLegalSection[]
+}
+
+const textsensePrivacySections: TextSenseLegalSection[] = [
+  {
+    heading: 'Developer and Contact',
+    body: (
+      <>
+        TextSense is provided by DCP Labs. You can contact us at{' '}
+        <a href="mailto:hello@dcplabs.app">hello@dcplabs.app</a>. The Android
+        package name for TextSense is <strong>com.textsense.app</strong>.
+      </>
+    ),
+  },
+  {
+    heading: 'Data We Process',
+    body: (
+      <>
+        TextSense may process chat text you paste, chat screenshots you choose
+        to upload, text extracted from screenshots, AI summaries, generated
+        reply suggestions, subscription state, purchase history, privacy-safe
+        app usage events, and local preferences.
+      </>
+    ),
+  },
+  {
+    heading: 'How We Use Data',
+    body: (
+      <>
+        We use data to provide the requested TextSense features, including
+        analyzing tone, intent, interest level, possible red flags, and natural
+        reply options. We also use subscription and purchase data to manage
+        Premium access, improve app reliability, understand privacy-safe usage
+        patterns, and provide support.
+      </>
+    ),
+  },
+  {
+    heading: 'Chat Text and Screenshot Handling',
+    body: (
+      <>
+        Chats and screenshots are not saved by default and are processed only
+        to provide the requested feature. Screenshots are sent for analysis
+        only after explicit user confirmation. Screenshots are not stored
+        permanently. Screenshot base64, extracted screenshot text, pasted chat
+        text, AI summaries, and generated replies must not be sent to
+        analytics.
+      </>
+    ),
+  },
+  {
+    heading: 'AI Processing',
+    body: (
+      <>
+        TextSense uses AI processing through a backend Supabase Edge Function.
+        AI API keys are kept server-side only and are never included in the
+        Android app. Content submitted for analysis may be transmitted to our
+        backend and AI processing providers so the requested analysis or reply
+        suggestions can be generated.
+      </>
+    ),
+  },
+  {
+    heading: 'Subscriptions and RevenueCat',
+    body: (
+      <>
+        TextSense uses RevenueCat to help manage subscriptions and the
+        <strong> premium</strong> entitlement. RevenueCat may process purchase
+        identifiers, subscription state, purchase history, product identifiers,
+        and related subscription metadata for products including{' '}
+        <strong>textsense_premium_monthly</strong> and{' '}
+        <strong>textsense_premium_yearly</strong>.
+      </>
+    ),
+  },
+  {
+    heading: 'Google Play Billing',
+    body: (
+      <>
+        Purchases and subscription billing are handled through Google Play
+        Billing. Google may process payment and account information under
+        Google Play's own terms and privacy practices. DCP Labs does not
+        receive full payment card details from Google Play Billing.
+      </>
+    ),
+  },
+  {
+    heading: 'Firebase Analytics',
+    body: (
+      <>
+        TextSense uses Firebase Analytics with privacy-safe events only. We do
+        not send screenshot base64, extracted screenshot text, pasted chat
+        text, AI summaries, or generated replies to analytics.
+      </>
+    ),
+  },
+  {
+    heading: 'Data Retention',
+    body: (
+      <>
+        Chats and screenshots are not saved by default. Screenshots are not
+        stored permanently. Subscription records, purchase history, app usage
+        events, and local preferences may be retained as needed to provide the
+        app, manage Premium access, maintain records, comply with platform
+        requirements, and support users.
+      </>
+    ),
+  },
+  {
+    heading: 'Data Deletion and Contact',
+    body: (
+      <>
+        To request deletion or ask privacy questions, contact{' '}
+        <a href="mailto:hello@dcplabs.app">hello@dcplabs.app</a>. Some
+        subscription, billing, and platform records may need to be handled
+        through Google Play, RevenueCat, or retained where required for
+        legitimate business, security, or legal reasons.
+      </>
+    ),
+  },
+  {
+    heading: 'Children',
+    body: (
+      <>
+        TextSense is not intended for users under 18. If you believe a person
+        under 18 has provided data to TextSense, contact us so we can review
+        and take appropriate action.
+      </>
+    ),
+  },
+  {
+    heading: 'Changes to This Policy',
+    body: (
+      <>
+        We may update this Privacy Policy from time to time. When we make
+        changes, we will update the "Last updated" date on this page.
+      </>
+    ),
+  },
+]
+
+const textsenseTermsSections: TextSenseLegalSection[] = [
+  {
+    heading: 'Acceptance of Terms',
+    body: (
+      <>
+        By downloading, accessing, or using TextSense, you agree to these Terms
+        of Use. If you do not agree, do not use the app.
+      </>
+    ),
+  },
+  {
+    heading: 'App Description',
+    body: (
+      <>
+        TextSense is a privacy-first AI dating and relationship clarity coach.
+        Users can paste chat text or upload chat screenshots to receive
+        analysis of tone, intent, interest level, possible red flags, and
+        natural reply suggestions.
+      </>
+    ),
+  },
+  {
+    heading: 'AI-Generated Suggestions and Limitations',
+    body: (
+      <>
+        TextSense provides AI-generated analysis and suggestions for
+        informational and drafting support only. Results may be incomplete,
+        inaccurate, or unsuitable for your situation. TextSense is not therapy,
+        medical advice, legal advice, or crisis support.
+      </>
+    ),
+  },
+  {
+    heading: 'User Responsibility',
+    body: (
+      <>
+        You are responsible for deciding whether and how to use any analysis,
+        summary, or reply suggestion. You should review generated content,
+        consider context the app may not know, and use your own judgment before
+        sending messages or making relationship decisions.
+      </>
+    ),
+  },
+  {
+    heading: 'Acceptable Use',
+    body: (
+      <>
+        You may use TextSense for personal dating and relationship clarity,
+        message understanding, and reply drafting in a lawful and respectful
+        way.
+      </>
+    ),
+  },
+  {
+    heading: 'Prohibited Use',
+    body: (
+      <>
+        You may not use TextSense to harass, threaten, stalk, impersonate,
+        manipulate, exploit, or harm others; violate another person's privacy;
+        upload content you do not have the right to use; reverse engineer the
+        app or backend; abuse subscriptions or billing systems; or use the app
+        for unlawful purposes.
+      </>
+    ),
+  },
+  {
+    heading: 'Premium Subscriptions',
+    body: (
+      <>
+        TextSense offers Premium subscriptions through Google Play Billing and
+        RevenueCat. Premium access is managed through the{' '}
+        <strong>premium</strong> entitlement and may include products such as{' '}
+        <strong>textsense_premium_monthly</strong> and{' '}
+        <strong>textsense_premium_yearly</strong>. Subscription features,
+        pricing, and availability may vary by region and platform.
+      </>
+    ),
+  },
+  {
+    heading: 'Cancellation and Refunds',
+    body: (
+      <>
+        Subscriptions are managed through Google Play. You can cancel through
+        your Google Play account subscription settings. Refund requests are
+        handled by Google Play according to Google Play's refund policies.
+      </>
+    ),
+  },
+  {
+    heading: 'No Guaranteed Outcomes',
+    body: (
+      <>
+        TextSense does not guarantee dating, relationship, communication, or
+        personal outcomes. The app can provide analysis and suggestions, but
+        outcomes depend on many factors outside the app's control.
+      </>
+    ),
+  },
+  {
+    heading: 'Privacy',
+    body: (
+      <>
+        Your use of TextSense is also governed by the{' '}
+        <Link to="/textsense/privacy">TextSense Privacy Policy</Link>, which
+        explains how chat text, screenshots, AI processing, subscriptions, and
+        analytics are handled.
+      </>
+    ),
+  },
+  {
+    heading: 'Changes to These Terms',
+    body: (
+      <>
+        We may update these Terms from time to time. When we make changes, we
+        will update the "Last updated" date on this page. Continued use of
+        TextSense after changes means you accept the updated Terms.
+      </>
+    ),
+  },
+  {
+    heading: 'Contact',
+    body: (
+      <>
+        For questions about these Terms, contact DCP Labs at{' '}
+        <a href="mailto:hello@dcplabs.app">hello@dcplabs.app</a>.
+      </>
+    ),
+  },
+]
+
+const textsenseLegalPages: Record<'privacy' | 'terms', TextSenseLegalContent> = {
+  privacy: {
+    kind: 'privacy',
+    title: 'TextSense Privacy Policy',
+    description:
+      'Privacy Policy for TextSense, a privacy-first AI dating and relationship clarity coach from DCP Labs.',
+    lastUpdated: 'June 29, 2026',
+    sections: textsensePrivacySections,
+  },
+  terms: {
+    kind: 'terms',
+    title: 'TextSense Terms of Use',
+    description:
+      'Terms of Use for TextSense, including AI-generated suggestions, subscriptions, user responsibility, and limitations.',
+    lastUpdated: 'June 29, 2026',
+    sections: textsenseTermsSections,
+  },
+}
+
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#08080A] text-[#F5F1EA]">
@@ -862,6 +1162,14 @@ function App() {
           <Route
             path="/roleforge/:comparisonSlug"
             element={<RoleForgeComparisonPage />}
+          />
+          <Route
+            path="/textsense/privacy"
+            element={<TextSenseLegalPage content={textsenseLegalPages.privacy} />}
+          />
+          <Route
+            path="/textsense/terms"
+            element={<TextSenseLegalPage content={textsenseLegalPages.terms} />}
           />
           <Route
             path="/privacy"
@@ -5204,6 +5512,70 @@ function LegalPage({
   )
 }
 
+function TextSenseLegalPage({ content }: { content: TextSenseLegalContent }) {
+  const alternateLink =
+    content.kind === 'privacy'
+      ? { label: 'TextSense Terms of Use', to: '/textsense/terms' }
+      : { label: 'TextSense Privacy Policy', to: '/textsense/privacy' }
+
+  return (
+    <PageShell>
+      <Meta
+        title={`${content.title} | DCP Labs`}
+        description={content.description}
+        path={`/textsense/${content.kind}`}
+        jsonLd={breadcrumbJsonLd([
+          { name: 'DCP Labs', path: '/' },
+          { name: 'TextSense', path: '/textsense/privacy' },
+          { name: content.title, path: `/textsense/${content.kind}` },
+        ])}
+      />
+      <section className="section-pad">
+        <div className="site-container max-w-4xl">
+          <Reveal>
+            <p className="section-kicker">TextSense legal</p>
+            <h1 className="mt-5 text-[clamp(3rem,7vw,6rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-white">
+              {content.title}
+            </h1>
+            <div className="mt-8 grid gap-3 border-y border-white/10 py-6 text-sm font-semibold text-[#B8B2A8] md:grid-cols-2">
+              <span>Last updated: {content.lastUpdated}</span>
+              <span>Developer: DCP Labs</span>
+              <span>Contact: hello@dcplabs.app</span>
+              <span>Android package: com.textsense.app</span>
+            </div>
+          </Reveal>
+
+          <div className="mt-10 space-y-10">
+            {content.sections.map((section, index) => (
+              <Reveal key={section.heading} delay={Math.min(index * 0.025, 0.16)}>
+                <section className="border-b border-white/10 pb-10 last:border-b-0">
+                  <h2 className="text-2xl font-semibold tracking-[-0.02em] text-white md:text-3xl">
+                    {section.heading}
+                  </h2>
+                  <div className="mt-4 text-lg leading-8 text-[#D6D0C7] [&_a]:font-bold [&_a]:text-[#F7D377] [&_a]:no-underline hover:[&_a]:text-[#FFE08A] [&_strong]:font-bold [&_strong]:text-white">
+                    <p>{section.body}</p>
+                  </div>
+                </section>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="mt-12 flex flex-wrap gap-3 border-t border-white/10 pt-8">
+              <ButtonLink to={alternateLink.to} variant="secondary">
+                {alternateLink.label}
+              </ButtonLink>
+              <ButtonLink to="/contact" variant="secondary">
+                Contact DCP Labs
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </PageShell>
+  )
+}
+
 function NotFoundPage() {
   return (
     <PageShell>
@@ -5646,6 +6018,8 @@ function Footer() {
               ['Contact', '/contact'],
               ['Privacy', '/privacy'],
               ['Terms', '/terms'],
+              ['TextSense Privacy', '/textsense/privacy'],
+              ['TextSense Terms', '/textsense/terms'],
             ].map(([label, href]) => (
               <Link
                 key={href}
