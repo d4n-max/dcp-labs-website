@@ -253,6 +253,119 @@ a.section-kicker {
   box-shadow: var(--shadow-brand-panel);
 }
 
+/* Product identity tokens. Use these before adding new one-off product colors in page markup. */
+.product-theme-learning {
+  --product-bg: #090614;
+  --product-ink: #ffffff;
+  --product-heading: #ffffff;
+  --product-muted: #dccfef;
+  --product-soft: #f0c5dd;
+  --product-subtle: #c9bcd8;
+  --product-accent: #ed64a6;
+  --product-accent-ink: #ffd4e8;
+  --product-link: #f0c5dd;
+  --product-link-hover: #ffffff;
+  --product-chip-bg: rgb(237 100 166 / 0.1);
+  --product-chip-border: rgb(237 100 166 / 0.28);
+  --product-chip-ink: #f0c5dd;
+}
+
+.product-theme-petcare {
+  --product-bg: #f5fffb;
+  --product-ink: #15212a;
+  --product-heading: #15212a;
+  --product-muted: #53666b;
+  --product-soft: #41545b;
+  --product-subtle: #236a66;
+  --product-accent: #50bfb7;
+  --product-accent-ink: #2b817c;
+  --product-link: #2b817c;
+  --product-link-hover: #125a56;
+  --product-chip-bg: rgb(255 255 255 / 0.62);
+  --product-chip-border: rgb(80 191 183 / 0.24);
+  --product-chip-ink: #2b817c;
+}
+
+.product-theme-collector {
+  --product-bg: #03070b;
+  --product-ink: #f7e8b5;
+  --product-heading: #fff8df;
+  --product-muted: #bdaf8d;
+  --product-soft: #d8cdaa;
+  --product-subtle: #c8b178;
+  --product-accent: #d6a94b;
+  --product-accent-ink: #f7e8b5;
+  --product-link: #c8b178;
+  --product-link-hover: #f7e8b5;
+  --product-chip-bg: rgb(214 169 75 / 0.1);
+  --product-chip-border: rgb(214 169 75 / 0.2);
+  --product-chip-ink: #d8cdaa;
+}
+
+.product-theme-career {
+  --product-bg: #07080d;
+  --product-ink: #f8f7ff;
+  --product-heading: #ffffff;
+  --product-muted: #c8c5da;
+  --product-soft: #d8d4ff;
+  --product-subtle: #9d98b8;
+  --product-accent: #8b5cf6;
+  --product-accent-ink: #c4b5fd;
+  --product-link: #bae6fd;
+  --product-link-hover: #ffffff;
+  --product-chip-bg: rgb(139 92 246 / 0.1);
+  --product-chip-border: rgb(139 92 246 / 0.3);
+  --product-chip-ink: #c4b5fd;
+}
+
+.product-theme-fieldservice {
+  --product-bg: #f7f5ff;
+  --product-ink: #130f24;
+  --product-heading: #100d1e;
+  --product-muted: #5c536f;
+  --product-soft: #4b435f;
+  --product-subtle: #4338ca;
+  --product-accent: #7c3aed;
+  --product-accent-ink: #4338ca;
+  --product-link: #4338ca;
+  --product-link-hover: #1e1b4b;
+  --product-chip-bg: rgb(255 255 255 / 0.72);
+  --product-chip-border: rgb(124 58 237 / 0.18);
+  --product-chip-ink: #4338ca;
+}
+
+.product-page {
+  background: var(--product-bg);
+  color: var(--product-ink);
+}
+
+.product-heading {
+  color: var(--product-heading);
+}
+
+.product-muted {
+  color: var(--product-muted);
+}
+
+.product-soft {
+  color: var(--product-soft);
+}
+
+.product-link {
+  color: var(--product-link);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.product-link:hover {
+  color: var(--product-link-hover);
+}
+
+.product-chip {
+  border: 1px solid var(--product-chip-border);
+  background: var(--product-chip-bg);
+  color: var(--product-chip-ink);
+}
+
 .coin-tool-input {
   width: 100%;
   min-height: 3rem;

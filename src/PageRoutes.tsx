@@ -1390,7 +1390,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
   ]
 
   return (
-    <div className="min-h-screen bg-[#090614] text-white">
+    <div className="product-theme product-theme-learning product-page min-h-screen">
       <Meta
         title="LearnLift AI — Study Coach for English, Interviews and QA"
         description="LearnLift AI helps learners practice English, job interview preparation, and IT/QA topics through short guided study sessions."
@@ -1420,7 +1420,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
             <div>
               <Link
                 to="/apps"
-                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#F0C5DD] transition hover:text-white"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to DCP Labs apps
@@ -1435,14 +1435,14 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
                 ) : (
                   <AppSymbol app={app} />
                 )}
-                <span className="rounded-full border border-[#ED64A6]/30 bg-[#ED64A6]/12 px-3 py-1 text-sm font-bold text-[#FFD4E8]">
+                <span className="rounded-full product-chip px-3 py-1 text-sm font-bold">
                   Elevate Your Skills, Effortlessly.
                 </span>
               </div>
               <h1 className="mt-7 max-w-4xl text-[clamp(2.75rem,5.2vw,5.1rem)] font-semibold leading-[0.93] tracking-[-0.04em] text-white">
                 A study coach for focused daily practice.
               </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#DCCFEF]">
+              <p className="mt-5 max-w-2xl text-lg leading-8 product-muted">
                 LearnLift AI helps learners practice English, job interview
                 preparation, and IT/QA topics through short guided study
                 sessions, flashcards, quizzes, and progress review.
@@ -1462,7 +1462,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
               <ProductFacts
                 facts={app.storeFacts}
                 className="mt-6"
-                itemClassName="border-[#ED64A6]/28 bg-[#ED64A6]/10 text-[#F0C5DD]"
+                itemClassName="product-chip"
               />
             </div>
           </Reveal>
@@ -1575,7 +1575,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
                   Study paths, review, and progress in one flow.
                 </h2>
               </div>
-              <p className="max-w-2xl text-lg leading-8 text-[#DCCFEF]">
+              <p className="max-w-2xl text-lg leading-8 product-muted">
                 Screenshots show the current Android experience, including
                 path selection, Smart Review flashcards, progress signals, and
                 premium practice packs.
@@ -1593,7 +1593,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
                     <h3 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
                       {item.title}
                     </h3>
-                    <p className="mt-5 text-lg leading-8 text-[#DCCFEF]">
+                    <p className="mt-5 text-lg leading-8 product-muted">
                       {item.body}
                     </p>
                   </div>
@@ -1626,7 +1626,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
               <Reveal key={item} delay={index * 0.04}>
                 <div className="flex h-full gap-3 rounded-[18px] border border-white/10 bg-white/[0.045] p-5">
                   <Check className="mt-1 shrink-0 text-[#ED64A6]" size={18} />
-                  <span className="leading-7 text-[#DCCFEF]">{item}</span>
+                  <span className="leading-7 product-muted">{item}</span>
                 </div>
               </Reveal>
             ))}
@@ -1642,7 +1642,7 @@ function LearnLiftPage({ app }: { app: StudioApp }) {
             <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-white md:text-6xl">
               Start with one focused study session.
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#DCCFEF]">
+            <p className="mt-5 max-w-2xl text-lg leading-8 product-muted">
               Download LearnLift AI from Google Play and practice English,
               interview preparation, or QA topics in small steps.
             </p>
@@ -1678,7 +1678,7 @@ function LearnLiftFaq({ app }: { app: StudioApp }) {
                 <h3 className="text-xl font-semibold tracking-[-0.025em] text-white md:text-2xl">
                   {item.question}
                 </h3>
-                <p className="mt-3 text-base leading-7 text-[#DCCFEF] md:text-lg md:leading-8">
+                <p className="mt-3 text-base leading-7 product-muted md:text-lg md:leading-8">
                   {item.answer}
                 </p>
               </article>
@@ -1775,7 +1775,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
   ]
 
   return (
-    <div className="min-h-screen bg-[#F5FFFB] text-[#15212A]">
+    <div className="product-theme product-theme-petcare product-page min-h-screen">
       <Meta
         title="CareTail | Pet Care Tracker App for Reminders, Notes, and Records"
         description="CareTail is a pet care tracker app for organizing pet profiles, reminders, diary notes, documents, reports, and multi-pet care history."
@@ -1804,7 +1804,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
             <div>
               <Link
                 to="/apps"
-                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#2B817C] transition hover:text-[#125A56]"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to DCP Labs
@@ -1819,14 +1819,14 @@ function CareTailPage({ app }: { app: StudioApp }) {
                 ) : (
                   <AppSymbol app={app} />
                 )}
-                <span className="rounded-full border border-[#50BFB7]/25 bg-white/62 px-3 py-1 text-sm font-bold text-[#236A66] shadow-[0_14px_36px_rgba(80,191,183,0.14)]">
+                <span className="rounded-full product-chip px-3 py-1 text-sm font-bold shadow-[0_14px_36px_rgba(80,191,183,0.14)]">
                   Live on Google Play
                 </span>
               </div>
               <h1 className="mt-8 max-w-4xl text-[clamp(3.2rem,7.4vw,7.4rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-[#15212A]">
                 Care routines, notes, and records in one calm place.
               </h1>
-              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#41545B]">
+              <p className="mt-7 max-w-2xl text-xl leading-9 product-soft">
                 CareTail helps pet owners organize profiles, reminders, diary
                 notes, documents, and care history without keeping everything in
                 their head.
@@ -1846,7 +1846,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
               <ProductFacts
                 facts={app.storeFacts}
                 className="mt-6"
-                itemClassName="border-[#50BFB7]/24 bg-white/62 text-[#2B817C]"
+                itemClassName="product-chip"
               />
             </div>
           </Reveal>
@@ -1870,7 +1870,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
             <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
               Pet care details get scattered fast.
             </h2>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#53666B]">
+            <p className="mt-6 max-w-3xl text-lg leading-8 product-muted">
               Notes, calendars, documents, photos, and memory all end up
               carrying part of the routine. CareTail brings reminders, records,
               and observations into one organized pet care tracker.
@@ -1900,7 +1900,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
                   <h3 className="text-2xl font-semibold tracking-[-0.03em] text-[#15212A]">
                     {title}
                   </h3>
-                  <p className="mt-4 leading-7 text-[#53666B]">{body}</p>
+                  <p className="mt-4 leading-7 product-muted">{body}</p>
                 </div>
               </Reveal>
             ))}
@@ -1917,7 +1917,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
                   <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
                     {panel.title}
                   </h2>
-                  <p className="mt-5 text-lg leading-8 text-[#53666B]">
+                  <p className="mt-5 text-lg leading-8 product-muted">
                     {panel.body}
                   </p>
                   {panel.title === 'Care reminders' ? (
@@ -1945,7 +1945,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
                 Calm organization for more than one pet.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-[#53666B]">
+              <p className="mt-6 max-w-xl text-lg leading-8 product-muted">
                 CareTail supports separate profiles so each pet can have its
                 own routines, notes, reminders, and documents. Premium gives
                 more room for more pets, routines, documents, and care history.
@@ -1984,7 +1984,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
                 Local-first, with optional sign-in.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-[#53666B]">
+              <p className="mt-6 max-w-xl text-lg leading-8 product-muted">
                 CareTail can be used locally without creating an account.
                 Google Sign-In is optional, while the core experience stays
                 focused on local-first organization.
@@ -2015,7 +2015,7 @@ function CareTailPage({ app }: { app: StudioApp }) {
             <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
               Put pet care details in one calm place.
             </h2>
-            <p className="mt-5 text-lg text-[#53666B]">
+            <p className="mt-5 text-lg product-muted">
               Download CareTail from Google Play.
             </p>
           </div>
@@ -2041,7 +2041,7 @@ function CareTailSupportPage() {
     .filter((item): item is CareTailSeoPage => Boolean(item))
 
   return (
-    <div className="min-h-screen bg-[#F5FFFB] text-[#15212A]">
+    <div className="product-theme product-theme-petcare product-page min-h-screen">
       <Meta
         title={page.title}
         description={page.metaDescription}
@@ -2083,7 +2083,7 @@ function CareTailSupportPage() {
             <div>
               <Link
                 to="/caretail"
-                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#2B817C] transition hover:text-[#125A56]"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to CareTail
@@ -2098,14 +2098,14 @@ function CareTailSupportPage() {
                 ) : (
                   <AppSymbol app={app} small />
                 )}
-                <span className="rounded-full border border-[#50BFB7]/25 bg-white/62 px-3 py-1 text-sm font-bold text-[#236A66] shadow-[0_14px_36px_rgba(80,191,183,0.14)]">
+                <span className="rounded-full product-chip px-3 py-1 text-sm font-bold shadow-[0_14px_36px_rgba(80,191,183,0.14)]">
                   {page.keyword}
                 </span>
               </div>
               <h1 className="mt-8 max-w-4xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-[#15212A]">
                 {page.h1}
               </h1>
-              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#41545B]">
+              <p className="mt-7 max-w-2xl text-xl leading-9 product-soft">
                 {page.problem}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
@@ -2141,7 +2141,7 @@ function CareTailSupportPage() {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#15212A] md:text-6xl">
                 How CareTail helps
               </h2>
-              <p className="mt-6 text-lg leading-8 text-[#53666B]">
+              <p className="mt-6 text-lg leading-8 product-muted">
                 {page.explanation}
               </p>
               <p className="mt-6 rounded-[24px] border border-[#50BFB7]/18 bg-[#ECFBF7] p-5 text-sm leading-6 text-[#2B817C]">
@@ -2172,7 +2172,7 @@ function CareTailSupportPage() {
               <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
                 Keep pet care details organized with CareTail.
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#53666B]">
+              <p className="mt-5 max-w-2xl text-lg leading-8 product-muted">
                 Explore the main CareTail page for the full product overview,
                 screenshots, FAQ, and official Google Play link.
               </p>
@@ -2219,7 +2219,7 @@ function CareTailUseCaseLinks({
             <h2 className="text-4xl font-semibold tracking-[-0.04em] text-[#15212A] md:text-6xl">
               Explore CareTail use cases
             </h2>
-            <p className="mt-5 text-lg leading-8 text-[#53666B]">
+            <p className="mt-5 text-lg leading-8 product-muted">
               Practical guides for organizing routines, reminders, notes,
               records, and multi-pet care with CareTail.
             </p>
@@ -2321,7 +2321,7 @@ function CareTailFaq({ app }: { app: StudioApp }) {
               <h3 className="text-2xl font-semibold text-[#15212A]">
                 {item.question}
               </h3>
-              <p className="mt-4 text-lg leading-8 text-[#53666B]">
+              <p className="mt-4 text-lg leading-8 product-muted">
                 {item.answer}
               </p>
             </div>
@@ -2363,7 +2363,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
   ]
 
   return (
-    <div className="min-h-screen bg-[#03070B] text-[#F7E8B5]">
+    <div className="product-theme product-theme-collector product-page min-h-screen">
       <Meta
         title="CoinRelic | Coin Identification and Collection Tracking App"
         description="CoinRelic helps coin collectors identify coins, save scan history, organize collection notes, and build a cleaner digital coin catalog."
@@ -2392,7 +2392,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
             <div>
               <Link
                 to="/apps"
-                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#C8B178] transition hover:text-[#F7E8B5]"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold product-link transition"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to DCP Labs
@@ -2407,14 +2407,14 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
                 ) : (
                   <AppSymbol app={app} />
                 )}
-                <span className="rounded-full border border-[#D6A94B]/30 bg-[#D6A94B]/10 px-3 py-1 text-sm font-bold text-[#F7E8B5]">
+                <span className="rounded-full product-chip px-3 py-1 text-sm font-bold">
                   Live on Google Play
                 </span>
               </div>
               <h1 className="mt-8 max-w-4xl text-[clamp(3.8rem,8vw,8.5rem)] font-semibold leading-[0.88] tracking-[-0.04em] text-[#FFF8DF]">
                 Identify coins. Organize every find.
               </h1>
-              <p className="mt-8 max-w-2xl text-xl leading-9 text-[#D8CDAA]">
+              <p className="mt-8 max-w-2xl text-xl leading-9 product-soft">
                 {app.heroLine}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
@@ -2437,7 +2437,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
               <ProductFacts
                 facts={app.storeFacts}
                 className="mt-6"
-                itemClassName="border-[#D6A94B]/20 bg-[#D6A94B]/8 text-[#D8CDAA]"
+                itemClassName="product-chip"
               />
             </div>
           </Reveal>
@@ -2483,7 +2483,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
                       <h3 className="mt-10 text-3xl font-semibold tracking-[-0.03em] text-[#FFF8DF] md:text-5xl">
                         {item.title}
                       </h3>
-                      <p className="mt-5 text-lg leading-8 text-[#BDAF8D]">
+                      <p className="mt-5 text-lg leading-8 product-muted">
                         {item.body}
                       </p>
                     </div>
@@ -2510,7 +2510,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
                 Keep the story of every coin.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-[#BDAF8D]">
+              <p className="mt-6 max-w-xl text-lg leading-8 product-muted">
                 CoinRelic keeps the collecting process organized: identify a
                 coin, check the details, save the record, and revisit it when
                 your catalog changes.
@@ -2543,7 +2543,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
       <ProductFaq
         app={app}
         className="bg-[#050B10] text-[#FFF8DF]"
-        mutedClassName="text-[#BDAF8D]"
+        mutedClassName="product-muted"
       />
 
       <section className="border-t border-[#D6A94B]/20 bg-[#03070B] py-16">
@@ -2557,7 +2557,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
                 <h2 className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-5xl">
                   Is your coin worth a closer look?
                 </h2>
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-[#BDAF8D]">
+                <p className="mt-4 max-w-2xl text-lg leading-8 product-muted">
                   Use the CoinRelic checklist to review date, mint mark,
                   condition, and error signals before scanning and saving the
                   coin.
@@ -2581,7 +2581,7 @@ function CoinRelicPage({ app }: { app: StudioApp }) {
             <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
               Start building a cleaner coin catalog.
             </h2>
-            <p className="mt-5 text-lg text-[#BDAF8D]">
+            <p className="mt-5 text-lg product-muted">
               Download CoinRelic from Google Play.
             </p>
           </div>
@@ -2725,7 +2725,7 @@ function CoinRelicRarityToolPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#03070B] text-[#F7E8B5]">
+    <div className="product-theme product-theme-collector product-page min-h-screen">
       <Meta
         title="Is My Coin Rare? Free Coin Value Checklist | CoinRelic"
         description="Enter your coin's country, year, denomination, mint mark, and condition to see if it may be worth checking further. Use CoinRelic to scan, identify, and track your coin collection."
@@ -2766,7 +2766,7 @@ function CoinRelicRarityToolPage() {
             <div>
               <Link
                 to="/coinrelic"
-                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#C8B178] transition hover:text-[#F7E8B5]"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold product-link transition"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to CoinRelic
@@ -2777,11 +2777,11 @@ function CoinRelicRarityToolPage() {
               <h1 className="mt-6 max-w-4xl text-[clamp(3.6rem,8vw,8rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-[#FFF8DF]">
                 Is My Coin Rare?
               </h1>
-              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#D8CDAA]">
+              <p className="mt-7 max-w-2xl text-xl leading-9 product-soft">
                 Use this free checklist to see if your coin may be worth
                 checking further.
               </p>
-              <p className="mt-6 max-w-2xl border-l border-[#D6A94B]/40 pl-5 text-base leading-7 text-[#BDAF8D]">
+              <p className="mt-6 max-w-2xl border-l border-[#D6A94B]/40 pl-5 text-base leading-7 product-muted">
                 This tool does not provide an official appraisal. It helps you
                 identify signs that a coin may deserve a closer look.
               </p>
@@ -2843,7 +2843,7 @@ function CoinRelicRarityToolPage() {
               <h2 className="text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
                 Want to identify and track your coins properly?
               </h2>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-[#BDAF8D]">
+              <p className="mt-5 max-w-3xl text-lg leading-8 product-muted">
                 CoinRelic helps collectors scan coins, save them to a personal
                 collection, keep scan history, and organize discoveries over
                 time.
@@ -2964,7 +2964,7 @@ function CoinRarityFormPanel({
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#D6A94B]">
             Photo identification
           </p>
-          <p className="mt-3 text-base leading-7 text-[#BDAF8D]">
+          <p className="mt-3 text-base leading-7 product-muted">
             For photo-based identification, scan your coin in the CoinRelic app.
           </p>
         </div>
@@ -3019,7 +3019,7 @@ function CoinRarityResultPanel({
           <h2 className="mt-6 text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
             {result.level}
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#BDAF8D]">
+          <p className="mt-5 text-lg leading-8 product-muted">
             {result.explanation}
           </p>
           <div className="mt-8 rounded-[24px] border border-[#D6A94B]/16 bg-[#020609] p-5">
@@ -3036,7 +3036,7 @@ function CoinRarityResultPanel({
           <h2 className="mt-6 text-4xl font-semibold tracking-[-0.035em] text-[#FFF8DF] md:text-6xl">
             Your checklist result will appear here.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#BDAF8D]">
+          <p className="mt-5 text-lg leading-8 product-muted">
             Enter the details you can see on the coin. If you are not sure,
             choose the closest option and use the result as a starting point for
             further research.
@@ -3207,7 +3207,7 @@ function CoinRarityFaq({ app }: { app: StudioApp }) {
               <h3 className="text-2xl font-semibold text-[#FFF8DF]">
                 {question}
               </h3>
-              <p className="mt-4 text-lg leading-8 text-[#BDAF8D]">{answer}</p>
+              <p className="mt-4 text-lg leading-8 product-muted">{answer}</p>
             </div>
           ))}
         </div>
@@ -3249,7 +3249,7 @@ function RoleForgePage({ app }: { app: StudioApp }) {
   ]
 
   return (
-    <div className="min-h-screen bg-[#07080D] text-[#F8F7FF]">
+    <div className="product-theme product-theme-career product-page min-h-screen">
       <Meta
         title="RoleForge | Resume Tailoring and Cover Letter Chrome Extension"
         description="RoleForge helps job seekers analyze live job postings and draft tailored resumes, cover letters, job application answers, and interview notes."
@@ -3278,7 +3278,7 @@ function RoleForgePage({ app }: { app: StudioApp }) {
             <div>
               <Link
                 to="/apps"
-                className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#B8B7FF] transition hover:text-white"
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to DCP Labs
@@ -3303,7 +3303,7 @@ function RoleForgePage({ app }: { app: StudioApp }) {
               <h1 className="mt-8 max-w-4xl text-[clamp(3.5rem,7.6vw,8rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-white">
                 Tailor every application to the role.
               </h1>
-              <p className="mt-8 max-w-2xl text-xl leading-9 text-[#C8C5DA]">
+              <p className="mt-8 max-w-2xl text-xl leading-9 product-muted">
                 RoleForge helps job seekers turn live job postings into
                 tailored resumes, cover letters, form answers, and interview
                 notes they can review and edit before applying.
@@ -3329,7 +3329,7 @@ function RoleForgePage({ app }: { app: StudioApp }) {
               <ProductFacts
                 facts={app.storeFacts}
                 className="mt-6"
-                itemClassName="border-white/12 bg-white/[0.05] text-[#C8C5DA]"
+                itemClassName="product-chip"
               />
               <p className="mt-7 max-w-xl text-sm leading-6 text-[#9D98B8]">
                 RoleForge drafts application materials for review. It does not
@@ -3402,7 +3402,7 @@ function RoleForgePage({ app }: { app: StudioApp }) {
               <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-[-0.04em] text-white md:text-6xl">
                 Faster drafting without giving up control.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-[#C8C5DA]">
+              <p className="mt-6 max-w-xl text-lg leading-8 product-muted">
                 RoleForge helps create application drafts from the role in
                 front of you. You stay responsible for reviewing, editing,
                 copying, and deciding what to submit.
@@ -3538,7 +3538,7 @@ function RoleForgeComparisonPage() {
               <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
                 {page.h1}
               </h1>
-              <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
+              <p className="mt-7 max-w-3xl text-xl leading-9 product-muted">
                 {page.intro}
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
@@ -3564,7 +3564,7 @@ function RoleForgeComparisonPage() {
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
-            <div className="rounded-[18px] border border-white/10 bg-white/[0.04] p-7 text-lg leading-8 text-[#C8C5DA]">
+            <div className="rounded-[18px] border border-white/10 bg-white/[0.04] p-7 text-lg leading-8 product-muted">
               {page.summary}
             </div>
           </Reveal>
@@ -3702,7 +3702,7 @@ function RoleForgeBestToolsPage() {
               <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
                 Best AI resume tools for tailored job applications.
               </h1>
-              <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
+              <p className="mt-7 max-w-3xl text-xl leading-9 product-muted">
                 The best tool depends on the job seeker's goal. Some tools
                 help build resumes, some organize applications, and others focus
                 on tailoring materials to the job post in front of you.
@@ -3722,7 +3722,7 @@ function RoleForgeBestToolsPage() {
               <h2 className="text-4xl font-semibold tracking-[-0.04em] text-white md:text-5xl">
                 How to choose an AI resume tool
               </h2>
-              <p className="mt-5 text-lg leading-8 text-[#C8C5DA]">
+              <p className="mt-5 text-lg leading-8 product-muted">
                 Start with the job you need done: tailoring applications to live
                 job posts, writing resume content, generating cover letters,
                 tracking applications, designing a resume, or organizing the
@@ -3746,7 +3746,7 @@ function RoleForgeBestToolsPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-lg leading-8 text-[#C8C5DA]">
+                    <p className="text-lg leading-8 product-muted">
                       {tool.body}
                     </p>
                     <Link
@@ -3842,7 +3842,7 @@ function RoleForgeGuidesIndexPage() {
               <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
                 Practical guides for stronger job applications.
               </h1>
-              <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
+              <p className="mt-7 max-w-3xl text-xl leading-9 product-muted">
                 Clear, example-led advice for tailoring resumes, cover letters,
                 application answers, and interview prep around the role in
                 front of you.
@@ -3955,7 +3955,7 @@ function RoleForgeGuidePage() {
                 <h1 className="mt-6 text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
                   {guide.h1}
                 </h1>
-                <p className="mt-7 max-w-3xl text-xl leading-9 text-[#C8C5DA]">
+                <p className="mt-7 max-w-3xl text-xl leading-9 product-muted">
                   {guide.intro}
                 </p>
               </div>
@@ -4004,7 +4004,7 @@ function RoleForgeGuidePage() {
                       <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
                         {section.heading}
                       </h2>
-                      <p className="mt-5 text-lg leading-8 text-[#C8C5DA]">
+                      <p className="mt-5 text-lg leading-8 product-muted">
                         {section.body}
                       </p>
                     </section>
@@ -4019,7 +4019,7 @@ function RoleForgeGuidePage() {
                   <h2 className="text-3xl font-semibold tracking-[-0.035em] text-white md:text-5xl">
                     Final check
                   </h2>
-                  <p className="mt-5 text-lg leading-8 text-[#C8C5DA]">
+                  <p className="mt-5 text-lg leading-8 product-muted">
                     {guide.closing}
                   </p>
                 </section>
@@ -4173,15 +4173,24 @@ function RoleForgeGuideLinks() {
 function RoleForgeGuideBreadcrumb({ label }: { label?: string }) {
   return (
     <div className="relative mb-10 flex flex-wrap items-center gap-3 text-sm font-bold text-[#B8B7FF]">
-      <Link to="/apps" className="transition hover:text-white">
+      <Link
+        to="/apps"
+        className="inline-flex min-h-11 items-center transition hover:text-white"
+      >
         DCP Labs
       </Link>
       <ChevronRight size={15} />
-      <Link to="/roleforge" className="transition hover:text-white">
+      <Link
+        to="/roleforge"
+        className="inline-flex min-h-11 items-center transition hover:text-white"
+      >
         RoleForge
       </Link>
       <ChevronRight size={15} />
-      <Link to="/roleforge/guides" className="transition hover:text-white">
+      <Link
+        to="/roleforge/guides"
+        className="inline-flex min-h-11 items-center transition hover:text-white"
+      >
         Guides
       </Link>
       {label ? (
@@ -4195,7 +4204,7 @@ function RoleForgeGuideBreadcrumb({ label }: { label?: string }) {
 }
 
 function RoleForgeArticleShell({ children }: { children: ReactNode }) {
-  return <div className="min-h-screen bg-[#07080D] text-[#F8F7FF]">{children}</div>
+  return <div className="product-theme product-theme-career product-page min-h-screen">{children}</div>
 }
 
 function RoleForgePageGlow() {
@@ -4210,11 +4219,17 @@ function RoleForgePageGlow() {
 function RoleForgeBreadcrumb({ label }: { label: string }) {
   return (
     <div className="relative mb-10 flex flex-wrap items-center gap-3 text-sm font-bold text-[#B8B7FF]">
-      <Link to="/apps" className="transition hover:text-white">
+      <Link
+        to="/apps"
+        className="inline-flex min-h-11 items-center transition hover:text-white"
+      >
         DCP Labs
       </Link>
       <ChevronRight size={15} />
-      <Link to="/roleforge" className="transition hover:text-white">
+      <Link
+        to="/roleforge"
+        className="inline-flex min-h-11 items-center transition hover:text-white"
+      >
         RoleForge
       </Link>
       <ChevronRight size={15} />
@@ -4279,7 +4294,7 @@ function ComparisonTable({ page }: { page: ComparisonPageData }) {
           {page.features.map((feature) => (
             <div
               key={feature.label}
-              className="grid border-t border-white/10 bg-[#0D101A]/80 text-[#C8C5DA] md:grid-cols-[0.8fr_1fr_1fr]"
+              className="grid border-t border-white/10 bg-[#0D101A]/80 product-muted md:grid-cols-[0.8fr_1fr_1fr]"
             >
               <div className="border-b border-white/10 p-4 font-semibold text-white md:border-b-0 md:border-r">
                 {feature.label}
@@ -4943,7 +4958,7 @@ function ServiceSpherePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#F7F5FF] text-[#130F24]">
+    <div className="product-theme product-theme-fieldservice product-page min-h-screen">
       <Meta
         title="ServiceSphere Field Service App for Solo Contractors | DCP Labs"
         description="ServiceSphere helps solo tradespeople and small service businesses manage clients, quotes, jobs, invoices, photos, notes, and routes from Android."
@@ -4974,7 +4989,7 @@ function ServiceSpherePage() {
           <Reveal>
             <Link
               to="/apps"
-              className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#4338CA] transition hover:text-[#1E1B4B]"
+              className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
             >
               <ChevronRight className="rotate-180" size={16} />
               Back to DCP Labs apps
@@ -4985,14 +5000,14 @@ function ServiceSpherePage() {
                 alt="ServiceSphere app icon"
                 className="h-16 w-16 rounded-[18px] object-cover shadow-[0_22px_60px_rgba(67,56,202,0.25)]"
               />
-              <span className="rounded-full border border-[#7C3AED]/18 bg-white/72 px-4 py-2 text-sm font-extrabold text-[#4338CA] shadow-[0_16px_44px_rgba(67,56,202,0.08)]">
+              <span className="rounded-full product-chip px-4 py-2 text-sm font-extrabold shadow-[0_16px_44px_rgba(67,56,202,0.08)]">
                 Your Complete Field Service Ecosystem
               </span>
             </div>
             <h1 className="mt-8 max-w-4xl text-[clamp(3rem,6.5vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-[#100D1E]">
               Run your service business from your phone.
             </h1>
-            <p className="mt-7 max-w-2xl text-xl leading-9 text-[#4B435F]">
+            <p className="mt-7 max-w-2xl text-xl leading-9 product-soft">
               ServiceSphere helps solo tradespeople and small service
               businesses manage clients, quotes, jobs, routes, signatures,
               invoices, photos, and notes without enterprise complexity.
@@ -5038,7 +5053,7 @@ function ServiceSpherePage() {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
                 Built for people doing real work in the field.
               </h2>
-              <p className="mt-5 text-lg leading-8 text-[#5C536F]">
+              <p className="mt-5 text-lg leading-8 product-muted">
                 ServiceSphere is for hands-on service businesses, not office
                 teams managing enterprise software.
               </p>
@@ -5063,7 +5078,7 @@ function ServiceSpherePage() {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
                 From quote to finished job, keep the whole workflow together.
               </h2>
-              <p className="mt-5 text-lg leading-8 text-[#5C536F]">
+              <p className="mt-5 text-lg leading-8 product-muted">
                 Clients, quotes, jobs, routes, signatures, invoices, photos,
                 and notes stay connected so the next action is easier to find.
               </p>
@@ -5079,7 +5094,7 @@ function ServiceSpherePage() {
                     <h3 className="mt-6 text-2xl font-semibold tracking-[-0.025em] text-[#100D1E]">
                       {item.title}
                     </h3>
-                    <p className="mt-3 leading-7 text-[#5C536F]">
+                    <p className="mt-3 leading-7 product-muted">
                       {item.body}
                     </p>
                   </article>
@@ -5097,7 +5112,7 @@ function ServiceSpherePage() {
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.035em] text-[#100D1E] md:text-6xl">
                 Stop running your business from scattered notes.
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#5C536F]">
+              <p className="mt-5 max-w-2xl text-lg leading-8 product-muted">
                 A small service business can lose time in tiny places. The
                 problem is usually not effort. It is where the work details
                 end up.
@@ -5202,10 +5217,10 @@ function ServiceSpherePage() {
             {app.faq.map((item, index) => (
               <Reveal key={item.question} delay={index * 0.025}>
                 <details className="group rounded-[22px] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_16px_42px_rgba(67,56,202,0.06)]">
-                  <summary className="cursor-pointer list-none text-xl font-extrabold tracking-[-0.02em] text-[#211A34]">
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center text-xl font-extrabold tracking-[-0.02em] text-[#211A34]">
                     {item.question}
                   </summary>
-                  <p className="mt-4 leading-7 text-[#5C536F]">{item.answer}</p>
+                  <p className="mt-4 leading-7 product-muted">{item.answer}</p>
                 </details>
               </Reveal>
             ))}
@@ -5231,7 +5246,7 @@ function ServiceSpherePage() {
                     <span className="text-xl font-extrabold tracking-[-0.02em] text-[#211A34]">
                       {page.title}
                     </span>
-                    <span className="mt-6 leading-7 text-[#5C536F]">
+                    <span className="mt-6 leading-7 product-muted">
                       {page.body}
                     </span>
                     <ArrowRight
@@ -5242,7 +5257,7 @@ function ServiceSpherePage() {
                 </Reveal>
               ) : (
                 <Reveal key={page.title} delay={index * 0.03}>
-                  <div className="flex min-h-52 flex-col justify-between rounded-[24px] border border-[#7C3AED]/10 bg-white/48 p-5 text-[#5C536F]">
+                  <div className="flex min-h-52 flex-col justify-between rounded-[24px] border border-[#7C3AED]/10 bg-white/48 p-5 product-muted">
                     <span className="text-xl font-extrabold tracking-[-0.02em] text-[#7A728C]">
                       {page.title}
                     </span>
