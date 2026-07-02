@@ -7,6 +7,31 @@
 }
 
 :root {
+  /* DCP Labs umbrella brand tokens. Product pages may layer their own identity colors on top. */
+  --color-brand-bg: #08080a;
+  --color-brand-bg-deep: #050506;
+  --color-brand-ink: #f5f1ea;
+  --color-brand-ink-strong: #ffffff;
+  --color-brand-ink-soft: #d6d0c7;
+  --color-brand-ink-muted: #b8b2a8;
+  --color-brand-ink-subtle: #81796f;
+  --color-brand-surface: #101014;
+  --color-brand-surface-hover: #121217;
+  --color-brand-focus: #f7d377;
+  --color-brand-action-ink: #111114;
+  --border-brand-soft: rgb(255 255 255 / 0.1);
+  --border-brand-control: rgb(255 255 255 / 0.12);
+  --surface-brand-control: rgb(255 255 255 / 0.03);
+  --surface-brand-card: rgb(16 16 20 / 0.86);
+  --radius-chip: 999px;
+  --radius-card-sm: 0.875rem;
+  --radius-card-md: 1rem;
+  --radius-card-lg: 1.25rem;
+  --shadow-brand-card: 0 10px 24px rgb(0 0 0 / 0.18);
+  --shadow-brand-panel: 0 16px 40px rgb(0 0 0 / 0.24);
+  --font-weight-strong: 760;
+  --tracking-display-tight: -0.035em;
+  --tracking-display-hero: -0.04em;
   color: #f5f1ea;
   background: #08080a;
   font-synthesis: none;
@@ -41,9 +66,36 @@ button {
   font: inherit;
 }
 
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid var(--color-brand-bg) !important;
+  outline-color: var(--color-brand-bg) !important;
+  outline-style: solid !important;
+  outline-width: 2px !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px var(--color-brand-focus) !important;
+  border-radius: 0.75rem;
+}
+
+a.rounded-full:focus-visible,
+button.rounded-full:focus-visible {
+  border-radius: 999px;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-brand-bg) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px var(--color-brand-focus) !important;
+}
+
 ::selection {
-  color: #08080a;
-  background: #f5f1ea;
+  color: var(--color-brand-bg);
+  background: var(--color-brand-ink);
 }
 
 #root {
@@ -70,15 +122,19 @@ footer {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  border: 1px solid rgba(245, 241, 234, 0.14);
-  border-radius: 999px;
-  padding: 0.45rem 0.72rem;
-  color: #b8b2a8;
-  background: rgba(255, 255, 255, 0.025);
-  font-size: 0.75rem;
-  font-weight: 750;
-  line-height: 1;
-  letter-spacing: 0.01em;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: var(--color-brand-ink-subtle);
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 720;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+a.section-kicker {
+  min-height: 2.75rem;
 }
 
 .button {
@@ -87,10 +143,10 @@ footer {
   justify-content: center;
   gap: 0.55rem;
   min-height: 2.8rem;
-  border-radius: 999px;
+  border-radius: var(--radius-chip);
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
-  font-weight: 760;
+  font-weight: var(--font-weight-strong);
   line-height: 1;
   text-decoration: none;
   transition:
@@ -109,9 +165,9 @@ footer {
 }
 
 .button-primary {
-  background: #f5f1ea;
-  color: #111114;
-  border: 1px solid #f5f1ea;
+  background: var(--color-brand-ink);
+  color: var(--color-brand-action-ink);
+  border: 1px solid var(--color-brand-ink);
 }
 
 .button-primary:hover {
@@ -120,14 +176,81 @@ footer {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.03);
-  color: #f5f1ea;
+  background: var(--surface-brand-control);
+  color: var(--color-brand-ink);
   border: 1px solid rgba(245, 241, 234, 0.16);
 }
 
 .button-secondary:hover {
   border-color: rgba(245, 241, 234, 0.34);
   background: rgba(255, 255, 255, 0.06);
+}
+
+/* Shared brand utilities for repeated DCP shell, catalog, and editorial surfaces. */
+.text-brand-muted {
+  color: var(--color-brand-ink-muted);
+}
+
+.text-brand-soft {
+  color: var(--color-brand-ink-soft);
+}
+
+.text-brand-subtle {
+  color: var(--color-brand-ink-subtle);
+}
+
+.brand-link-muted {
+  color: var(--color-brand-ink-subtle);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.brand-link-muted:hover {
+  color: var(--color-brand-ink-strong);
+}
+
+.brand-link-soft {
+  color: var(--color-brand-ink-soft);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.brand-link-soft:hover {
+  color: var(--color-brand-ink-strong);
+}
+
+.heading-section {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: var(--tracking-display-tight);
+  text-wrap: balance;
+}
+
+.heading-card {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.copy-lg {
+  font-size: 1.125rem;
+  line-height: 2rem;
+  text-wrap: pretty;
+}
+
+.brand-card {
+  border: 1px solid var(--border-brand-soft);
+  border-radius: var(--radius-card-md);
+  background: var(--surface-brand-card);
+  box-shadow: var(--shadow-brand-card);
+}
+
+.brand-panel {
+  border: 1px solid var(--border-brand-soft);
+  border-radius: var(--radius-card-lg);
+  background: var(--color-brand-surface);
+  box-shadow: var(--shadow-brand-panel);
 }
 
 .coin-tool-input {
