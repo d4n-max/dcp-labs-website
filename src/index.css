@@ -334,6 +334,22 @@ a.section-kicker {
   --product-chip-ink: #4338ca;
 }
 
+.product-theme-familycare {
+  --product-bg: #f4fff9;
+  --product-ink: #153b36;
+  --product-heading: #153b36;
+  --product-muted: #536a66;
+  --product-soft: #355d57;
+  --product-subtle: #2d7d70;
+  --product-accent: #3aae98;
+  --product-accent-ink: #2d7d70;
+  --product-link: #2d7d70;
+  --product-link-hover: #174c45;
+  --product-chip-bg: rgb(255 255 255 / 0.68);
+  --product-chip-border: rgb(58 174 152 / 0.24);
+  --product-chip-ink: #2d7d70;
+}
+
 .product-page {
   background: var(--product-bg);
   color: var(--product-ink);

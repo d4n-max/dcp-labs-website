@@ -10,13 +10,16 @@ import {
   Filter,
   FileSignature,
   FileText,
+  HandHeart,
   Languages,
   ListChecks,
   Mail,
   MapPinned,
   NotebookTabs,
   ReceiptText,
+  Sparkles,
   Target,
+  UsersRound,
 } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
@@ -125,6 +128,7 @@ const categoryFilters: AppCategory[] = [
   'Android',
   'Chrome Extension',
   'Pets',
+  'Family',
   'Education',
   'Productivity',
   'Career',
@@ -1166,7 +1170,7 @@ export default function PageRoutes() {
         element={
           <LegalPage
             title="Privacy"
-            description="Privacy information for the DCP Labs website and its live products, including ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge."
+            description="Privacy information for the DCP Labs website and its live products, including KinBrief, ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge."
           />
         }
       />
@@ -1194,7 +1198,7 @@ function HomePage() {
     <>
       <Meta
         title="DCP Labs | Software Lab for Focused Digital Products"
-        description="DCP Labs builds focused digital products for practical everyday and professional use, including ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge."
+        description="DCP Labs builds focused digital products for practical everyday and professional use, including KinBrief, ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge."
         path="/"
         jsonLd={[
           organizationJsonLd(),
@@ -1209,7 +1213,7 @@ function HomePage() {
       <EcosystemMap />
       <FinalCta
         title="Explore the live DCP Labs products."
-        body="Install LearnLift AI, CareTail, or CoinRelic from Google Play, or add RoleForge from the Chrome Web Store."
+        body="Visit KinBrief on the web, install the Android apps from Google Play, or add RoleForge from the Chrome Web Store."
       />
     </>
   )
@@ -1228,8 +1232,8 @@ function AppsPage() {
   return (
     <PageShell>
       <Meta
-        title="Apps | ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge by DCP Labs"
-        description="Explore LearnLift AI for focused study, CareTail for pet owners, CoinRelic for coin collectors, and RoleForge for job seekers preparing tailored applications."
+        title="Apps | KinBrief, ServiceSphere, LearnLift AI, CareTail, CoinRelic, and RoleForge by DCP Labs"
+        description="Explore KinBrief for family care coordination, ServiceSphere for field service work, LearnLift AI for focused study, CareTail for pet owners, CoinRelic for collectors, and RoleForge for job seekers."
         path="/apps"
         jsonLd={[
           {
@@ -1266,14 +1270,14 @@ function AppsPage() {
             <div className="max-w-5xl">
               <p className="section-kicker">Apps</p>
               <h1 className="mt-5 max-w-5xl text-[clamp(3rem,8vw,7.7rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-white">
-                Five live products, each built for a specific job.
+                Six live products, each built for a specific job.
               </h1>
               <p className="copy-lg mt-7 max-w-2xl text-brand-muted">
-                LearnLift AI supports short study sessions for English,
-                interviews, and QA learning. CareTail helps pet owners keep
+                KinBrief helps families coordinate care for an aging parent.
+                ServiceSphere supports small field service businesses. LearnLift
+                AI supports short study sessions. CareTail helps pet owners keep
                 care details organized. CoinRelic helps collectors identify and
-                catalog coins. RoleForge helps job seekers tailor application
-                materials from the job post in front of them.
+                catalog coins. RoleForge helps job seekers tailor applications.
               </p>
             </div>
           </Reveal>
@@ -1316,11 +1320,334 @@ function AppDetailPage() {
   if (app.slug === 'coinrelic') return <CoinRelicPage app={app} />
   if (app.slug === 'roleforge') return <RoleForgePage app={app} />
   if (app.slug === 'learnlift-ai') return <LearnLiftPage app={app} />
+  if (app.slug === 'kinbrief') return <KinBriefPage app={app} />
   if (app.slug === 'servicesphere-field-service-app') {
     return <ServiceSpherePage />
   }
 
   return <NotFoundPage />
+}
+
+function KinBriefPage({ app }: { app: StudioApp }) {
+  const overviewItems = [
+    'Weekly care updates',
+    'Shared tasks and follow-ups',
+    'Notes from calls and appointments',
+    'Important documents',
+    'Family-ready summaries',
+  ]
+  const audience = [
+    'Adult children',
+    'Siblings',
+    'Spouses',
+    'Relatives',
+    'Trusted friends',
+    'Informal caregivers',
+  ]
+  const differences = [
+    'Built around a weekly care plan, not a generic task list.',
+    'Shows what changed, what is overdue, who is doing what, and what needs attention next.',
+    'Uses review-first AI support, where suggestions are reviewed before being saved.',
+    'Focused on family coordination only, not medical advice.',
+  ]
+
+  return (
+    <div className="product-theme product-theme-familycare product-page min-h-screen">
+      <Meta
+        title="KinBrief — Weekly Care Plan for Families | DCP Labs"
+        description="KinBrief helps families coordinate notes, tasks, documents, and weekly updates when caring for an aging parent."
+        path="/kinbrief"
+        jsonLd={[
+          softwareApplicationJsonLd({
+            app,
+            path: '/kinbrief',
+            applicationCategory: 'Family care coordination software',
+            operatingSystem: 'Web, PWA',
+          }),
+          faqJsonLd(app),
+          breadcrumbJsonLd([
+            { name: 'DCP Labs', path: '/' },
+            { name: 'Apps', path: '/apps' },
+            { name: 'KinBrief', path: '/kinbrief' },
+          ]),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-[#3AAE98]/18 pt-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(58,174,152,0.28),transparent_34%),radial-gradient(circle_at_84%_18%,rgba(232,117,95,0.16),transparent_30%),linear-gradient(135deg,#F4FFF9,#F7FAFF_58%,#FFF5F0)]" />
+        <div className="absolute inset-0 opacity-[0.10] [background-image:linear-gradient(rgba(20,75,67,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(20,75,67,0.5)_1px,transparent_1px)] [background-size:92px_92px]" />
+        <div className="site-container relative grid min-h-[calc(100dvh-5rem)] gap-12 py-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <Reveal>
+            <div>
+              <Link
+                to="/apps"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
+              >
+                <ChevronRight className="rotate-180" size={16} />
+                Back to DCP Labs apps
+              </Link>
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] border border-[#3AAE98]/18 bg-white/78 text-[#2D7D70] shadow-[0_18px_42px_rgba(58,174,152,0.16)]">
+                  <HandHeart size={28} strokeWidth={1.8} />
+                </span>
+                <span className="rounded-full product-chip px-3 py-1 text-sm font-bold">
+                  Family care coordination software
+                </span>
+              </div>
+              <p className="mt-9 text-lg font-bold text-[#2D7D70]">
+                KinBrief
+              </p>
+              <h1 className="mt-4 max-w-4xl text-[clamp(3rem,7vw,6.8rem)] font-semibold leading-[0.93] tracking-[-0.04em] text-[#153B36]">
+                A calmer weekly care plan for families helping an aging parent.
+              </h1>
+              <p className="mt-7 max-w-2xl text-xl leading-9 product-muted">
+                KinBrief helps families turn scattered notes, tasks, documents,
+                and updates into one clear weekly plan.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <KinBriefCta href="https://kinbrief.app">
+                  Visit KinBrief
+                </KinBriefCta>
+                <a
+                  href="https://kinbrief.app/tools/weekly-care-update-generator"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2D7D70]/22 bg-white/74 px-5 py-3 text-sm font-bold text-[#174C45] shadow-[0_14px_34px_rgba(31,83,75,0.08)] transition hover:-translate-y-px hover:border-[#2D7D70]/40"
+                >
+                  Try the weekly care update generator
+                  <ArrowRight size={17} />
+                </a>
+              </div>
+              <ProductFacts
+                facts={app.storeFacts}
+                className="mt-6"
+                itemClassName="product-chip"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <KinBriefPlanMockup />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#F7FAFF] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+          <Reveal>
+            <div>
+              <p className="section-kicker text-[#2D7D70]">Product overview</p>
+              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#153B36] md:text-6xl">
+                Turn family care chaos into one clear weekly plan.
+              </h2>
+              <p className="mt-6 text-lg leading-8 product-muted">
+                KinBrief gives families a shared place to collect the care
+                details that usually live across texts, calls, folders, and
+                memory, then shape them into an update everyone can understand.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid gap-4 md:grid-cols-2">
+            {overviewItems.map((item, index) => (
+              <Reveal key={item} delay={index * 0.035}>
+                <div className="flex h-full gap-3 rounded-[18px] border border-[#3AAE98]/16 bg-white/78 p-5 shadow-[0_12px_28px_rgba(31,83,75,0.07)]">
+                  <Check className="mt-1 shrink-0 text-[#E8755F]" size={18} />
+                  <span className="text-lg font-semibold leading-7 text-[#215E55]">
+                    {item}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#EEF9F5] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <Reveal>
+            <div>
+              <p className="section-kicker text-[#2D7D70]">Who it is for</p>
+              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] text-[#153B36] md:text-6xl">
+                A shared plan for the people helping.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div>
+              <p className="max-w-3xl text-lg leading-8 product-muted">
+                KinBrief is for adult children, siblings, spouses, relatives,
+                trusted friends, and informal caregivers coordinating care for
+                an aging parent.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {audience.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-[#3AAE98]/18 bg-white/70 px-4 py-2 text-sm font-bold text-[#2D7D70]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#F7FAFF] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <Reveal>
+            <div>
+              <p className="section-kicker text-[#2D7D70]">
+                What makes it different
+              </p>
+              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] text-[#153B36] md:text-6xl">
+                Built around the weekly care questions.
+              </h2>
+            </div>
+          </Reveal>
+          <div className="grid gap-4">
+            {differences.map((item, index) => (
+              <Reveal key={item} delay={index * 0.035}>
+                <div className="grid gap-4 rounded-[18px] border border-[#3AAE98]/16 bg-white/78 p-5 shadow-[0_12px_28px_rgba(31,83,75,0.07)] md:grid-cols-[4rem_1fr] md:items-start">
+                  <span className="font-mono text-sm font-bold text-[#E8755F]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <p className="text-lg leading-8 text-[#215E55]">{item}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#153B36] py-16 md:py-24">
+        <div className="site-container">
+          <Reveal>
+            <div className="grid gap-6 rounded-[20px] border border-white/12 bg-white/[0.06] p-7 md:grid-cols-[auto_1fr] md:p-10">
+              <HandHeart className="text-[#F7C8B8]" size={34} />
+              <div>
+                <h2 className="text-3xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
+                  Coordination only, with a clear safety boundary.
+                </h2>
+                <p className="mt-5 max-w-4xl text-lg leading-8 text-[#DDF3ED]">
+                  KinBrief helps families coordinate care information. It does
+                  not diagnose, treat, or replace professional medical advice.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="border-t border-[#3AAE98]/20 bg-[linear-gradient(135deg,#F4FFF9,#FFF5F0)] py-16 md:py-24">
+        <div className="site-container flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+          <Reveal>
+            <div>
+              <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#153B36] md:text-6xl">
+                Start with one weekly care update.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 product-muted">
+                Visit KinBrief or try the free weekly care update generator.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="flex flex-wrap gap-3">
+              <KinBriefCta href="https://kinbrief.app">
+                Visit KinBrief
+              </KinBriefCta>
+              <a
+                href="https://kinbrief.app/tools/weekly-care-update-generator"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2D7D70]/22 bg-white/74 px-5 py-3 text-sm font-bold text-[#174C45] shadow-[0_14px_34px_rgba(31,83,75,0.08)] transition hover:-translate-y-px hover:border-[#2D7D70]/40"
+              >
+                Try the weekly care update generator
+                <ArrowRight size={17} />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function KinBriefPlanMockup() {
+  const rows = [
+    ['What changed', 'New appointment note added'],
+    ['Overdue', 'Confirm Thursday ride'],
+    ['Who owns what', 'Maya: pharmacy call'],
+    ['Needs attention', 'Question for care team'],
+  ]
+
+  return (
+    <div className="relative mx-auto w-full max-w-[760px]">
+      <div className="absolute -inset-5 rounded-[2.5rem] bg-[radial-gradient(circle_at_28%_24%,rgba(58,174,152,0.25),transparent_42%),radial-gradient(circle_at_82%_78%,rgba(232,117,95,0.16),transparent_38%)] blur-2xl" />
+      <div className="relative rounded-[24px] border border-[#3AAE98]/18 bg-white/76 p-4 shadow-[0_18px_48px_rgba(31,83,75,0.14),inset_0_1px_0_rgba(255,255,255,0.72)] md:p-6">
+        <div className="rounded-[18px] border border-[#3AAE98]/14 bg-[#FBFFFC] p-5 md:p-7">
+          <div className="flex items-center justify-between gap-4 border-b border-[#3AAE98]/14 pb-5">
+            <div>
+              <p className="text-sm font-bold text-[#2D7D70]">This week</p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-[-0.03em] text-[#153B36]">
+                Care plan for Mom
+              </h2>
+            </div>
+            <span className="rounded-full bg-[#E8755F]/12 px-3 py-1 text-xs font-bold text-[#B84D3D]">
+              Ready to share
+            </span>
+          </div>
+          <div className="mt-5 grid gap-3">
+            {rows.map(([label, value]) => (
+              <div
+                key={label}
+                className="grid gap-2 rounded-[14px] border border-[#3AAE98]/12 bg-white p-4 sm:grid-cols-[10rem_1fr] sm:items-center"
+              >
+                <span className="text-sm font-bold text-[#2D7D70]">
+                  {label}
+                </span>
+                <span className="font-semibold text-[#153B36]">{value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-[14px] border border-[#3AAE98]/12 bg-[#EEF9F5] p-4">
+              <Sparkles className="text-[#E8755F]" size={18} />
+              <p className="mt-3 text-sm font-bold leading-6 text-[#215E55]">
+                Review AI suggestions before saving.
+              </p>
+            </div>
+            <div className="rounded-[14px] border border-[#3AAE98]/12 bg-[#F7FAFF] p-4">
+              <UsersRound className="text-[#2D7D70]" size={18} />
+              <p className="mt-3 text-sm font-bold leading-6 text-[#215E55]">
+                Share one update with the family.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function KinBriefCta({
+  href,
+  children,
+}: {
+  href: string
+  children: ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#E8755F] bg-[#E8755F] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_42px_rgba(232,117,95,0.24)] transition hover:-translate-y-px hover:bg-[#D95F4F]"
+    >
+      {children}
+      <ArrowRight size={17} />
+    </a>
+  )
 }
 
 function LearnLiftPage({ app }: { app: StudioApp }) {
@@ -5342,8 +5669,9 @@ function AboutPage() {
               <p className="mt-8 max-w-3xl text-xl leading-9 text-brand-soft">
                 DCP Labs designs and publishes practical software products for
                 everyday and professional use. The current catalog is
-                intentionally focused on five live products: ServiceSphere,
-                LearnLift AI, CareTail, CoinRelic, and RoleForge.
+                intentionally focused on six live products: KinBrief,
+                ServiceSphere, LearnLift AI, CareTail, CoinRelic, and
+                RoleForge.
               </p>
             </div>
           </Reveal>
@@ -5387,7 +5715,7 @@ function AboutPage() {
 
       <FinalCta
         title="Explore the live product catalog."
-        body="Choose LearnLift AI for study practice, CareTail for pet care organization, CoinRelic for coin collecting, or RoleForge for job application preparation."
+        body="Choose KinBrief for family care coordination, LearnLift AI for study practice, CareTail for pet care organization, CoinRelic for coin collecting, or RoleForge for job application preparation."
       />
     </PageShell>
   )
@@ -5623,13 +5951,14 @@ function HeroSection() {
               </h1>
               <p className="mt-8 max-w-2xl text-xl leading-9 text-brand-soft">
                 DCP Labs builds practical apps with clear jobs to do. The live
-                catalog currently includes CareTail for pet owners, CoinRelic
-                for coin collectors, and RoleForge for job seekers.
+                catalog includes KinBrief for family care coordination,
+                CareTail for pet owners, CoinRelic for coin collectors, and
+                RoleForge for job seekers.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <ButtonLink to="/apps">Explore apps</ButtonLink>
-                <ButtonLink to="/caretail" variant="secondary">
-                  View CareTail
+                <ButtonLink to="/kinbrief" variant="secondary">
+                  View KinBrief
                 </ButtonLink>
               </div>
             </div>
@@ -5700,7 +6029,7 @@ function ProductLedger() {
         <Reveal>
           <div className="grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.8fr_1.2fr]">
             <h2 className="heading-section text-white">
-              Five products, clear next steps.
+              Six products, clear next steps.
             </h2>
             <p className="copy-lg max-w-2xl text-brand-muted">
               Each product explains what it does, who it is for, and where to
@@ -5829,6 +6158,7 @@ function StudioPrinciples() {
 
 function EcosystemMap() {
   const groups = [
+    ['Family care', 'KinBrief'],
     ['Field service', 'ServiceSphere'],
     ['Study practice', 'LearnLift AI'],
     ['Pet care', 'CareTail'],
@@ -5844,12 +6174,12 @@ function EcosystemMap() {
             <div>
               <p className="section-kicker">Ecosystem</p>
               <h2 className="heading-section mt-5 text-white">
-                One studio, five focused product paths.
+                One studio, six focused product paths.
               </h2>
               <p className="copy-lg mt-5 max-w-md text-brand-muted">
-                Choose the field service app, study coach, pet care tracker,
-                collector app, or job application extension, then continue to
-                the official store page.
+                Choose the family care app, field service app, study coach, pet
+                care tracker, collector app, or job application extension, then
+                continue to the official destination.
               </p>
             </div>
             <div className="border-y border-white/10">

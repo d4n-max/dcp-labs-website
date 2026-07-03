@@ -137,9 +137,7 @@ function Footer() {
                   rel="noreferrer"
                   className="brand-link-muted inline-flex min-h-11 items-center text-xs"
                 >
-                  {app.platform === 'Android app'
-                    ? 'Google Play'
-                    : 'Chrome Web Store'}
+                  {app.storeLabel}
                 </a>
               </div>
             ))}

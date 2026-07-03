@@ -5,7 +5,7 @@
   <text x="118" y="180" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800">DCP</text>
   <text x="82" y="370" fill="#F5F1EA" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800" letter-spacing="-4">DCP Labs</text>
   <text x="86" y="444" fill="#D6D0C7" font-family="Arial, Helvetica, sans-serif" font-size="34">Focused digital products for practical workflows.</text>
-  <text x="86" y="512" fill="#8B8498" font-family="Arial, Helvetica, sans-serif" font-size="28">LearnLift AI, CareTail, CoinRelic, RoleForge</text>
+  <text x="86" y="512" fill="#8B8498" font-family="Arial, Helvetica, sans-serif" font-size="26">KinBrief, LearnLift AI, CareTail, CoinRelic, RoleForge</text>
   <defs>
     <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 180) rotate(144) scale(650 390)">
       <stop stop-color="#553C9A" stop-opacity=".72"/>

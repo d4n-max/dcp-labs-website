@@ -5,6 +5,7 @@ import {
   ClipboardCheck,
   Coins,
   GraduationCap,
+  HandHeart,
   HeartPulse,
   ShieldCheck,
 } from 'lucide-react'
@@ -51,6 +52,7 @@ export type AppCategory =
   | 'Pets'
   | 'Career'
   | 'Education'
+  | 'Family'
   | 'Productivity'
 
 export type StudioApp = {
@@ -75,13 +77,80 @@ export type StudioApp = {
   accent: string
   secondaryAccent: string
   code: string
-  visualStyle: 'collector' | 'career' | 'petcare' | 'learning' | 'fieldservice'
+  visualStyle: 'collector' | 'career' | 'petcare' | 'learning' | 'fieldservice' | 'familycare'
   iconImage?: string
   screenshots: string[]
   storeFacts: string[]
 }
 
 export const apps: StudioApp[] = [
+  {
+    slug: 'kinbrief',
+    name: 'KinBrief',
+    category: 'Family care coordination software',
+    filters: ['Family', 'Productivity'],
+    status: 'Live',
+    platform: 'Web/PWA app',
+    storeLabel: 'Visit KinBrief',
+    storeUrl: 'https://kinbrief.app',
+    shortDescription:
+      'Turn scattered notes, tasks, documents, and family updates into one clear weekly care plan.',
+    description:
+      'KinBrief helps families coordinate notes, tasks, documents, and weekly updates when caring for an aging parent.',
+    heroLine:
+      'A calmer weekly care plan for families helping an aging parent.',
+    problem:
+      'Family care coordination can spread across sibling texts, appointment notes, document folders, and memory. KinBrief gives the family one calmer place to review what changed and what needs attention next.',
+    benefits: [
+      'Turn weekly care updates into one family-ready plan.',
+      'Track shared tasks, follow-ups, notes, documents, and responsibilities together.',
+      'Review AI suggestions before anything is saved to the plan.',
+    ],
+    features: [
+      'Weekly care updates',
+      'Shared tasks and follow-ups',
+      'Notes from calls and appointments',
+      'Important documents',
+      'Family-ready summaries',
+      'Review-first AI support',
+    ],
+    audience: [
+      'Adult children coordinating care for an aging parent',
+      'Siblings, spouses, relatives, and trusted friends',
+      'Informal caregivers keeping family responsibilities visible',
+      'Families who need a weekly plan rather than another generic task list',
+    ],
+    faq: [
+      {
+        question: 'What is KinBrief?',
+        answer:
+          'KinBrief is family care coordination software that helps families organize notes, tasks, documents, and weekly updates into one clear care plan.',
+      },
+      {
+        question: 'Who is KinBrief for?',
+        answer:
+          'KinBrief is for adult children, siblings, spouses, relatives, trusted friends, and informal caregivers coordinating care for an aging parent.',
+      },
+      {
+        question: 'Is KinBrief a medical app?',
+        answer:
+          'No. KinBrief helps families coordinate care information. It does not diagnose, treat, recommend medication, or replace professional medical advice.',
+      },
+      {
+        question: 'Does AI save tasks automatically?',
+        answer:
+          'No. KinBrief is built around review-first AI support, so suggestions are reviewed before being saved.',
+      },
+    ],
+    cta: 'Visit KinBrief',
+    icon: HandHeart,
+    accent: '#3AAE98',
+    secondaryAccent: '#E8755F',
+    code: 'KB',
+    visualStyle: 'familycare',
+    screenshots: [],
+    storeFacts: ['Live web app', 'PWA-friendly', 'Family coordination'],
+  },
   {
     slug: 'servicesphere-field-service-app',
     name: 'ServiceSphere',
@@ -488,7 +557,7 @@ export const appBySlug: Record<string, StudioApp> = Object.fromEntries(
 )
 
 export const trustSignals: Array<{ label: string; icon: LucideIcon }> = [
-  { label: 'Five live products', icon: BadgeCheck },
+  { label: 'Six live products', icon: BadgeCheck },
   { label: 'Built for practical use cases', icon: ClipboardCheck },
   { label: 'Direct links to official stores', icon: ShieldCheck },
 ]
