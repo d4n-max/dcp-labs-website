@@ -17,9 +17,7 @@ import {
   MapPinned,
   NotebookTabs,
   ReceiptText,
-  Sparkles,
   Target,
-  UsersRound,
 } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
@@ -1330,11 +1328,11 @@ function AppDetailPage() {
 
 function KinBriefPage({ app }: { app: StudioApp }) {
   const overviewItems = [
-    'Weekly care updates',
-    'Shared tasks and follow-ups',
-    'Notes from calls and appointments',
-    'Important documents',
-    'Family-ready summaries',
+    ['Weekly care updates', 'Turn the week into a clear family-ready summary.'],
+    ['Shared tasks and follow-ups', 'Keep owners, dates, and open loops visible.'],
+    ['Notes from calls and appointments', 'Collect rough notes before they disappear into chats.'],
+    ['Important documents', 'Keep the family pointed to the records that matter.'],
+    ['Family-ready summaries', 'Share one calmer update instead of rewriting the same thread.'],
   ]
   const audience = [
     'Adult children',
@@ -1350,9 +1348,8 @@ function KinBriefPage({ app }: { app: StudioApp }) {
     'Uses review-first AI support, where suggestions are reviewed before being saved.',
     'Focused on family coordination only, not medical advice.',
   ]
-
   return (
-    <div className="product-theme product-theme-familycare product-page min-h-screen">
+    <div className="product-theme product-theme-familycare product-page min-h-screen bg-[#F3F7FB]">
       <Meta
         title="KinBrief — Weekly Care Plan for Families | DCP Labs"
         description="KinBrief helps families coordinate notes, tasks, documents, and weekly updates when caring for an aging parent."
@@ -1373,38 +1370,48 @@ function KinBriefPage({ app }: { app: StudioApp }) {
         ]}
       />
 
-      <section className="relative overflow-hidden border-b border-[#3AAE98]/18 pt-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(58,174,152,0.28),transparent_34%),radial-gradient(circle_at_84%_18%,rgba(232,117,95,0.16),transparent_30%),linear-gradient(135deg,#F4FFF9,#F7FAFF_58%,#FFF5F0)]" />
-        <div className="absolute inset-0 opacity-[0.10] [background-image:linear-gradient(rgba(20,75,67,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(20,75,67,0.5)_1px,transparent_1px)] [background-size:92px_92px]" />
-        <div className="site-container relative grid min-h-[calc(100dvh-5rem)] gap-12 py-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+      <section className="relative overflow-hidden border-b border-[#CBD8EA] pt-20">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#F3F7FB_0%,#F7FAFD_58%,#FFFFFF_100%)]" />
+        <div className="site-container relative grid min-h-[calc(100dvh-5rem)] gap-12 py-12 md:py-16 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
           <Reveal>
             <div>
               <Link
                 to="/apps"
-                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold product-link transition"
+                className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#2563EB] transition hover:text-[#1747B6]"
               >
                 <ChevronRight className="rotate-180" size={16} />
                 Back to DCP Labs apps
               </Link>
-              <div className="flex flex-wrap items-center gap-4">
-                <span className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] border border-[#3AAE98]/18 bg-white/78 text-[#2D7D70] shadow-[0_18px_42px_rgba(58,174,152,0.16)]">
-                  <HandHeart size={28} strokeWidth={1.8} />
-                </span>
-                <span className="rounded-full product-chip px-3 py-1 text-sm font-bold">
-                  Family care coordination software
-                </span>
+              <div className="flex items-center gap-3">
+                {app.iconImage ? (
+                  <img
+                    src={app.iconImage}
+                    alt="KinBrief app icon"
+                    className="h-12 w-12 rounded-[14px] object-cover shadow-[0_12px_26px_rgba(37,99,235,0.16)]"
+                  />
+                ) : (
+                  <AppSymbol app={app} />
+                )}
+                <div>
+                  <p className="text-2xl font-extrabold leading-none tracking-[-0.03em] text-[#172033]">
+                    KinBrief
+                  </p>
+                  <p className="mt-1 text-[0.68rem] font-bold leading-none text-[#526179]">
+                    Family care, clearly coordinated
+                  </p>
+                </div>
               </div>
-              <p className="mt-9 text-lg font-bold text-[#2D7D70]">
-                KinBrief
-              </p>
-              <h1 className="mt-4 max-w-4xl text-[clamp(3rem,7vw,6.8rem)] font-semibold leading-[0.93] tracking-[-0.04em] text-[#153B36]">
+              <span className="mt-10 inline-flex rounded-full border border-[#BFD0EA] bg-white px-4 py-2 text-sm font-bold text-[#2563EB] shadow-[0_8px_22px_rgba(37,99,235,0.06)]">
+                Family care coordination software
+              </span>
+              <h1 className="mt-7 max-w-4xl font-serif text-[clamp(2.65rem,5.2vw,5.4rem)] font-bold leading-[0.96] tracking-[-0.045em] text-[#111827]">
                 A calmer weekly care plan for families helping an aging parent.
               </h1>
-              <p className="mt-7 max-w-2xl text-xl leading-9 product-muted">
+              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#344256]">
                 KinBrief helps families turn scattered notes, tasks, documents,
                 and updates into one clear weekly plan.
               </p>
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <KinBriefCta href="https://kinbrief.app">
                   Visit KinBrief
                 </KinBriefCta>
@@ -1412,7 +1419,7 @@ function KinBriefPage({ app }: { app: StudioApp }) {
                   href="https://kinbrief.app/tools/weekly-care-update-generator"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2D7D70]/22 bg-white/74 px-5 py-3 text-sm font-bold text-[#174C45] shadow-[0_14px_34px_rgba(31,83,75,0.08)] transition hover:-translate-y-px hover:border-[#2D7D70]/40"
+                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-[12px] border border-[#CBD8EA] bg-white px-5 py-3 text-center text-sm font-bold text-[#172033] shadow-[0_12px_26px_rgba(20,37,63,0.06)] transition hover:-translate-y-px hover:border-[#9DB6DA] sm:w-auto"
                 >
                   Try the weekly care update generator
                   <ArrowRight size={17} />
@@ -1421,25 +1428,25 @@ function KinBriefPage({ app }: { app: StudioApp }) {
               <ProductFacts
                 facts={app.storeFacts}
                 className="mt-6"
-                itemClassName="product-chip"
+                itemClassName="border-[#BFD0EA] bg-white text-[#526179]"
               />
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <KinBriefPlanMockup />
+            <KinBriefScreenshotPanel app={app} />
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-[#F7FAFF] py-16 md:py-24">
-        <div className="site-container grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+      <section className="bg-white py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal>
             <div>
-              <p className="section-kicker text-[#2D7D70]">Product overview</p>
-              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#153B36] md:text-6xl">
+              <p className="section-kicker text-[#2563EB]">Product overview</p>
+              <h2 className="mt-5 max-w-3xl font-serif text-4xl font-bold leading-tight tracking-[-0.04em] text-[#111827] md:text-6xl">
                 Turn family care chaos into one clear weekly plan.
               </h2>
-              <p className="mt-6 text-lg leading-8 product-muted">
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526179]">
                 KinBrief gives families a shared place to collect the care
                 details that usually live across texts, calls, folders, and
                 memory, then shape them into an update everyone can understand.
@@ -1447,13 +1454,18 @@ function KinBriefPage({ app }: { app: StudioApp }) {
             </div>
           </Reveal>
           <div className="grid gap-4 md:grid-cols-2">
-            {overviewItems.map((item, index) => (
-              <Reveal key={item} delay={index * 0.035}>
-                <div className="flex h-full gap-3 rounded-[18px] border border-[#3AAE98]/16 bg-white/78 p-5 shadow-[0_12px_28px_rgba(31,83,75,0.07)]">
-                  <Check className="mt-1 shrink-0 text-[#E8755F]" size={18} />
-                  <span className="text-lg font-semibold leading-7 text-[#215E55]">
-                    {item}
-                  </span>
+            {overviewItems.map(([title, body], index) => (
+              <Reveal key={title} delay={index * 0.035}>
+                <div className="h-full rounded-[16px] border border-[#CBD8EA] bg-[#F8FBFF] p-5 shadow-[0_10px_24px_rgba(20,37,63,0.05)]">
+                  <div className="flex gap-3">
+                    <Check className="mt-1 shrink-0 text-[#2563EB]" size={18} />
+                    <div>
+                      <h3 className="text-lg font-bold text-[#111827]">
+                        {title}
+                      </h3>
+                      <p className="mt-2 leading-7 text-[#526179]">{body}</p>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -1461,19 +1473,19 @@ function KinBriefPage({ app }: { app: StudioApp }) {
         </div>
       </section>
 
-      <section className="bg-[#EEF9F5] py-16 md:py-24">
+      <section className="border-y border-[#CBD8EA] bg-[#F3F7FB] py-16 md:py-24">
         <div className="site-container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <Reveal>
             <div>
-              <p className="section-kicker text-[#2D7D70]">Who it is for</p>
-              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] text-[#153B36] md:text-6xl">
+              <p className="section-kicker text-[#2563EB]">Who it is for</p>
+              <h2 className="mt-5 max-w-2xl font-serif text-4xl font-bold tracking-[-0.04em] text-[#111827] md:text-6xl">
                 A shared plan for the people helping.
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
             <div>
-              <p className="max-w-3xl text-lg leading-8 product-muted">
+              <p className="max-w-3xl text-lg leading-8 text-[#344256]">
                 KinBrief is for adult children, siblings, spouses, relatives,
                 trusted friends, and informal caregivers coordinating care for
                 an aging parent.
@@ -1482,7 +1494,7 @@ function KinBriefPage({ app }: { app: StudioApp }) {
                 {audience.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-[#3AAE98]/18 bg-white/70 px-4 py-2 text-sm font-bold text-[#2D7D70]"
+                    className="rounded-full border border-[#BFD0EA] bg-white px-4 py-2 text-sm font-bold text-[#2563EB] shadow-[0_8px_18px_rgba(37,99,235,0.05)]"
                   >
                     {item}
                   </span>
@@ -1493,14 +1505,14 @@ function KinBriefPage({ app }: { app: StudioApp }) {
         </div>
       </section>
 
-      <section className="bg-[#F7FAFF] py-16 md:py-24">
-        <div className="site-container grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+      <section className="bg-white py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.74fr_1.26fr]">
           <Reveal>
             <div>
-              <p className="section-kicker text-[#2D7D70]">
+              <p className="section-kicker text-[#2563EB]">
                 What makes it different
               </p>
-              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] text-[#153B36] md:text-6xl">
+              <h2 className="mt-5 max-w-2xl font-serif text-4xl font-bold tracking-[-0.04em] text-[#111827] md:text-6xl">
                 Built around the weekly care questions.
               </h2>
             </div>
@@ -1508,11 +1520,11 @@ function KinBriefPage({ app }: { app: StudioApp }) {
           <div className="grid gap-4">
             {differences.map((item, index) => (
               <Reveal key={item} delay={index * 0.035}>
-                <div className="grid gap-4 rounded-[18px] border border-[#3AAE98]/16 bg-white/78 p-5 shadow-[0_12px_28px_rgba(31,83,75,0.07)] md:grid-cols-[4rem_1fr] md:items-start">
-                  <span className="font-mono text-sm font-bold text-[#E8755F]">
+                <div className="grid gap-4 rounded-[16px] border border-[#CBD8EA] bg-[#F8FBFF] p-5 shadow-[0_10px_24px_rgba(20,37,63,0.05)] md:grid-cols-[4rem_1fr] md:items-start">
+                  <span className="font-mono text-sm font-bold text-[#2563EB]">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-lg leading-8 text-[#215E55]">{item}</p>
+                  <p className="text-lg leading-8 text-[#344256]">{item}</p>
                 </div>
               </Reveal>
             ))}
@@ -1520,39 +1532,41 @@ function KinBriefPage({ app }: { app: StudioApp }) {
         </div>
       </section>
 
-      <section className="bg-[#153B36] py-16 md:py-24">
-        <div className="site-container">
+      <section className="border-y border-[#BAEFD8] bg-[#ECFDF5] py-16 md:py-24">
+        <div className="site-container grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
           <Reveal>
-            <div className="grid gap-6 rounded-[20px] border border-white/12 bg-white/[0.06] p-7 md:grid-cols-[auto_1fr] md:p-10">
-              <HandHeart className="text-[#F7C8B8]" size={34} />
-              <div>
-                <h2 className="text-3xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
-                  Coordination only, with a clear safety boundary.
-                </h2>
-                <p className="mt-5 max-w-4xl text-lg leading-8 text-[#DDF3ED]">
-                  KinBrief helps families coordinate care information. It does
-                  not diagnose, treat, or replace professional medical advice.
-                </p>
-              </div>
+            <div>
+              <HandHeart className="text-[#047857]" size={34} />
+              <h2 className="mt-5 max-w-2xl font-serif text-4xl font-bold tracking-[-0.04em] text-[#111827] md:text-6xl">
+                Coordination only, with a clear safety boundary.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="rounded-[16px] border border-[#A7E7CD] bg-white/72 p-6 shadow-[0_12px_30px_rgba(4,120,87,0.07)]">
+              <p className="text-lg font-bold leading-8 text-[#064E3B]">
+                KinBrief helps families coordinate care information. It does
+                not diagnose, treat, or replace professional medical advice.
+              </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="border-t border-[#3AAE98]/20 bg-[linear-gradient(135deg,#F4FFF9,#FFF5F0)] py-16 md:py-24">
+      <section className="bg-[#F3F7FB] py-16 md:py-24">
         <div className="site-container flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <div>
-              <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#153B36] md:text-6xl">
+              <h2 className="max-w-3xl font-serif text-4xl font-bold tracking-[-0.04em] text-[#111827] md:text-6xl">
                 Start with one weekly care update.
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 product-muted">
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#526179]">
                 Visit KinBrief or try the free weekly care update generator.
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <KinBriefCta href="https://kinbrief.app">
                 Visit KinBrief
               </KinBriefCta>
@@ -1560,7 +1574,7 @@ function KinBriefPage({ app }: { app: StudioApp }) {
                 href="https://kinbrief.app/tools/weekly-care-update-generator"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#2D7D70]/22 bg-white/74 px-5 py-3 text-sm font-bold text-[#174C45] shadow-[0_14px_34px_rgba(31,83,75,0.08)] transition hover:-translate-y-px hover:border-[#2D7D70]/40"
+                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-[12px] border border-[#CBD8EA] bg-white px-5 py-3 text-center text-sm font-bold text-[#172033] shadow-[0_12px_26px_rgba(20,37,63,0.06)] transition hover:-translate-y-px hover:border-[#9DB6DA]"
               >
                 Try the weekly care update generator
                 <ArrowRight size={17} />
@@ -1573,58 +1587,19 @@ function KinBriefPage({ app }: { app: StudioApp }) {
   )
 }
 
-function KinBriefPlanMockup() {
-  const rows = [
-    ['What changed', 'New appointment note added'],
-    ['Overdue', 'Confirm Thursday ride'],
-    ['Who owns what', 'Maya: pharmacy call'],
-    ['Needs attention', 'Question for care team'],
-  ]
-
+function KinBriefScreenshotPanel({ app }: { app: StudioApp }) {
   return (
-    <div className="relative mx-auto w-full max-w-[760px]">
-      <div className="absolute -inset-5 rounded-[2.5rem] bg-[radial-gradient(circle_at_28%_24%,rgba(58,174,152,0.25),transparent_42%),radial-gradient(circle_at_82%_78%,rgba(232,117,95,0.16),transparent_38%)] blur-2xl" />
-      <div className="relative rounded-[24px] border border-[#3AAE98]/18 bg-white/76 p-4 shadow-[0_18px_48px_rgba(31,83,75,0.14),inset_0_1px_0_rgba(255,255,255,0.72)] md:p-6">
-        <div className="rounded-[18px] border border-[#3AAE98]/14 bg-[#FBFFFC] p-5 md:p-7">
-          <div className="flex items-center justify-between gap-4 border-b border-[#3AAE98]/14 pb-5">
-            <div>
-              <p className="text-sm font-bold text-[#2D7D70]">This week</p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-[-0.03em] text-[#153B36]">
-                Care plan for Mom
-              </h2>
-            </div>
-            <span className="rounded-full bg-[#E8755F]/12 px-3 py-1 text-xs font-bold text-[#B84D3D]">
-              Ready to share
-            </span>
-          </div>
-          <div className="mt-5 grid gap-3">
-            {rows.map(([label, value]) => (
-              <div
-                key={label}
-                className="grid gap-2 rounded-[14px] border border-[#3AAE98]/12 bg-white p-4 sm:grid-cols-[10rem_1fr] sm:items-center"
-              >
-                <span className="text-sm font-bold text-[#2D7D70]">
-                  {label}
-                </span>
-                <span className="font-semibold text-[#153B36]">{value}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[14px] border border-[#3AAE98]/12 bg-[#EEF9F5] p-4">
-              <Sparkles className="text-[#E8755F]" size={18} />
-              <p className="mt-3 text-sm font-bold leading-6 text-[#215E55]">
-                Review AI suggestions before saving.
-              </p>
-            </div>
-            <div className="rounded-[14px] border border-[#3AAE98]/12 bg-[#F7FAFF] p-4">
-              <UsersRound className="text-[#2D7D70]" size={18} />
-              <p className="mt-3 text-sm font-bold leading-6 text-[#215E55]">
-                Share one update with the family.
-              </p>
-            </div>
-          </div>
-        </div>
+    <div className="relative mx-auto w-full max-w-[880px]">
+      <div className="absolute -inset-6 rounded-[28px] bg-[#2563EB]/10 blur-2xl" />
+      <div className="relative overflow-hidden rounded-[20px] border border-[#CBD8EA] bg-white p-2 shadow-[0_24px_60px_rgba(20,37,63,0.14),inset_0_1px_0_rgba(255,255,255,0.86)]">
+        <img
+          src={app.screenshots[0]}
+          alt="KinBrief dashboard showing weekly care priorities, overdue items, upcoming follow-ups, and family responsibilities"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="h-auto w-full rounded-[16px] object-contain"
+        />
       </div>
     </div>
   )
@@ -1642,7 +1617,7 @@ function KinBriefCta({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#E8755F] bg-[#E8755F] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_42px_rgba(232,117,95,0.24)] transition hover:-translate-y-px hover:bg-[#D95F4F]"
+      className="inline-flex min-h-14 items-center justify-center gap-2 rounded-[12px] border border-[#2563EB] bg-[#2563EB] px-6 py-3 text-center text-sm font-bold text-white shadow-[0_16px_34px_rgba(37,99,235,0.24)] transition hover:-translate-y-px hover:bg-[#1D4ED8]"
     >
       {children}
       <ArrowRight size={17} />

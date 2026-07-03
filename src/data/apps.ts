@@ -23,6 +23,8 @@ import caretailFeature from '../assets/products/caretail-feature.webp'
 import caretailIcon from '../assets/products/caretail-icon.png'
 import caretailProfile from '../assets/products/caretail-profile.webp'
 import caretailReminders from '../assets/products/caretail-reminders.webp'
+import kinbriefDashboard from '../assets/products/kinbrief-dashboard.png'
+import kinbriefIcon from '../assets/products/kinbrief-icon.png'
 import learnliftHome from '../assets/products/learnlift-home.webp'
 import learnliftIcon from '../assets/products/learnlift-icon.png'
 import learnliftRawFlashcards from '../assets/products/learnlift-raw-flashcards.webp'
@@ -144,11 +146,12 @@ export const apps: StudioApp[] = [
     ],
     cta: 'Visit KinBrief',
     icon: HandHeart,
-    accent: '#3AAE98',
-    secondaryAccent: '#E8755F',
+    accent: '#2563EB',
+    secondaryAccent: '#F59E0B',
     code: 'KB',
     visualStyle: 'familycare',
-    screenshots: [],
+    iconImage: kinbriefIcon,
+    screenshots: [kinbriefDashboard],
     storeFacts: ['Live web app', 'PWA-friendly', 'Family coordination'],
   },
   {
