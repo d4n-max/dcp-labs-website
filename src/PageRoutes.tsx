@@ -1372,7 +1372,7 @@ function KinBriefPage({ app }: { app: StudioApp }) {
 
       <section className="relative overflow-hidden border-b border-[#CBD8EA] pt-20">
         <div className="absolute inset-0 bg-[linear-gradient(180deg,#F3F7FB_0%,#F7FAFD_58%,#FFFFFF_100%)]" />
-        <div className="site-container relative grid min-h-[calc(100dvh-5rem)] gap-12 py-12 md:py-16 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
+        <div className="relative mx-auto grid min-h-[calc(100dvh-5rem)] w-[min(100%-32px,1480px)] gap-12 py-12 md:w-[min(100%-40px,1480px)] md:py-16 lg:grid-cols-[0.78fr_1.22fr] lg:items-center xl:gap-16">
           <Reveal>
             <div>
               <Link
@@ -1404,10 +1404,10 @@ function KinBriefPage({ app }: { app: StudioApp }) {
               <span className="mt-10 inline-flex rounded-full border border-[#BFD0EA] bg-white px-4 py-2 text-sm font-bold text-[#2563EB] shadow-[0_8px_22px_rgba(37,99,235,0.06)]">
                 Family care coordination software
               </span>
-              <h1 className="mt-7 max-w-4xl font-serif text-[clamp(2.65rem,5.2vw,5.4rem)] font-bold leading-[0.96] tracking-[-0.045em] text-[#111827]">
+              <h1 className="mt-7 max-w-3xl font-serif text-[clamp(2.45rem,4.2vw,4.65rem)] font-bold leading-[0.98] tracking-[-0.045em] text-[#111827]">
                 A calmer weekly care plan for families helping an aging parent.
               </h1>
-              <p className="mt-7 max-w-2xl text-xl leading-9 text-[#344256]">
+              <p className="mt-6 max-w-xl text-lg leading-8 text-[#344256]">
                 KinBrief helps families turn scattered notes, tasks, documents,
                 and updates into one clear weekly plan.
               </p>
@@ -1589,8 +1589,8 @@ function KinBriefPage({ app }: { app: StudioApp }) {
 
 function KinBriefScreenshotPanel({ app }: { app: StudioApp }) {
   return (
-    <div className="relative mx-auto w-full max-w-[880px]">
-      <div className="absolute -inset-6 rounded-[28px] bg-[#2563EB]/10 blur-2xl" />
+    <div className="relative mx-auto w-full max-w-[1040px] lg:mx-0 lg:ml-auto">
+      <div className="absolute -inset-8 rounded-[30px] bg-[#2563EB]/10 blur-2xl" />
       <div className="relative overflow-hidden rounded-[20px] border border-[#CBD8EA] bg-white p-2 shadow-[0_24px_60px_rgba(20,37,63,0.14),inset_0_1px_0_rgba(255,255,255,0.86)]">
         <img
           src={app.screenshots[0]}
