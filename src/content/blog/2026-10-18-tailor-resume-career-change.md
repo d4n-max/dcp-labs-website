@@ -55,11 +55,11 @@ Before rewriting the full resume, create a small working map. Put the most impor
 
 For instance:
 
-- **Requirement:** coordinate cross-functional launches.  
+- **Requirement:** coordinate cross-functional launches.
   **Proof:** organized a promotion rollout across store, merchandising, and logistics teams.
-- **Requirement:** use reporting to guide decisions.  
+- **Requirement:** use reporting to guide decisions.
   **Proof:** maintained weekly performance reports and adjusted staffing based on demand patterns.
-- **Requirement:** manage competing priorities.  
+- **Requirement:** manage competing priorities.
   **Proof:** scheduled daily operations while handling urgent customer and supplier issues.
 
 This map helps you choose what deserves space. It also reveals where a short course, portfolio project, volunteer assignment, or freelance engagement can provide newer evidence. Such work should be labeled honestly; it does not need to look like a full-time role to be relevant.
