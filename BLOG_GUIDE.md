@@ -1,6 +1,8 @@
 # DCP Labs Blog Guide
 
-The blog is file-based. To publish a new post, add one Markdown or MDX file to `src/content/blog/`. You do not need to edit React components for normal daily posting.
+The blog is file-based. Add one Markdown or MDX file to `src/content/blog/` and explicitly set `status: published` after editorial approval. Unapproved new files and explicit drafts are excluded from production routes, bundles and the sitemap. You do not need to edit React components for normal daily posting.
+
+The 100 legacy articles observed on the public blog on November 1, 2026 are recorded in `src/content/blog-publication.json`. This preserves their existing publication state without treating Git tracking as approval. `draft: true`, `published: false` or any status other than `published` overrides that legacy approval. New posts need `status: published` or `published: true`; use `status: draft` while writing. Files beginning with `_` remain templates.
 
 ## Create a New Blog Post
 
@@ -24,6 +26,7 @@ Every post needs:
 ```yaml
 ---
 title: Best Pet Reminder App Features for Daily Care
+status: published
 slug: best-pet-reminder-app
 description: A practical guide to choosing pet reminder app features for daily care routines.
 date: 2026-06-25
@@ -61,6 +64,8 @@ The public URL becomes:
 ```
 
 Keep slugs stable after publishing. Changing a slug changes the URL.
+
+`date` is the article's publication date, not proof of its last modification. The build omits sitemap `lastmod` until verified modification dates are available; it never substitutes the build time or filename date. `npm run build` generates the complete sitemap and prerendered public pages in `dist`. Do not maintain a separate static sitemap in `public`.
 
 ## Link the Post to an App Page
 

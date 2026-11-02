@@ -1,0 +1,1752 @@
+.previewTheme {
+  --ink: #f7f3ef;
+  --muted: #b9b1b7;
+  --surface: #07060c;
+  --pink: #f45aa1;
+  --purple: #8b5cf6;
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  color: var(--ink);
+  background: var(--surface);
+  isolation: isolate;
+}
+
+.previewTheme,
+.previewTheme * {
+  box-sizing: border-box;
+}
+
+.previewTheme a {
+  color: inherit;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+  background:
+    linear-gradient(90deg, rgba(8, 6, 14, 0.15), rgba(8, 6, 14, 0.82)),
+    #08070d;
+}
+
+.handoffGrid {
+  position: fixed;
+  z-index: 12;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(12, minmax(0, 1fr));
+  overflow: clip;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.handoffTile {
+  min-width: 0;
+  min-height: 0;
+  background: rgba(13, 11, 21, 0.992);
+  box-shadow: inset 0 0 0 1px rgba(247, 243, 239, 0.026);
+  opacity: 0;
+  transform: scaleY(0.02);
+  transform-origin: bottom center;
+}
+
+.handoffTile:nth-child(4n) {
+  background: rgba(16, 13, 25, 0.992);
+}
+
+.handoffTile:nth-child(7n) {
+  background: rgba(18, 14, 29, 0.992);
+}
+
+.handoffTile:nth-child(11n) {
+  background: rgba(12, 11, 18, 0.992);
+}
+
+.handoffTile:nth-child(13n) {
+  background: rgba(20, 15, 31, 0.992);
+}
+
+.handoffTile:nth-child(n + 85) {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .handoffGrid {
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+    grid-template-rows: repeat(10, minmax(0, 1fr));
+  }
+
+  .handoffTile:nth-child(n + 1) {
+    display: block;
+  }
+
+  .handoffTile:nth-child(n + 161) {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .handoffGrid {
+    grid-template-columns: repeat(20, minmax(0, 1fr));
+    grid-template-rows: repeat(12, minmax(0, 1fr));
+  }
+
+  .handoffTile:nth-child(n + 1) {
+    display: block;
+  }
+
+  .handoffTile:nth-child(n + 241) {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .handoffGrid {
+    grid-template-columns: repeat(22, minmax(0, 1fr));
+    grid-template-rows: repeat(14, minmax(0, 1fr));
+  }
+
+  .handoffTile:nth-child(n + 1) {
+    display: block;
+  }
+}
+
+.heroGrid,
+.heroLight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroGrid {
+  opacity: 0.62;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.042) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.042) 1px, transparent 1px);
+  background-size: clamp(72px, 8vw, 132px) clamp(72px, 8vw, 132px);
+  mask-image: linear-gradient(to bottom, black 4%, black 78%, transparent 100%);
+  transform-origin: 50% 100%;
+}
+
+.heroLight {
+  inset: -18% -12% -12% 40%;
+  opacity: 0.72;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 18%,
+      rgba(244, 90, 161, 0.08) 44%,
+      rgba(139, 92, 246, 0.19) 64%,
+      transparent 79%
+    );
+  filter: blur(22px);
+}
+
+.previewHeader {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 76px;
+  padding: 14px clamp(24px, 3.1vw, 52px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 6, 12, 0.78);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.logoLink {
+  display: inline-flex;
+  width: clamp(118px, 10vw, 154px);
+  min-height: 44px;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.logoLink img,
+.finalLogo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.desktopNavigation {
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 2.5vw, 38px);
+}
+
+.desktopNavigation a,
+.mobileNavigation a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(247, 243, 239, 0.74);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.desktopNavigation a:hover,
+.desktopNavigation a:focus-visible,
+.mobileNavigation a:hover,
+.mobileNavigation a:focus-visible {
+  color: var(--ink);
+  border-color: var(--pink);
+}
+
+.mobileMenuButton,
+.mobileNavigation {
+  display: none;
+}
+
+.heroStatement {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: clamp(142px, 17svh, 170px) clamp(22px, 3.1vw, 52px) 0;
+  text-align: center;
+}
+
+.heroKicker,
+.productType,
+.storyLabel {
+  margin: 0;
+  color: #ff77b6;
+  font-size: clamp(0.66rem, 0.7vw, 0.78rem);
+  font-weight: 720;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heroKicker {
+  margin-bottom: clamp(20px, 3svh, 34px);
+}
+
+.heroTitle {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+  font-size: clamp(4.65rem, 10.35vw, 10.5rem);
+  font-weight: 760;
+  letter-spacing: -0.079em;
+  line-height: 0.78;
+  text-transform: uppercase;
+}
+
+.heroLineMask {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  overflow: clip;
+  padding: 0.04em 0.08em 0.12em 0;
+}
+
+.heroWords {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: clamp(0.22em, 0.7vw, 0.55em);
+  row-gap: 0;
+  transform-origin: left center;
+}
+
+.heroWord {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.heroLineRight {
+  align-self: center;
+  padding-right: 0;
+  text-align: left;
+}
+
+.heroLineRight > span {
+  margin-left: 0;
+}
+
+.heroLineAccent {
+  padding-bottom: 0.18em;
+}
+
+.heroLineAccent > span {
+  color: transparent;
+  background:
+    linear-gradient(
+      98deg,
+      #f7f3ef 0%,
+      #f7f3ef 23%,
+      #ff7eba 49%,
+      #b790ff 72%,
+      #f7f3ef 100%
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 220% 100%;
+  text-shadow: 0 0 34px rgba(244, 90, 161, 0.11);
+}
+
+.heroFooter {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: min(100% - clamp(44px, 6.2vw, 104px), 1360px);
+  margin: clamp(20px, 3.2svh, 38px) auto 0;
+  grid-template-columns: minmax(260px, 460px);
+  align-items: end;
+  justify-content: center;
+  gap: 30px;
+}
+
+.heroSupport {
+  max-width: 42ch;
+  margin: 0;
+  color: rgba(247, 243, 239, 0.73);
+  font-size: clamp(0.98rem, 1.25vw, 1.18rem);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.heroActions,
+.finalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 0 21px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 720;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.button svg {
+  transition: transform 180ms ease;
+}
+
+.button:hover svg {
+  transform: translateX(3px);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:focus-visible,
+.desktopNavigation a:focus-visible,
+.mobileNavigation a:focus-visible,
+.mobileMenuButton:focus-visible,
+.logoLink:focus-visible,
+.productLink:focus-visible,
+.siteFooter a:focus-visible {
+  outline: 2px solid #ff85bd;
+  outline-offset: 4px;
+}
+
+.previewTheme .buttonPrimary {
+  color: #100912;
+  background: #f45aa1;
+  box-shadow: 0 12px 38px rgba(244, 90, 161, 0.17);
+}
+
+.buttonPrimary:hover {
+  background: #ff72b1;
+}
+
+.buttonSecondary {
+  border-color: rgba(255, 255, 255, 0.23);
+  color: rgba(247, 243, 239, 0.9);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.buttonSecondary:hover {
+  border-color: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.heroProductBridge {
+  position: absolute;
+  z-index: 2;
+  right: clamp(22px, 3.1vw, 52px);
+  bottom: 3.8svh;
+  left: clamp(22px, 3.1vw, 52px);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  color: rgba(247, 243, 239, 0.48);
+  font-size: clamp(0.54rem, 0.56vw, 0.67rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroProductBridge span {
+  min-width: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  white-space: nowrap;
+}
+
+.scrollIndicator {
+  position: absolute;
+  z-index: 4;
+  bottom: 10svh;
+  left: clamp(22px, 3.1vw, 52px);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(247, 243, 239, 0.48);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.story {
+  position: relative;
+  height: 100svh;
+  overflow: clip;
+  background: transparent;
+}
+
+.storyBase {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: #08070d;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.storyTrack {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: max-content;
+  height: 100%;
+}
+
+.storyAmbient {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.caretailAmbient {
+  background:
+    radial-gradient(circle at 76% 66%, rgba(86, 199, 190, 0.21), transparent 32%),
+    linear-gradient(112deg, rgba(8, 7, 13, 0.98), rgba(8, 23, 25, 0.86));
+}
+
+.roleforgeAmbient {
+  background:
+    linear-gradient(90deg, rgba(7, 6, 13, 0.98), rgba(54, 29, 100, 0.38)),
+    radial-gradient(circle at 23% 82%, rgba(30, 169, 210, 0.2), transparent 34%);
+}
+
+.learnliftAiAmbient {
+  background:
+    linear-gradient(112deg, rgba(15, 8, 33, 0.96), rgba(85, 60, 154, 0.3)),
+    radial-gradient(circle at 72% 35%, rgba(237, 100, 166, 0.24), transparent 35%);
+}
+
+.servicesphereFieldServiceAppAmbient {
+  background:
+    linear-gradient(114deg, rgba(9, 8, 18, 0.98), rgba(40, 25, 75, 0.4)),
+    radial-gradient(circle at 24% 72%, rgba(124, 58, 237, 0.18), transparent 34%);
+}
+
+.coinrelicAmbient {
+  background:
+    radial-gradient(circle at 68% 48%, rgba(212, 175, 55, 0.2), transparent 33%),
+    linear-gradient(112deg, rgba(5, 7, 12, 0.98), rgba(35, 29, 17, 0.84));
+}
+
+.kinbriefAmbient {
+  background:
+    radial-gradient(circle at 25% 70%, rgba(37, 99, 235, 0.19), transparent 35%),
+    linear-gradient(108deg, rgba(7, 10, 18, 0.98), rgba(28, 23, 15, 0.76));
+}
+
+.storyChrome {
+  position: absolute;
+  z-index: 20;
+  top: clamp(92px, 11svh, 108px);
+  right: clamp(24px, 4vw, 64px);
+  left: clamp(24px, 4vw, 64px);
+  display: grid;
+  grid-template-columns: 180px minmax(240px, 360px) minmax(300px, 1fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 52px);
+}
+
+.storyLabel {
+  color: rgba(247, 243, 239, 0.62);
+}
+
+.activeProduct {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.activeProductCount,
+.activeProductTotal {
+  color: rgba(247, 243, 239, 0.56);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+}
+
+.activeProductNames {
+  position: relative;
+  display: block;
+  height: 1.4em;
+  min-width: 0;
+  overflow: visible;
+  font-size: clamp(0.94rem, 1.18vw, 1.12rem);
+  font-weight: 690;
+}
+
+.activeProductNames > span {
+  position: absolute;
+  inset: 0 auto auto 0;
+  max-width: 100%;
+  opacity: 0;
+  white-space: nowrap;
+  transform: translateY(7px);
+  transition:
+    opacity 160ms ease,
+    transform 220ms ease;
+}
+
+.activeProductNames > span[aria-hidden='false'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.storyChrome nav ol {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(6, 1fr);
+  list-style: none;
+}
+
+.storyChrome nav li {
+  display: flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  color: rgba(247, 243, 239, 0.56);
+  font-size: 0.75rem;
+  letter-spacing: 0.13em;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.storyChrome nav li[aria-current='step'] {
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.progressTrack {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: calc(180px + min(3vw, 52px) + 240px + min(3vw, 52px));
+  height: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.progressTrack > span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--pink), #9b72ff);
+  box-shadow: 0 0 16px rgba(244, 90, 161, 0.34);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.progressTrack > i {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(244, 90, 161, 0.15);
+}
+
+.progressTrack > b {
+  position: relative;
+  display: inline-block;
+  width: calc(20% - 1px);
+  height: 5px;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.progressTrack > b:last-child {
+  position: absolute;
+  right: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.productPanel {
+  --panel-pad: clamp(28px, 5vw, 76px);
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  flex: 0 0 100vw;
+  overflow: clip;
+}
+
+.productPanel::before {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 90px 90px;
+  content: '';
+  mask-image: linear-gradient(to bottom, transparent 8%, black 28%, black 88%, transparent);
+  pointer-events: none;
+}
+
+.productInner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: clamp(120px, 16svh, 162px) var(--panel-pad) clamp(54px, 7svh, 76px);
+  grid-template-columns: minmax(360px, 0.78fr) minmax(520px, 1.3fr);
+  align-items: center;
+  gap: clamp(34px, 5vw, 88px);
+}
+
+.productCopy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.productIdentity {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: clamp(48px, 4.3vw, 68px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(14px, 1.5vw, 22px);
+}
+
+.productIcon {
+  display: block;
+  width: clamp(48px, 4.3vw, 68px);
+  height: clamp(48px, 4.3vw, 68px);
+  border-radius: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.28));
+}
+
+.roleForgePanel .productIcon {
+  padding: 4px;
+  background: rgba(5, 8, 14, 0.86);
+}
+
+.productHeading {
+  min-width: 0;
+  overflow: visible;
+}
+
+.productType {
+  max-width: 45ch;
+  margin-bottom: 8px;
+  color: var(--product-accent);
+  letter-spacing: 0.1em;
+}
+
+.productHeading h2 {
+  width: max-content;
+  max-width: min(100%, 9.6em);
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(3.55rem, 5.35vw, 6rem);
+  font-weight: 730;
+  letter-spacing: -0.072em;
+  line-height: 0.93;
+  white-space: nowrap;
+}
+
+.serviceSpherePanel .productHeading h2 {
+  font-size: clamp(3.15rem, 4.55vw, 5rem);
+  letter-spacing: -0.077em;
+}
+
+.learnLiftPanel .productHeading h2 {
+  font-size: clamp(3.35rem, 4.9vw, 5.5rem);
+}
+
+.productNarrative {
+  max-width: 42ch;
+  margin-top: clamp(23px, 3.2svh, 35px);
+  margin-left: calc(clamp(48px, 4.3vw, 68px) + clamp(14px, 1.5vw, 22px));
+}
+
+.productDescription {
+  margin: 0;
+  color: rgba(247, 243, 239, 0.68);
+  font-size: clamp(0.98rem, 1.2vw, 1.16rem);
+  line-height: 1.55;
+}
+
+.productLink {
+  display: inline-flex;
+  min-height: 44px;
+  margin-top: clamp(18px, 2.5svh, 26px);
+  align-items: center;
+  gap: 13px;
+  border-bottom: 1px solid color-mix(in srgb, var(--product-accent) 70%, transparent);
+  font-size: 0.82rem;
+  font-weight: 720;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.productLink:hover {
+  color: var(--product-accent);
+  border-color: var(--product-accent);
+}
+
+.productLink svg {
+  color: var(--product-accent);
+  transition: transform 180ms ease;
+}
+
+.productLink:hover svg {
+  transform: translateX(4px);
+}
+
+.panelPosition {
+  display: flex;
+  width: 132px;
+  margin: clamp(25px, 3.5svh, 38px) 0 0
+    calc(clamp(48px, 4.3vw, 68px) + clamp(14px, 1.5vw, 22px));
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: rgba(247, 243, 239, 0.33);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+}
+
+.panelPosition::before {
+  width: 48px;
+  height: 1px;
+  order: 2;
+  background: var(--product-accent);
+  content: '';
+  opacity: 0.6;
+}
+
+.panelPosition span:first-child {
+  order: 1;
+}
+
+.panelPosition span:last-child {
+  order: 3;
+}
+
+.productMedia {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  height: min(68svh, 680px);
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.productMediaMask {
+  position: relative;
+  z-index: 2;
+  overflow: clip;
+  border: 1px solid color-mix(in srgb, var(--product-accent) 38%, transparent);
+  border-radius: clamp(16px, 1.8vw, 26px);
+  background: rgba(8, 7, 13, 0.35);
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.42),
+    0 0 60px color-mix(in srgb, var(--product-accent) 12%, transparent);
+}
+
+.productMediaMask img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productMediaSheen {
+  position: absolute;
+  z-index: 3;
+  inset: -30%;
+  opacity: 0;
+  background: linear-gradient(
+    112deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.14) 49%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.productVisualBackdrop {
+  position: absolute;
+  z-index: 0;
+  inset: 11% 7%;
+  border: 1px solid color-mix(in srgb, var(--product-accent) 22%, transparent);
+  opacity: 0.72;
+  transform: translate(28px, 28px);
+}
+
+.productVisualBackdrop span {
+  position: absolute;
+  background: color-mix(in srgb, var(--product-accent) 38%, transparent);
+}
+
+.productVisualBackdrop span:nth-child(1) {
+  top: 18%;
+  right: -8%;
+  width: 34%;
+  height: 1px;
+}
+
+.productVisualBackdrop span:nth-child(2) {
+  bottom: 16%;
+  left: -8%;
+  width: 42%;
+  height: 1px;
+}
+
+.productVisualBackdrop span:nth-child(3) {
+  top: -8%;
+  left: 18%;
+  width: 1px;
+  height: 34%;
+}
+
+.productAccentTrace {
+  position: absolute;
+  z-index: 4;
+  right: 4%;
+  bottom: 5%;
+  left: 4%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--product-accent), transparent);
+  box-shadow: 0 0 18px var(--product-accent);
+  opacity: 0.68;
+}
+
+.careTailPanel .productMediaMask {
+  width: min(61vw, 920px);
+  aspect-ratio: 1024 / 500;
+}
+
+.careTailPanel .productVisualBackdrop {
+  inset: 17% 4% 13% 11%;
+  border-radius: 32px 4px 32px 4px;
+}
+
+.roleForgePanel .productInner,
+.kinBriefPanel .productInner {
+  grid-template-columns: minmax(550px, 1.35fr) minmax(360px, 0.78fr);
+}
+
+.roleForgePanel .productCopy,
+.kinBriefPanel .productCopy {
+  order: 2;
+}
+
+.roleForgePanel .productMedia,
+.kinBriefPanel .productMedia {
+  order: 1;
+}
+
+.roleForgePanel .productMediaMask {
+  width: min(61vw, 880px);
+  aspect-ratio: 1280 / 800;
+}
+
+.roleForgePanel .productVisualBackdrop {
+  inset: 8% 10% 5% 2%;
+  border-radius: 4px;
+  transform: translate(-24px, 24px);
+}
+
+.learnLiftPanel .productInner {
+  grid-template-columns: minmax(430px, 1.05fr) minmax(360px, 0.95fr);
+  gap: clamp(24px, 3vw, 48px);
+}
+
+.learnLiftPanel .productMedia {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.learnLiftPanel .productMediaMask {
+  width: min(25vw, 350px);
+  height: min(72svh, 720px);
+  border-radius: 28px 28px 8px 8px;
+}
+
+.learnLiftPanel .productVisualBackdrop {
+  inset: 6% 19% 12% 19%;
+  border-radius: 42% 42% 8px 8px;
+  transform: translate(54px, -8px);
+}
+
+.learnLiftPanel .productAccentTrace {
+  top: 10%;
+  right: 12%;
+  bottom: 10%;
+  left: auto;
+  width: 1px;
+  height: auto;
+  background: linear-gradient(transparent, var(--product-secondary), transparent);
+}
+
+.serviceSpherePanel .productInner {
+  grid-template-columns: minmax(450px, 1.08fr) minmax(360px, 0.92fr);
+  gap: clamp(24px, 3.1vw, 46px);
+}
+
+.serviceSpherePanel .productMedia {
+  justify-content: center;
+}
+
+.serviceSpherePanel .productMediaMask {
+  width: min(26vw, 360px);
+  height: min(72svh, 720px);
+  border-radius: 10px 28px 10px 28px;
+}
+
+.serviceSpherePanel .productVisualBackdrop {
+  inset: 8% 5% 8% 25%;
+  border-radius: 2px;
+  transform: translate(-54px, 0);
+}
+
+.serviceSpherePanel .productAccentTrace {
+  right: 3%;
+  bottom: 12%;
+  left: 20%;
+}
+
+.coinRelicPanel .productInner {
+  grid-template-columns: minmax(430px, 0.9fr) minmax(390px, 0.95fr);
+}
+
+.coinRelicPanel .productMediaMask {
+  width: min(37vw, 465px);
+  height: min(70svh, 650px);
+  border-radius: 5px;
+  border-color: rgba(219, 178, 74, 0.38);
+}
+
+.coinRelicPanel .productVisualBackdrop {
+  inset: 10% 13%;
+  border: 1px solid rgba(219, 178, 74, 0.2);
+  border-radius: 50%;
+  transform: scale(1.14);
+}
+
+.coinRelicPanel .productVisualBackdrop::before,
+.coinRelicPanel .productVisualBackdrop::after {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(219, 178, 74, 0.14);
+  border-radius: 50%;
+  content: '';
+}
+
+.coinRelicPanel .productVisualBackdrop::after {
+  inset: 25%;
+}
+
+.coinRelicPanel .productAccentTrace {
+  right: 17%;
+  left: 17%;
+  background: linear-gradient(90deg, transparent, #d7ad45, transparent);
+}
+
+.kinBriefPanel .productMediaMask {
+  width: min(61vw, 900px);
+  aspect-ratio: 1768 / 879;
+  border-radius: 12px;
+  background: #f5f8fc;
+}
+
+.kinBriefPanel .productVisualBackdrop {
+  inset: 5% 3% 10% 11%;
+  border-radius: 4px 28px 4px 28px;
+  transform: translate(-24px, 24px);
+}
+
+.finalScene {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  overflow: clip;
+  place-items: center;
+  padding: 100px clamp(24px, 5vw, 76px);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 50% 65%, rgba(139, 92, 246, 0.16), transparent 36%),
+    #08070d;
+  background-size: 110px 110px, 110px 110px, auto, auto;
+}
+
+.finalNames {
+  position: absolute;
+  inset: 7% -4%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: space-between;
+  color: rgba(247, 243, 239, 0.08);
+  font-size: clamp(3rem, 7vw, 7.4rem);
+  font-weight: 740;
+  letter-spacing: -0.07em;
+  line-height: 0.82;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.finalNames span:nth-child(even) {
+  justify-self: end;
+}
+
+.finalContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(100%, 1080px);
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.finalLogo {
+  width: clamp(124px, 11vw, 164px);
+  margin-bottom: clamp(32px, 5svh, 54px);
+}
+
+.finalTitle {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+  font-size: clamp(4rem, 8.8vw, 8.7rem);
+  font-weight: 750;
+  letter-spacing: -0.075em;
+  line-height: 0.83;
+  text-transform: uppercase;
+}
+
+.finalLineMask {
+  display: block;
+  overflow: clip;
+  padding: 0 0.06em 0.12em;
+}
+
+.finalLineMask span {
+  display: block;
+}
+
+.finalContent > p {
+  max-width: 52ch;
+  margin: clamp(24px, 4svh, 40px) 0 0;
+  color: rgba(247, 243, 239, 0.65);
+  line-height: 1.6;
+}
+
+.finalActions {
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.finalEmail {
+  margin-top: 20px;
+  color: rgba(247, 243, 239, 0.7);
+  font-size: 0.76rem;
+  text-underline-offset: 5px;
+}
+
+.finalEmail:focus-visible {
+  outline: 2px solid #ff85bd;
+  outline-offset: 4px;
+}
+
+.siteFooter {
+  position: relative;
+  z-index: 2;
+  padding: clamp(64px, 8vw, 112px) clamp(24px, 5vw, 76px) 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #05050a;
+}
+
+.siteFooterInner {
+  display: grid;
+  width: min(100%, 1380px);
+  margin: 0 auto;
+  grid-template-columns: minmax(280px, 1.35fr) minmax(220px, 0.9fr) minmax(150px, 0.55fr);
+  gap: clamp(44px, 7vw, 112px);
+}
+
+.siteFooterBrand img {
+  display: block;
+  width: clamp(126px, 11vw, 166px);
+  height: auto;
+}
+
+.siteFooterBrand p {
+  max-width: 42ch;
+  margin: 26px 0 18px;
+  color: rgba(247, 243, 239, 0.62);
+  line-height: 1.65;
+}
+
+.siteFooterBrand > a {
+  color: rgba(247, 243, 239, 0.82);
+  font-size: 0.86rem;
+  text-underline-offset: 5px;
+}
+
+.siteFooter nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.siteFooter h2 {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.siteFooter nav > a,
+.siteFooterProduct > a {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  color: rgba(247, 243, 239, 0.66);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.siteFooter nav > a:hover,
+.siteFooterProduct > a:hover {
+  color: var(--ink);
+}
+
+.siteFooterProduct {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.siteFooterProduct > a:last-child {
+  color: rgba(247, 243, 239, 0.56);
+  font-size: 0.75rem;
+}
+
+.siteFooterLegal {
+  display: flex;
+  width: min(100%, 1380px);
+  margin: clamp(48px, 7vw, 92px) auto 0;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(247, 243, 239, 0.56);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 1180px) and (min-width: 900px) {
+  .heroTitle {
+    font-size: clamp(4.5rem, 9.25vw, 7rem);
+  }
+
+  .heroProductBridge {
+    gap: 8px;
+  }
+
+  .heroProductBridge span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .storyChrome {
+    grid-template-columns: 130px minmax(210px, 300px) minmax(270px, 1fr);
+    gap: 20px;
+  }
+
+  .progressTrack {
+    left: 380px;
+  }
+
+  .productInner,
+  .roleForgePanel .productInner,
+  .kinBriefPanel .productInner,
+  .learnLiftPanel .productInner,
+  .serviceSpherePanel .productInner,
+  .coinRelicPanel .productInner {
+    grid-template-columns: minmax(330px, 0.82fr) minmax(470px, 1.18fr);
+    gap: 28px;
+  }
+
+  .learnLiftPanel .productInner {
+    grid-template-columns: minmax(360px, 1.02fr) minmax(260px, 0.98fr);
+    gap: clamp(22px, 2.7vw, 32px);
+  }
+
+  .learnLiftPanel .productMedia {
+    justify-content: flex-start;
+  }
+
+  .serviceSpherePanel .productInner {
+    grid-template-columns: minmax(390px, 1.05fr) minmax(300px, 0.95fr);
+    gap: clamp(22px, 2.9vw, 34px);
+  }
+
+  .serviceSpherePanel .productMedia {
+    justify-content: center;
+  }
+
+  .productHeading h2 {
+    font-size: clamp(3.2rem, 5vw, 4.7rem);
+  }
+
+  .serviceSpherePanel .productHeading h2 {
+    font-size: clamp(2.8rem, 4.35vw, 4rem);
+  }
+
+  .productDescription {
+    font-size: 0.94rem;
+  }
+
+  .productNarrative,
+  .panelPosition {
+    margin-left: 0;
+  }
+
+  .roleForgePanel .productCopy,
+  .kinBriefPanel .productCopy {
+    order: 1;
+  }
+
+  .roleForgePanel .productMedia,
+  .kinBriefPanel .productMedia {
+    order: 2;
+  }
+}
+
+@media (max-width: 899px) {
+  .previewTheme {
+    overflow: clip;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding-bottom: 92px;
+  }
+
+  .previewHeader {
+    min-height: 72px;
+    padding: 12px 20px;
+  }
+
+  .logoLink {
+    width: 120px;
+  }
+
+  .desktopNavigation {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .mobileNavigation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    padding: 14px 20px 22px;
+    flex-direction: column;
+    background: rgba(7, 6, 12, 0.97);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.36);
+  }
+
+  .mobileNavigationOpen {
+    display: flex;
+  }
+
+  .mobileNavigation a {
+    min-height: 52px;
+    justify-content: space-between;
+    font-size: 0.92rem;
+  }
+
+  .heroStatement {
+    padding: clamp(132px, 18svh, 162px) 18px 0;
+  }
+
+  .heroKicker {
+    max-width: 32ch;
+    line-height: 1.5;
+  }
+
+  .heroTitle {
+    gap: 0.04em;
+    font-size: clamp(3.35rem, 15vw, 7rem);
+    line-height: 0.84;
+  }
+
+  .heroWords {
+    column-gap: clamp(0.12em, 1.25vw, 0.13em);
+  }
+
+  .heroLineRight {
+    align-self: center;
+    text-align: left;
+  }
+
+  .heroLineRight > span {
+    margin-left: 0;
+  }
+
+  .heroFooter {
+    display: flex;
+    width: auto;
+    margin: clamp(26px, 5svh, 46px) 20px 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .heroSupport {
+    font-size: 0.98rem;
+  }
+
+  .heroProductBridge {
+    display: none;
+  }
+
+  .scrollIndicator {
+    bottom: 24px;
+    left: 20px;
+  }
+
+  .story {
+    height: auto;
+    overflow: visible;
+  }
+
+  .storyChrome {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    display: grid;
+    padding: 96px 20px 24px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    background: #08070d;
+  }
+
+  .storyLabel {
+    font-size: 0.62rem;
+  }
+
+  .activeProduct {
+    display: none;
+  }
+
+  .storyChrome nav ol {
+    gap: 8px;
+  }
+
+  .storyChrome nav li {
+    min-height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+  }
+
+  .progressTrack {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-top: 1px;
+  }
+
+  .progressTrack > span,
+  .progressTrack > i {
+    display: none;
+  }
+
+  .storyAmbient {
+    display: none;
+  }
+
+  .storyTrack {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .productPanel {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+    overflow: clip;
+  }
+
+  .productPanel::before {
+    background-size: 68px 68px;
+  }
+
+  .careTailPanel {
+    background: linear-gradient(160deg, #08070d 38%, rgba(23, 76, 73, 0.52));
+  }
+
+  .roleForgePanel {
+    background: linear-gradient(160deg, #08070d 32%, rgba(53, 29, 99, 0.58));
+  }
+
+  .learnLiftPanel {
+    background: linear-gradient(160deg, #0b0814 30%, rgba(85, 60, 154, 0.5));
+  }
+
+  .serviceSpherePanel {
+    background: linear-gradient(160deg, #08070d 32%, rgba(63, 35, 112, 0.46));
+  }
+
+  .coinRelicPanel {
+    background: linear-gradient(160deg, #08070d 34%, rgba(80, 64, 25, 0.43));
+  }
+
+  .kinBriefPanel {
+    background: linear-gradient(160deg, #08070d 34%, rgba(24, 55, 112, 0.45));
+  }
+
+  .productInner,
+  .roleForgePanel .productInner,
+  .kinBriefPanel .productInner,
+  .learnLiftPanel .productInner,
+  .serviceSpherePanel .productInner,
+  .coinRelicPanel .productInner {
+    display: flex;
+    height: auto;
+    min-height: 100svh;
+    padding: clamp(72px, 11svh, 108px) 20px clamp(58px, 9svh, 88px);
+    align-items: stretch;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .roleForgePanel .productCopy,
+  .kinBriefPanel .productCopy,
+  .roleForgePanel .productMedia,
+  .kinBriefPanel .productMedia {
+    order: initial;
+  }
+
+  .productIdentity {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .productIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+  }
+
+  .productType {
+    margin-bottom: 7px;
+    font-size: 0.58rem;
+    line-height: 1.4;
+  }
+
+  .productHeading h2,
+  .serviceSpherePanel .productHeading h2,
+  .learnLiftPanel .productHeading h2 {
+    width: auto;
+    max-width: 100%;
+    font-size: clamp(2.8rem, 13vw, 5.2rem);
+    line-height: 0.95;
+    white-space: normal;
+    overflow-wrap: normal;
+  }
+
+  .serviceSpherePanel .productHeading h2 {
+    font-size: clamp(2.65rem, 11.8vw, 4.8rem);
+  }
+
+  .productNarrative,
+  .panelPosition {
+    margin-left: 0;
+  }
+
+  .productNarrative {
+    margin-top: 24px;
+  }
+
+  .productDescription {
+    font-size: 0.98rem;
+  }
+
+  .panelPosition {
+    margin-top: 22px;
+  }
+
+  .productMedia {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .careTailPanel .productMediaMask,
+  .roleForgePanel .productMediaMask,
+  .kinBriefPanel .productMediaMask {
+    width: 100%;
+    height: auto;
+  }
+
+  .learnLiftPanel .productMediaMask,
+  .serviceSpherePanel .productMediaMask {
+    width: min(78vw, 410px);
+    height: auto;
+    aspect-ratio: 1080 / 1920;
+  }
+
+  .learnLiftPanel .productMediaMask {
+    aspect-ratio: 1536 / 2752;
+  }
+
+  .coinRelicPanel .productMediaMask {
+    width: min(88vw, 480px);
+    height: auto;
+    aspect-ratio: 442 / 592;
+  }
+
+  .productVisualBackdrop {
+    opacity: 0.56;
+  }
+
+  .finalScene {
+    min-height: 100svh;
+    padding: 90px 20px;
+  }
+
+  .finalNames {
+    inset: 6% -6%;
+    font-size: clamp(2.6rem, 13vw, 5rem);
+  }
+
+  .finalTitle {
+    font-size: clamp(3.1rem, 14vw, 6rem);
+  }
+
+  .siteFooterInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 28px;
+  }
+
+  .siteFooterBrand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 430px) {
+  .heroTitle {
+    font-size: clamp(3rem, 14.4vw, 4.1rem);
+  }
+
+  .heroLineAccent > span {
+    width: min-content;
+    max-width: 100%;
+  }
+
+  .heroActions,
+  .finalActions {
+    width: 100%;
+  }
+
+  .button {
+    flex: 1 1 100%;
+  }
+
+  .scrollIndicator span {
+    max-width: 27ch;
+  }
+
+  .productHeading h2,
+  .learnLiftPanel .productHeading h2 {
+    font-size: clamp(2.65rem, 13vw, 3.65rem);
+  }
+
+  .serviceSpherePanel .productHeading h2 {
+    font-size: clamp(2.42rem, 11.6vw, 3.25rem);
+    letter-spacing: -0.075em;
+  }
+
+  .siteFooterInner {
+    grid-template-columns: 1fr;
+  }
+
+  .siteFooterBrand {
+    grid-column: auto;
+  }
+
+  .siteFooterLegal {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .previewTheme {
+    scroll-behavior: auto;
+  }
+
+  .previewTheme *,
+  .previewTheme *::before,
+  .previewTheme *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero {
+    min-height: 100svh;
+  }
+
+  .handoffGrid {
+    display: none !important;
+  }
+
+  .storyBase {
+    opacity: 1 !important;
+  }
+
+  .heroGrid,
+  .heroLight,
+  .heroStatement,
+  .heroKicker,
+  .heroSupport,
+  .heroActions,
+  .heroProductBridge,
+  .scrollIndicator,
+  .productPanel,
+  .productIdentity,
+  .productNarrative,
+  .productMedia,
+  .productMediaMask,
+  .productMediaMask img,
+  .productVisualBackdrop,
+  .productAccentTrace,
+  .productMediaSheen,
+  .finalContent,
+  .finalNames span,
+  .finalLineMask span {
+    opacity: 1 !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+
+  .story {
+    height: auto;
+    overflow: visible;
+  }
+
+  .storyAmbient {
+    display: none;
+  }
+
+  .storyChrome {
+    position: relative;
+  }
+
+  .storyTrack {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .productPanel {
+    width: 100%;
+    height: auto;
+    min-height: 100svh;
+  }
+}

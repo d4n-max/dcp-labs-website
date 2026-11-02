@@ -1,0 +1,410 @@
+{
+  "description": "Legacy published set observed on the public blog; future articles require status: published or published: true. Git tracking is not publication approval.",
+  "evidence": {
+    "url": "https://www.dcplabs.app/blog",
+    "checkedAt": "2026-11-01T18:31:45.888Z",
+    "artifact": "output/release-readiness/seo/live-blog-evidence.json"
+  },
+  "posts": [
+    {
+      "file": "2026-06-24-coin-collection-tracker.md",
+      "slug": "coin-collection-tracker"
+    },
+    {
+      "file": "2026-06-24-field-service-business-app.md",
+      "slug": "field-service-business-app"
+    },
+    {
+      "file": "2026-06-24-organize-service-business-without-spreadsheets.md",
+      "slug": "organize-service-business-without-spreadsheets"
+    },
+    {
+      "file": "2026-06-24-pet-care-tracker-app.md",
+      "slug": "pet-care-tracker-app"
+    },
+    {
+      "file": "2026-06-24-study-coach-app-for-interview-prep.md",
+      "slug": "study-coach-app-for-interview-prep"
+    },
+    {
+      "file": "2026-06-24-tailor-resume-to-job-description.md",
+      "slug": "tailor-resume-to-job-description"
+    },
+    {
+      "file": "2026-06-25-how-to-tailor-your-resume-to-a-job-description.md",
+      "slug": "how-to-tailor-your-resume-to-a-job-description"
+    },
+    {
+      "file": "2026-06-26-job-tracking-for-small-business.md",
+      "slug": "job-tracking-for-small-business"
+    },
+    {
+      "file": "2026-06-27-pet-care-organization.md",
+      "slug": "pet-care-organization"
+    },
+    {
+      "file": "2026-06-28-daily-study-routine.md",
+      "slug": "daily-study-routine"
+    },
+    {
+      "file": "2026-06-29-how-to-organize-a-coin-collection.md",
+      "slug": "how-to-organize-a-coin-collection"
+    },
+    {
+      "file": "2026-06-30-resume-tailoring-checklist.md",
+      "slug": "resume-tailoring-checklist"
+    },
+    {
+      "file": "2026-07-01-create-quotes-faster-service-jobs.md",
+      "slug": "create-quotes-faster-service-jobs"
+    },
+    {
+      "file": "2026-07-02-pet-reminder-checklist.md",
+      "slug": "pet-reminder-checklist"
+    },
+    {
+      "file": "2026-07-03-30-minute-interview-prep-routine.md",
+      "slug": "30-minute-interview-prep-routine"
+    },
+    {
+      "file": "2026-07-04-coin-cataloging-for-beginners.md",
+      "slug": "coin-cataloging-for-beginners"
+    },
+    {
+      "file": "2026-07-05-best-resume-tailoring-tools.md",
+      "slug": "best-resume-tailoring-tools"
+    },
+    {
+      "file": "2026-07-06-quote-vs-invoice-service-business.md",
+      "slug": "quote-vs-invoice-service-business"
+    },
+    {
+      "file": "2026-07-07-pet-medication-reminder.md",
+      "slug": "pet-medication-reminder"
+    },
+    {
+      "file": "2026-07-08-qa-interview-questions-for-beginners.md",
+      "slug": "qa-interview-questions-for-beginners"
+    },
+    {
+      "file": "2026-07-09-identify-coins-from-photos.md",
+      "slug": "identify-coins-from-photos"
+    },
+    {
+      "file": "2026-07-10-how-to-beat-ats-without-gaming-system.md",
+      "slug": "how-to-beat-ats-without-gaming-system"
+    },
+    {
+      "file": "2026-07-11-client-records-service-business.md",
+      "slug": "client-records-service-business"
+    },
+    {
+      "file": "2026-07-16-flashcards-for-interview-prep.md",
+      "slug": "flashcards-for-interview-prep"
+    },
+    {
+      "file": "2026-07-18-coin-values-explained.md",
+      "slug": "coin-values-explained"
+    },
+    {
+      "file": "2026-07-19-ats-resume-keywords.md",
+      "slug": "ats-resume-keywords"
+    },
+    {
+      "file": "2026-07-20-mobile-job-notes-app.md",
+      "slug": "mobile-job-notes-app"
+    },
+    {
+      "file": "2026-07-21-digital-pet-profile.md",
+      "slug": "digital-pet-profile"
+    },
+    {
+      "file": "2026-07-22-practice-interview-questions-daily.md",
+      "slug": "practice-interview-questions-daily"
+    },
+    {
+      "file": "2026-07-23-mint-mark-on-coin.md",
+      "slug": "mint-mark-on-coin"
+    },
+    {
+      "file": "2026-07-24-tailor-cover-letter.md",
+      "slug": "tailor-cover-letter"
+    },
+    {
+      "file": "2026-07-25-field-service-photo-documentation.md",
+      "slug": "field-service-photo-documentation"
+    },
+    {
+      "file": "2026-07-26-organize-pet-documents-vet-visit.md",
+      "slug": "organize-pet-documents-vet-visit"
+    },
+    {
+      "file": "2026-07-27-manual-qa-interview-questions.md",
+      "slug": "manual-qa-interview-questions"
+    },
+    {
+      "file": "2026-07-29-error-coins-vs-damaged-coins.md",
+      "slug": "error-coins-vs-damaged-coins"
+    },
+    {
+      "file": "2026-07-30-why-are-you-a-good-fit-answer.md",
+      "slug": "why-are-you-a-good-fit-answer"
+    },
+    {
+      "file": "2026-07-31-digital-signature-service-jobs.md",
+      "slug": "digital-signature-service-jobs"
+    },
+    {
+      "file": "2026-08-01-dog-care-routine.md",
+      "slug": "dog-care-routine"
+    },
+    {
+      "file": "2026-08-02-study-for-technical-interview.md",
+      "slug": "study-for-technical-interview"
+    },
+    {
+      "file": "2026-08-03-coin-collection-spreadsheet-alternative.md",
+      "slug": "coin-collection-spreadsheet-alternative"
+    },
+    {
+      "file": "2026-08-04-teal-alternative-roleforge.md",
+      "slug": "teal-alternative-roleforge"
+    },
+    {
+      "file": "2026-08-05-route-planning-service-business.md",
+      "slug": "route-planning-service-business"
+    },
+    {
+      "file": "2026-08-08-cat-care-routine.md",
+      "slug": "cat-care-routine"
+    },
+    {
+      "file": "2026-08-09-flashcards-vs-quizzes.md",
+      "slug": "flashcards-vs-quizzes"
+    },
+    {
+      "file": "2026-08-10-cataloging-inherited-coins.md",
+      "slug": "cataloging-inherited-coins"
+    },
+    {
+      "file": "2026-08-13-jobright-alternative-roleforge.md",
+      "slug": "jobright-alternative-roleforge"
+    },
+    {
+      "file": "2026-08-14-service-job-scheduling.md",
+      "slug": "service-job-scheduling"
+    },
+    {
+      "file": "2026-08-16-pet-vaccination-records.md",
+      "slug": "pet-vaccination-records"
+    },
+    {
+      "file": "2026-08-17-daily-learning-checklist-interview-prep.md",
+      "slug": "daily-learning-checklist-interview-prep"
+    },
+    {
+      "file": "2026-08-22-coin-identification-checklist.md",
+      "slug": "coin-identification-checklist"
+    },
+    {
+      "file": "2026-08-27-simplify-alternative-roleforge.md",
+      "slug": "simplify-alternative-roleforge"
+    },
+    {
+      "file": "2026-08-28-quote-to-invoice-workflow.md",
+      "slug": "quote-to-invoice-workflow"
+    },
+    {
+      "file": "2026-08-29-flea-tick-reminder.md",
+      "slug": "flea-tick-reminder"
+    },
+    {
+      "file": "2026-08-31-remember-qa-testing-concepts.md",
+      "slug": "remember-qa-testing-concepts"
+    },
+    {
+      "file": "2026-09-01-track-coin-values-over-time.md",
+      "slug": "track-coin-values-over-time"
+    },
+    {
+      "file": "2026-09-02-kickresume-alternative-roleforge.md",
+      "slug": "kickresume-alternative-roleforge"
+    },
+    {
+      "file": "2026-09-03-service-business-job-notes.md",
+      "slug": "service-business-job-notes"
+    },
+    {
+      "file": "2026-09-05-multi-pet-tracker.md",
+      "slug": "multi-pet-tracker"
+    },
+    {
+      "file": "2026-09-06-qa-tester-interview-questions.md",
+      "slug": "qa-tester-interview-questions"
+    },
+    {
+      "file": "2026-09-07-us-coin-mint-marks.md",
+      "slug": "us-coin-mint-marks"
+    },
+    {
+      "file": "2026-09-08-customize-resume-every-job.md",
+      "slug": "customize-resume-for-every-job"
+    },
+    {
+      "file": "2026-09-09-invoice-tracking-small-business.md",
+      "slug": "invoice-tracking-small-business"
+    },
+    {
+      "file": "2026-09-10-pet-health-journal.md",
+      "slug": "pet-health-journal"
+    },
+    {
+      "file": "2026-09-11-interview-study-plan.md",
+      "slug": "interview-study-plan"
+    },
+    {
+      "file": "2026-09-14-digital-coin-inventory.md",
+      "slug": "digital-coin-inventory"
+    },
+    {
+      "file": "2026-09-15-match-resume-job-posting.md",
+      "slug": "match-resume-to-job-posting"
+    },
+    {
+      "file": "2026-09-16-best-chrome-extensions-job-applications.md",
+      "slug": "best-chrome-extensions-job-applications"
+    },
+    {
+      "file": "2026-09-17-ai-resume-tailoring.md",
+      "slug": "ai-resume-tailoring"
+    },
+    {
+      "file": "2026-09-19-manage-multiple-service-jobs.md",
+      "slug": "manage-multiple-service-jobs"
+    },
+    {
+      "file": "2026-09-21-pet-sitter-instructions.md",
+      "slug": "pet-sitter-instructions"
+    },
+    {
+      "file": "2026-09-22-active-recall-interview-prep.md",
+      "slug": "active-recall-interview-prep"
+    },
+    {
+      "file": "2026-09-25-valuable-coins-pocket-change.md",
+      "slug": "valuable-coins-in-pocket-change"
+    },
+    {
+      "file": "2026-09-29-service-job-record.md",
+      "slug": "service-job-record"
+    },
+    {
+      "file": "2026-10-01-vet-appointment-reminder.md",
+      "slug": "vet-appointment-reminder"
+    },
+    {
+      "file": "2026-10-04-pet-medical-records.md",
+      "slug": "pet-medical-records"
+    },
+    {
+      "file": "2026-10-05-qa-daily-practice-routine.md",
+      "slug": "qa-daily-practice-routine"
+    },
+    {
+      "file": "2026-10-06-coin-collection-app-vs-spreadsheet.md",
+      "slug": "coin-collection-app-vs-spreadsheet"
+    },
+    {
+      "file": "2026-10-08-ai-job-application-answers.md",
+      "slug": "ai-job-application-answers"
+    },
+    {
+      "file": "2026-10-09-mobile-field-service-workflow.md",
+      "slug": "mobile-field-service-workflow"
+    },
+    {
+      "file": "2026-10-10-pet-weight-tracker.md",
+      "slug": "pet-weight-tracker"
+    },
+    {
+      "file": "2026-10-11-qa-interview-preparation-7-days.md",
+      "slug": "qa-interview-preparation-7-days"
+    },
+    {
+      "file": "2026-10-12-how-to-photograph-coins.md",
+      "slug": "how-to-photograph-coins"
+    },
+    {
+      "file": "2026-10-13-rewrite-resume-bullets-specific-job.md",
+      "slug": "rewrite-resume-bullets-specific-job"
+    },
+    {
+      "file": "2026-10-14-service-business-app.md",
+      "slug": "service-business-app"
+    },
+    {
+      "file": "2026-10-15-puppy-care-reminders.md",
+      "slug": "puppy-care-reminders"
+    },
+    {
+      "file": "2026-10-16-behavioral-qa-interview-questions.md",
+      "slug": "behavioral-qa-interview-questions"
+    },
+    {
+      "file": "2026-10-17-doubled-die-coins.md",
+      "slug": "doubled-die-coins"
+    },
+    {
+      "file": "2026-10-18-tailor-resume-career-change.md",
+      "slug": "tailor-resume-for-career-change"
+    },
+    {
+      "file": "2026-10-19-service-job-checklist.md",
+      "slug": "service-job-checklist"
+    },
+    {
+      "file": "2026-10-20-kitten-care-reminders.md",
+      "slug": "kitten-care-reminders"
+    },
+    {
+      "file": "2026-10-22-quizzes-for-learning.md",
+      "slug": "quizzes-for-learning"
+    },
+    {
+      "file": "2026-10-23-sort-coin-collection.md",
+      "slug": "sort-coin-collection"
+    },
+    {
+      "file": "2026-10-24-generic-vs-tailored-resume.md",
+      "slug": "generic-vs-tailored-resume"
+    },
+    {
+      "file": "2026-10-26-customer-service-history-without-crm.md",
+      "slug": "customer-service-history-without-crm"
+    },
+    {
+      "file": "2026-10-27-pet-emergency-information-sheet.md",
+      "slug": "pet-emergency-information-sheet"
+    },
+    {
+      "file": "2026-10-28-qa-testing-terms.md",
+      "slug": "qa-testing-terms"
+    },
+    {
+      "file": "2026-10-29-track-coin-purchase-prices.md",
+      "slug": "track-coin-purchase-prices"
+    },
+    {
+      "file": "2026-10-30-entry-level-resume-tailoring.md",
+      "slug": "entry-level-resume-tailoring"
+    },
+    {
+      "file": "2026-10-31-field-service-invoicing.md",
+      "slug": "field-service-invoicing"
+    },
+    {
+      "file": "2026-11-01-pet-grooming-schedule.md",
+      "slug": "pet-grooming-schedule"
+    }
+  ]
+}

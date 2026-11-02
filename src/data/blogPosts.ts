@@ -1,3 +1,5 @@
+import markdownFiles from 'virtual:published-blog'
+
 export type BlogCategory =
   | 'Pet Care'
   | 'Productivity'
@@ -33,12 +35,6 @@ export const blogCategories: Array<'All' | BlogCategory> = [
   'Field Service',
   'Collecting',
 ]
-
-const markdownFiles = import.meta.glob('../content/blog/*.{md,mdx}', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>
 
 const requiredFields = [
   'title',
